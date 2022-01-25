@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimesheetsTable extends Migration
+class AddColumnProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTimesheetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('timesheets', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->date('date');
-            $table->timestamps();
+        //
+        Schema::table('projects',function(blueprint $table){
+           $table->integer('client_id');
         });
+
     }
 
     /**
@@ -28,7 +27,11 @@ class CreateTimesheetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timesheets');
+        //
+        if(Schema::hascolumn('projects','client_id')){
+            Schema::table('projects', function (blueprint $table){
+                $table->dropColumn('client_id');
+            });
+        }
     }
 }
-//TODO: check why not deleting 
