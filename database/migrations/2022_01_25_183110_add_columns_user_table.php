@@ -16,12 +16,9 @@ class AddColumnsUserTable extends Migration
         //
         Schema::table('users', function(blueprint $table) { 
             $table->string('title')->nullable();
-            $table->bool('active')->nullable()->default(true);
+            $table->boolean('active')->nullable();
             $table->integer('role');
-
-
-
-                }
+    }
     );
     }
 
@@ -32,11 +29,16 @@ class AddColumnsUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(blueprint $table){
-            $table->dropColumn('title');
-            $table->dropColumn('active');
-            $table->dropColumn('role');
-        })
+        
+        if((Schema::hasColumn('users', 'title')) || Schema::hasColumn('users', 'active') || Schema::hasColumn('users', 'role'))
+        {
+            Schema::table('users', function(blueprint $table){
+                $table->dropColumn('title');
+                $table->dropColumn('active');
+                $table->dropColumn('role');
+            });
+        }
+       
 
     }
 }
