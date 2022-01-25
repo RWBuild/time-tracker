@@ -14,6 +14,7 @@ class AddActiveColumnToClients extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
+            // Update clients model
             $table->boolean('is_admin')->default(true)->after('phone');
             $table->boolean('active')->default(true)->after('phone');
         });
