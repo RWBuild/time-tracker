@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/sabato', function(){
     return "i am sabato";
 });
+Route::post('/clients', 'App\Http\Controllers\ClientController@store');
+Route::put('/clients/{client}','App\Http\Controllers\ClientController@update');
+Route::resource('/clients', 'App\Http\Controllers\ClientController');
+// Route::get('/clients','App\Http\Controllers\ClientController@show');
