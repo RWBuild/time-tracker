@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/clients', 'App\Http\Controllers\ClientController');
+//Route::post('/clients', 'App\http\Controllers\ClientController@store');
+//Route::put('clients/{client}', 'App\http\Controllers\ClientController@update');
