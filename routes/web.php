@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::resource('/clients', 'App\Http\Controllers\ClientController');
 //Route::post('/clients', 'App\http\Controllers\ClientController@store');
 //Route::put('clients/{client}', 'App\http\Controllers\ClientController@update');
+
+Route::resource('/projects', 'App\Http\Controllers\ProjectController');
