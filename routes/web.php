@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/clients','App\Http\Controllers\ClientController');
+Route::resource('/projects','App\Http\Controllers\ProjectController');
