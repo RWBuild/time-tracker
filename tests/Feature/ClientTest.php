@@ -41,11 +41,12 @@ class ClientTest extends TestCase
   {
     $this->withoutExceptionHandling();
     $client = Client::factory()->create();
+    //dd($client);
     $this->assertTrue(Client::all()->count() == 1);
 
     $response = $this->get('/clients/'.$client->id);
     $response->assertStatus(200);
-    $response->assertSee($client->name);
+    $response->assertSee($client->phone);
   }
   
   public function test_user_can_delete_a_client()
