@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
+    <title>create project</title>
 </head>
 <body>
-    @forelse ($client as $client)
-        <p>{{ $client->name }} {{ $client->code }}</p>
-    @empty
-        <p>No Clients In Database</p>
-    @endforelse
+    <h1>create new projects</h1>
 </body>
 </html>

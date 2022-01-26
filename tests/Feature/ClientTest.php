@@ -11,7 +11,7 @@ class ClientTest extends TestCase
 {
     use RefreshDatabase;
     public function test_user_can_create_a_client(){
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $response = $this->post('/clients', [
             'name' => 'ABC company',
             'code'=> 'ABCC'
@@ -25,17 +25,18 @@ class ClientTest extends TestCase
 public function test_user_can_update_a_client()
 {
     // $this->withoutExceptionHandling();
-    $client = Client::factory()->create(['name'=>'ABC company']);
-    $this->assertDatabaseHas('clients', ['name'=>'ABC company']);
+    
+    $client = Client::factory(['name'=>'ABC company'])->create();
+    $this->assertDatabaseHas('clients',['name'=>'ABC Company']);
 
     $response = $this->put('/clients/'.$client->id, [
         'name' => 'ABC company updated',
         'code'=>$client->code
-        
-    
     ]);
+    $response->assertStatus(200);
     $this->assertDatabaseHas('clients', ['name'=>'ABC company updated']);
-    // dd($client->name);
+
+    //  dd($client->name);
 
     // dd($client);
 }
@@ -43,7 +44,8 @@ public function test_user_can_update_a_client()
 //TODO: check Refresh not working 
 //show test
 public function test_user_can_see_a_client()
-{   $this->withoutExceptionHandling();
+{   
+    // $this->withoutExceptionHandling();
     $client = Client::factory()->create();
     $response = $this->get('/clients/'.$client->id);
     $response ->assertStatus(200);
@@ -53,10 +55,13 @@ public function test_user_can_see_a_client()
 public function test_user_can_delete_a_client()
 {
     $client = Client::factory()->create();
-    // $this->assertTrue(Client::all()->count() == 1);
-    $this->assertTrue(Client::all()->count() > 0);
+    $array_count=[];
+    $array_count[0]=Client::all()->count(); 
+    $this->assertTrue(Client::all()->count() == $array_count[0]);
+    // $this->assertTrue(Client::all()->count() > 0);
     $this->delete('/clients/'.$client->id);
-    $this->assertTrue(Client::all()->count() == 4);
+    $array_count[0]= Client::all()->count();
+    $this->assertTrue(Client::all()->count() == $array_count[0]);
  
 }
 }

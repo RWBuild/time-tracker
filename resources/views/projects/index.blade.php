@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
+    <title>Index page</title>
 </head>
 <body>
-    @forelse ($client as $client)
-        <p>{{ $client->name }} {{ $client->code }}</p>
+    <h1> projects</h1>
+    @forelse ($project as $project)
+      <p>{{$project->name}}</p>
     @empty
-        <p>No Clients In Database</p>
+      <p>No Project</p>
     @endforelse
 </body>
 </html>

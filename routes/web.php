@@ -16,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/sabato', function(){
-    return "i am sabato";
-});
-Route::post('/clients', 'App\Http\Controllers\ClientController@store');
-Route::put('/clients/{client}','App\Http\Controllers\ClientController@update');
-Route::resource('/clients', 'App\Http\Controllers\ClientController');
-// Route::get('/clients','App\Http\Controllers\ClientController@show');
+// Route::get('/sabato', function(){
+//     return "i am sabato";
+// });
+// Route::post('/clients', '\ClientController@store');
+// Route::put('/clients/{client}','App\Http\Controllers\ClientController@update');
+// Route::resource('/clients', 'App\Http\Controllers\ClientController');
+
+// Route::resource('/projects', '');
+Route::resource('/clients/', 'App\Http\Controllers\ClientController');
+Route::resource('/projects', 'App\Http\Controllers\ProjectController');
+// Route::get('/clients/{client}','App\Http\Controllers\ClientController@show');
+
+// Route::get('/projects/{project}','App\Http\Controllers\ProjectController@show');
