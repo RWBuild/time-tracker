@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    @forelse (projects as $project)
+    @forelse ($projects as $project)
         <p>{{$project->name}} {{$project->description}}</p>
     @empty
         <p>No projects in the database<p/>
