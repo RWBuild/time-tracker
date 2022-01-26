@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\http\controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+#Route::post('/clients','App\http\controllers\ClientController@store');
+Route::resource('clients','App\Http\Controllers\ClientController');
+#Route::put('/clients/{client}','App\Http\controllers\ClientController@store');
