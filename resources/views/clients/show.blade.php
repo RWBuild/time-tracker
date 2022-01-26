@@ -10,7 +10,7 @@
 <div>
     <p>Name: {{$client->name}}</p>
     <p>Code: {{$client->code}}</p>
-    <p>Phone: {{$client->phone}}</p>
+    <p>Phone: {{$client->description}}</p>
     <p>Address: {{$client->address}}</p>
 </div>
 

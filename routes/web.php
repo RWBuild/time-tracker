@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 #Route::post('/clients','App\http\controllers\ClientController@store');
 Route::resource('clients','App\Http\Controllers\ClientController');
+Route::resource('projects','App\Http\Controllers\ProjectController');
 #Route::put('/clients/{client}','App\Http\controllers\ClientController@store');

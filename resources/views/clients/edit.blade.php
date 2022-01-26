@@ -8,10 +8,10 @@
 </head>
 <body>
 <div>
-    <h2>EditClient</h2>
+    
     <p>Name: {{$client->name}}</p>
     <p>Code: {{$client->code}}</p>
-    <p>Phone: {{$client->phone}}</p>
+    <p>Phone: {{$client->description}}</p>
     <p>Address: {{$client->address}}</p>
 </div>
 
