@@ -31,7 +31,7 @@ class ProjectTest extends TestCase
   {
     //$this->withoutExceptionHandling();
 
-    $project = Project::factory()->create([
+    $project = Project::factory()->forClient()->create([
       'name' => 'ABC Project'
     ]);
 
@@ -50,7 +50,7 @@ class ProjectTest extends TestCase
   {
     $this->withoutExceptionHandling();
 
-    $project = Project::factory()->create();
+    $project = Project::factory()->forClient()->create();
     $this->assertTrue(Project::all()->count() == 1);
 
     $response = $this->get('/projects/'.$project->id);
@@ -60,7 +60,7 @@ class ProjectTest extends TestCase
 
   public function test_user_can_delete_a_project()
   {
-    $project = Project::factory()->create();
+    $project = Project::factory()->forClient()->create();
     $this->assertTrue(Project::all()->count() == 1);
 
     $response = $this->delete('/projects/'.$project->id);
