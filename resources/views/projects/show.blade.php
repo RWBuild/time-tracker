@@ -8,9 +8,9 @@
 </head>
 <body>
     <div>
-        <p>Name: {{$project->name}}</p>>
-        <p>client: {{$project->client_id}}</p>>
-        <p>Desciption: {{$project->description}}</p>>
+        <p>Name: {{$project->name}}</p>
+        <p>client: {{$project->client_id}}</p>
+        <p>Desciption: {{$project->description}}</p>
     </div>
 </body>
 </html>
