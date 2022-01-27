@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h1>
-            EDIT A CLIENT
-        </h1>
+    <div> 
+        <h1>User can see the project </h1>
+
+        <p>Phone: {{$project->id}} </p>
+        <p>Phone: {{$project->client_id}} </p>
+        <p>Name: {{$project->name}} </p>
+        <p>code: {{$project->description}} </p>
+        
+        
     </div>
-    <div>
-       
-    </div>
-    
 </body>
 </html>

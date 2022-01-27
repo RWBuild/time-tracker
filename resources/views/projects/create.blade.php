@@ -8,13 +8,7 @@
 </head>
 <body>
     <div>
-        <h1>
-            EDIT A CLIENT
-        </h1>
+        <h1>User can create a project</h1>
     </div>
-    <div>
-       
-    </div>
-    
 </body>
 </html>

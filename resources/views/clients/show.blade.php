@@ -8,10 +8,14 @@
 </head>
 <body>
     <div> 
+        <h1>User can see the client </h1>
+
         <p>Name: {{$client->name}} </p>
         <p>code: {{$client->code}} </p>
         <p>Adress: {{$client->adress}} </p>
         <p>Phone: {{$client->phone}} </p>
+
+        
     </div>
 </body>
 </html>

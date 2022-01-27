@@ -3,30 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Models\Client;
+use App\Models\Project;
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $clients = Client::all();
-        return view('clients.index', compact('clients'));
-       
+        $project = Project::all();
+        return view('projects.index', compact('projects'));
+
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function create()
     {
-        return view('clients.create');
+        return view('projects.create');
     }
 
     /**
@@ -37,10 +33,12 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Client();
-        $client->name = $request->name;
-        $client->code = $request->code;
-        $client->save();
+        $project = new Project();
+        $project->client_id = $request->client_id;
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->badget = $request->badget;
+        $project->save();
 
     }
 
@@ -50,20 +48,20 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Project $project)
     {
-        return view('clients.show', compact('client'));       
+        return view('projects.show', compact('project'));       
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  client  $id
+     * @param  product  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('clients.edit', compact('client'));
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -73,11 +71,15 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client  $client)
+    public function update(Request $request, Project  $project)
     {
-        $client->name = $request->name;
-        $client->code = $request->code;
-        $client->save();
+
+        // $project->client_id = $request->client_id;
+        $project->name = $request->name;
+        // $project->description = $request->description;
+        // $project->badget = $request->badget;
+        $project->save();
+
     }
 
     /**
@@ -86,8 +88,8 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($client)
+    public function destroy($project)
     {
-        $client->delete();
+        $project->delete();
     }
 }

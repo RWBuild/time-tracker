@@ -9,7 +9,7 @@
 <body>
     <div>
         <h1>
-            EDIT A CLIENT
+            User can create a project
         </h1>
     </div>
     <div>
