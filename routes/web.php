@@ -17,5 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/clients','App\Http\Controllers\ClientController');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+Route::resource('/clients' , 'App\Http\Controllers\ClientController');
+
 Route::resource('/projects','App\Http\Controllers\ProjectController');
