@@ -58,9 +58,13 @@ public function test_user_can_delete_a_client()
     $array_count=[];
     $array_count[0]=Client::all()->count(); 
     $this->assertTrue(Client::all()->count() == $array_count[0]);
+    var_dump($array_count[0]);
+
     // $this->assertTrue(Client::all()->count() > 0);
     $this->delete('/clients/'.$client->id);
     $array_count[0]= Client::all()->count();
+    var_dump($array_count[0]);
+
     $this->assertTrue(Client::all()->count() == $array_count[0]);
  
 }
