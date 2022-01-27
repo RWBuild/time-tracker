@@ -33,7 +33,7 @@ class ProjectTest extends TestCase
 
     public function test_user_can_update_a_project()
     {
-        $project = Project::factory()->create(['name'=>'test Project']);
+        $project = Project::factory()->forClient()->create(['name'=>'test Project']);
         $this->assertDatabaseHas('projects', ['name' =>'test Project']);
 
         $response = $this->put('/projects/'.$project->id, [
@@ -48,7 +48,7 @@ class ProjectTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $project = Project::factory()->create();
+        $project = Project::factory()->forClient()->create();
        $this->assertTrue(Project::all()->count() == 1);
 
        $response = $this->get('/projects/'.$project->id);
@@ -61,7 +61,7 @@ class ProjectTest extends TestCase
 
     public function test_user_can_delete_a_project()
     {
-        $project = Project::factory()->create();
+        $project = Project::factory()->forClient()->create();
        $this->assertTrue(Project::all()->count() == 1);
 
        $this->delete('/projects/'.$project->id);
