@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clients;
+use App\Models\CLient;
 
 class ClientController extends Controller {
     /**
@@ -11,7 +11,7 @@ class ClientController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $client = Clients::all();
+        $client = CLient::all();
         return view('clients.index', compact('client'));
     }
 
@@ -30,7 +30,7 @@ class ClientController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $client = new Clients();
+        $client = new CLient();
         $client->name = $request->name;
         $client->code = $request->code;
         $client->save();
@@ -39,10 +39,10 @@ class ClientController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  Clients  $client
+     * @param  CLient  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Clients $client) {
+    public function show(CLient $client) {
       return view('clients.show', compact('client'));
     }
 
@@ -51,7 +51,7 @@ class ClientController extends Controller {
      * @param  CLients $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clients $client){
+    public function edit(Client $client){
       return view('clients.edit', compact('client'));
     }
 
@@ -62,7 +62,7 @@ class ClientController extends Controller {
      * @param  Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clients $client) {
+    public function update(Request $request, Client $client) {
         $client->name = $request->name;
         $client->code = $request->code;
         $client->save();
@@ -74,7 +74,7 @@ class ClientController extends Controller {
      * @param  Clients  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clients $client){
+    public function destroy(Client $client){
        $client->delete();
     }
 }

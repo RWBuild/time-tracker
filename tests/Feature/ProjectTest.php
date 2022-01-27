@@ -33,9 +33,7 @@ class ProjectTest extends TestCase {
 
     // test update
     public function test_can_update_project(){
-        $project = Project::factory([
-            'name' => 'Mirror',
-        ])->create();
+        $project = Project::factory(['name' => 'Mirror'])->forClient()->create();
         $this->assertDatabaseHas('projects', ['name' => 'Mirror']);
 
         $this->put('/projects/'.$project->id, [
@@ -52,7 +50,6 @@ class ProjectTest extends TestCase {
         $this->assertTrue(Project::all()->count() == 1);
 
         $this->delete('/projects/'.$project->id);
-        // dd($projects);
         $this->assertTrue(Project::all()->count() == 0);
     }
 }
