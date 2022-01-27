@@ -107,35 +107,30 @@ class ClientTest extends TestCase
 
   public function test_user_can_delete_a_client()
   {
-    // $client = Client::factory()->create();
-
-    // $this->assertTrue(Client::all()->count() == 1);
-
-    // $response = $this->->delete('/clients/'.$client->id);
-    // $this->assertTrue(Client::all()->count() == 0);
+ 
     $client = Client::factory()->create();
-    $array_count=[];
-    $array_count[0]= Client::all()->count();
-    $this->assertTrue(Client::all()->count() == $array_count[0]);
-    var_dump($array_count[0], 'before delete user');
+//     $array_count=[];
+//     $array_count[0]= Client::all()->count();
+    $this->assertTrue(Client::all()->count() == 0);
+//     var_dump($array_count[0], 'before delete user');
     $response = $this->actingAs($this->user)->delete('/clients/'.$client->id);
-    $array_count[0]= Client::all()->count();
-    var_dump($array_count[0], 'after delete user');
-    $this->assertTrue(Client::all()->count() == $array_count[0]);
+//     $array_count[0]= Client::all()->count();
+//     var_dump($array_count[0], 'after delete user');
+    $this->assertTrue(Client::all()->count() == 0);
 
   }
 
   public function test_guest_can_not_delete_a_client()
   {
     $client = Client::factory()->create();
-    $array_count=[];
-    $array_count[0]= Client::all()->count();
-    $this->assertTrue(Client::all()->count() == $array_count[0]);
-    var_dump($array_count[0], 'before delete guest');
+//     $array_count=[];
+//     $array_count[0]= Client::all()->count();
+    $this->assertTrue(Client::all()->count() == 0);
+//     var_dump($array_count[0], 'before delete guest');
     $response = $this->delete('/clients/'.$client->id);
-    $array_count[0]= Client::all()->count();
-    var_dump($array_count[0], 'after delete guest');
-    $this->assertTrue(Client::all()->count() == $array_count[0]);
+//     $array_count[0]= Client::all()->count();
+//     var_dump($array_count[0], 'after delete guest');
+    $this->assertTrue(Client::all()->count() == 0);
 
   }
 
