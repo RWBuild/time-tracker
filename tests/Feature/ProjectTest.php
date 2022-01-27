@@ -49,7 +49,7 @@ class ProjectTest extends TestCase
         $response->assertSee($project->name);
     }
 //user update project
-//TODO: get one project not working
+//done: get one project not working
     public function test_user_can_update_project()
     {
         $project =Project::factory([
@@ -71,9 +71,10 @@ class ProjectTest extends TestCase
         $array_count =[];
          $array_count[0] = Project::all()->count();
         $this->assertTrue(Project::all()->count() == $array_count[0] );
-
-        $this->delete('/projects/'.$project->id);
+        var_dump($array_count[0]);
+        $this->delete('projects/'.$project->id);
         $array_count[0]=Project::all()->count();
+        var_dump($array_count[0]);
         $this->assertTrue(Project::all()->count() == $array_count[0]);
 
     }
