@@ -26,6 +26,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+      // TODO: No need to pass clients to the create template, remove compact('clients')
         return view ('clients.create',compact('clients'));
     }
 
@@ -90,6 +91,6 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        //TODO: Finish the destroy method
     }
 }

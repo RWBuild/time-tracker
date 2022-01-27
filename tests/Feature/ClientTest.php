@@ -54,7 +54,7 @@ class ClientTest extends TestCase
     $this->assertTrue(Client::all()->count() == 1);
 
     $response = $this->delete('/clients/'.$client->id);
-
+    // TODO: uncomment this line to complete your test
     //$this->assertTrue(Client::all()->count() == 0);
   }
 }
