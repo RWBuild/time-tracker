@@ -26,6 +26,8 @@ Route::get('/', function () {
 // Route::resource('/projects', '');
 Route::resource('/clients/', 'App\Http\Controllers\ClientController');
 Route::resource('/projects', 'App\Http\Controllers\ProjectController');
+Route::resource('projects', 'App\Http\Controllers\ProjectController');
+Route::resource('clients', 'App\Http\Controllers\ClientController');
 // Route::get('/clients/{client}','App\Http\Controllers\ClientController@show');
 
 // Route::get('/projects/{project}','App\Http\Controllers\ProjectController@show');
