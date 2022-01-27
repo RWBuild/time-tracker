@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CLient;
 
+//TODO: Code checked by Dan
+
 class ClientController extends Controller {
     /**
      * Display a listing of the resource.
