@@ -7,10 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    @forelse ($clients as $client)
-    <p>{{$client->name}}{{$client->code}}</p>
-        @empty
-            <p>No client in the database</p>
-    @endforelse
+    <div>
+        <p>This is where a form would go...</p>
+    </div>
 </body>
 </html>
