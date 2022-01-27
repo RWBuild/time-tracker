@@ -41,16 +41,14 @@ class ClientTest extends TestCase
 
     //$user = User::factory()->create();
 
-    $response = $this->actingAs($this->user)->post('/clients',[
+    $response = $this->post('/clients',[
       'name' => 'ABC Company',
       'code' => 'ABCCO'
     ]);
 
+  
 
-
-    $response->assertStatus(200);
-
-    $this->assertTrue(Client::all()->count() == 1);
+    $this->assertTrue(Client::all()->count() == 0);
   }
 
   public function test_user_can_update_a_client()
@@ -73,7 +71,7 @@ class ClientTest extends TestCase
   }
 
 
-  public function test_guest_can_update_a_client()
+  public function test_guest_can_not_update_a_client()
   {
     //$this->withoutExceptionHandling();
 
@@ -83,12 +81,12 @@ class ClientTest extends TestCase
 
     $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
 
-    $response = $this->actingAs($this->user)->put('/clients/'.$client->id, [
+    $response = $this->put('/clients/'.$client->id, [
       'name' => 'ABC Company Updated',
       'code' => $client->code,
     ]);
 
-    $this->assertDatabaseHas('clients',['name' => 'ABC Company Updated']);
+    $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
     
   }
 

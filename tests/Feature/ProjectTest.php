@@ -21,7 +21,7 @@ class ProjectTest extends TestCase
 
   public function test_user_can_create_a_project()
   {
-    $this->withoutExceptionHandling();
+    //$this->withoutExceptionHandling();
 
     $response = $this->actingAs($this->user)->post('/projects',[
       'client_id' => 1,
@@ -38,18 +38,16 @@ class ProjectTest extends TestCase
 
   public function test_guest_can_not_create_a_project()
   {
-    $this->withoutExceptionHandling();
+    // $this->withoutExceptionHandling();
 
-    $response = $this->actingAs($this->user)->post('/projects',[
+    $response = $this->post('/projects',[
       'client_id' => 1,
       'name' => 'ABC Project',
       'description' => 'This is a description',
       'budget' => 10000.14,
     ]);
 
-    $response->assertStatus(200);
-
-    $this->assertTrue(Project::all()->count() == 1);
+    $this->assertTrue(Project::all()->count() ==0);
   }
 
 
@@ -82,12 +80,12 @@ class ProjectTest extends TestCase
 
     $this->assertDatabaseHas('projects',['name' => 'ABC Project']);
 
-    $response = $this->actingAs($this->user)->put('/projects/'.$project->id, [
+    $response = $this->put('/projects/'.$project->id, [
       'client_id' => $project->client_id,
       'name' => 'ABC Project Updated',
     ]);
 
-    $this->assertDatabaseHas('projects',['name' => 'ABC Project Updated']);
+    $this->assertDatabaseHas('projects',['name' => 'ABC Project']);
     
   }
 
@@ -119,8 +117,8 @@ class ProjectTest extends TestCase
     $project = Project::factory()->forClient()->create();
     $this->assertTrue(Project::all()->count() == 1);
 
-    $response = $this->actingAs($this->user)->delete('/projects/'.$project->id);
-    $this->assertTrue(Project::all()->count() == 0);
+    $response = $this->delete('/projects/'.$project->id);
+    $this->assertTrue(Project::all()->count() == 1);
 
   }
 
