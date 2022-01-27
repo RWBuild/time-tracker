@@ -24,11 +24,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-//LOGGED IN USER GROUP
-
 Route::group(['middleware' => 'auth'], function(){
-
-//Route::post('/client','App\Http\controllers\ClientController@store');
 Route::resource('/clients','App\Http\controllers\ClientController');
 Route::resource('/projects','App\Http\controllers\ProjectController');
 });
