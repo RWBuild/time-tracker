@@ -49,7 +49,6 @@ class ProjectTest extends TestCase
         $project = Project::factory()->create(['name'=>'ABC Project']);
         $this->assertDatabaseHas('projects',['name' => 'ABC Project']);
         $response = $this->put('/projects/'.$project->id,[
-            'client_id' => $project->client_id,
             'name' => 'ABC Project updated',
         ]);
         
