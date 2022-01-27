@@ -7,6 +7,10 @@
     <title></title>
 </head>
 <body>
-   <p>Create a project</p> 
+    <h2>Edit a project</h2>
+    <p>Name: {{$project->name}}</p>
+    <p>client: {{$project->client_id}}</p>
+    <p>Budget: {{$project->budget}}</p>
+    <p>Description: {{$project->description}}</p>
 </body>
 </html>
