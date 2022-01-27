@@ -22,6 +22,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+//required user login 
 
-Route::resource('/clients','App\Http\Controllers\ClientController');
-Route::resource('/projects','App\Http\Controllers\ProjectController');
+
+Route::group(['middleware'=> 'auth'], function(){
+    Route::resource('/clients','App\Http\Controllers\ClientController');
+    Route::resource('/projects','App\Http\Controllers\ProjectController');
+    // Route::resource('projects/','App\Http\Controllers\ProjectController');
+});
+
