@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//TODO: Code cleanup: if you are not using a route, delete it, do not comment out routes like this.
+// Your code is too messy to understand which routes are in use and which ones are there for reference.
+// Always keep this file clean.
+
 // Route::get('/sabato', function(){
 //     return "i am sabato";
 // });

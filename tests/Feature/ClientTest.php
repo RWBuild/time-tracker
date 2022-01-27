@@ -55,16 +55,26 @@ public function test_user_can_see_a_client()
 public function test_user_can_delete_a_client()
 {
     $client = Client::factory()->create();
+    // ---------------------------------------------------------------
+    // TODO: This is messy code
+    // Client::all()->count() is the only count you need to check
+    // there's no reason to add the count to an array and then check the count through the array
+    // doing so is dangerous. We want to check the record count before and after the delete attempt
+    // putting it in a variable is not needed.
     $array_count=[];
     $array_count[0]=Client::all()->count(); 
     $this->assertTrue(Client::all()->count() == $array_count[0]);
     var_dump($array_count[0]);
+    // why the var dump?
+    // ---------------------------------------------------------------
 
     // $this->assertTrue(Client::all()->count() > 0);
     $this->delete('/clients/'.$client->id);
     $array_count[0]= Client::all()->count();
     var_dump($array_count[0]);
-
+    
+    // this is not a good assertion. You should be testing the record count NOT an array.
+    // this test should check against the number 0.
     $this->assertTrue(Client::all()->count() == $array_count[0]);
  
 }

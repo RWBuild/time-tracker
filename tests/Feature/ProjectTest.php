@@ -2,6 +2,10 @@
 
 namespace Tests\Feature;
 
+//TODO: Same comments about tests
+// your code could be cleaner, so it would be easier to read
+// also you're adding complexity in your code where it is not needed.
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -66,6 +70,7 @@ class ProjectTest extends TestCase
         $this->assertDatabaseHas('projects',  ['name'=>'Stock Management Update']);
     }
     //user can delete project 
+
     public function test_user_can_delete_a_project()
     {
         $project = Project::factory()->create();
