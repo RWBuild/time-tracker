@@ -64,6 +64,6 @@ class ProjectTest extends TestCase
         $this->assertTrue(Project::all()->count() == 1);
 
         $response = $this->delete('/projects/'.$project->id);
-        $this->assertTrue(Project::all()->count() == 1);
+        $this->assertTrue(Project::all()->count() == 1); //TODO: Your test is not correct, after delete there should be 0 records
     }
 }

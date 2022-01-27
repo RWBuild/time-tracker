@@ -88,6 +88,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //TODO: For route model binding to work, you have to typehint
+    // public function destroy(Project $project) { ... }
+
     public function destroy($project)
     {
         $project->delete();

@@ -86,6 +86,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //TODO: For route model binding to work, you have to typehint
+    // public function destroy(Client $client) { ... }
+    
     public function destroy($client)
     {
         $client->delete();

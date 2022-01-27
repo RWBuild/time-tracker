@@ -61,7 +61,7 @@ class ClientTest extends TestCase
         $this->assertTrue(Client::all()->count() == 1);
 
         $response = $this->delete('/clients/'.$client->id);
-        $this->assertTrue(Client::all()->count() == 1);
+        $this->assertTrue(Client::all()->count() == 1); //TODO: Your test is not correct, after delete there should be 0 records
     }
 
 }

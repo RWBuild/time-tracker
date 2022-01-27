@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// TODO: Try to keep these route files clean.
+// If you are not using a route, delete it, do not comment it out
+
 //Route::post('/client','App\Http\controllers\ClientController@store');
 Route::resource('/clients','App\Http\controllers\ClientController');
 Route::resource('/projects','App\Http\controllers\ProjectController');
