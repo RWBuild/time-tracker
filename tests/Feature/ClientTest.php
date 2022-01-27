@@ -22,7 +22,6 @@ class ClientTest extends TestCase
         $this->withoutExceptionHandling();
         $client=Client::factory()->create(['name'=>'ABC Company']);
         $this->assertDatabaseHas('clients',['name'=>'ABC Company']);
-        // dd($client);
         $response= $this->put('/clients/'.$client->id, [
             'name' => 'ABC Company Updated',
             'code'=>$client->code

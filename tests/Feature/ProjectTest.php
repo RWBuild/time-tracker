@@ -23,7 +23,6 @@ class ProjectTest extends TestCase
         $this->withoutExceptionHandling();
         $project=Project::factory()->create(['name'=>'ABC Project']);
         $this->assertDatabaseHas('projects',['name'=>'ABC Project']);
-        // dd($project);
         $response= $this->put('/projects/'.$project->id, [
             'name' => 'ABC Project Updated',
             'client_id'=>$project->client_id
@@ -46,7 +45,6 @@ class ProjectTest extends TestCase
         $this->assertTrue(Project::all()->count()==1);
         $response= $this->get('/projects/'.$project->id);
         $response->assertStatus(200);
-        // dd($response);
         $response->assertSee($project->name);
     }
 }

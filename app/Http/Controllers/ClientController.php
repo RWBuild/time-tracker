@@ -41,7 +41,6 @@ class ClientController extends Controller
         $client->name=$request->name;
         $client->code=$request->code;
         $client->save();
-        // dd($client);
     }
 
     /**
