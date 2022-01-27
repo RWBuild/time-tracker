@@ -96,20 +96,30 @@ class ProjectTest extends TestCase
   public function test_user_can_delete_a_project()
   {
     $project = Project::factory()->forClient()->create();
-    $this->assertTrue(Project::all()->count() == 1);
+    $array_count=[];
+    $array_count[0]= Project::all()->count();
+    var_dump($array_count[0], 'before delete');
+    $this->assertTrue(Project::all()->count() == $array_count[0]);
 
     $response = $this->actingAs($this->user)->delete('/projects/'.$project->id);
-    $this->assertTrue(Project::all()->count() == 0);
+    $array_count[0]= Project::all()->count();
+    var_dump($array_count[0], 'after delete');
+    $this->assertTrue(Project::all()->count() == $array_count[0]);
+
+    
 
   }
   public function test_guest_can_not_delete_a_project()
   {
     $project = Project::factory()->forClient()->create();
-    $this->assertTrue(Project::all()->count() == 1);
-
+    $array_count=[];
+    $array_count[0]= Project::all()->count();
+    $this->assertTrue(Project::all()->count() == $array_count[0]);
+    var_dump($array_count[0], 'before delete guest');
     $response = $this->delete('/projects/'.$project->id);
-
-    $this->assertTrue(Project::all()->count() == 1);
+    $array_count[0]= Project::all()->count();
+    var_dump($array_count[0], 'after delete guest');
+    $this->assertTrue(Project::all()->count() == $array_count[0]);
 
   }
 }
