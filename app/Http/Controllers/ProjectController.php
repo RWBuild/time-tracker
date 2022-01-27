@@ -26,6 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+      // TODO: No need to pass a project to the create view, that view is meant to create a project.
         return view ('projects.create',compact('project'));
     }
 

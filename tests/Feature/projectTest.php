@@ -59,4 +59,6 @@ class projectTest extends TestCase
         $response->assertSee($project->name);
     }
 
+    //TODO: Missing test_user_can_delete_a_project() method
+
 }
