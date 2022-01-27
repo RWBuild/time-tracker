@@ -62,7 +62,7 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        //TODO: finish this edit method
     }
 
     /**
