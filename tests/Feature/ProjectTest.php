@@ -27,14 +27,17 @@ class ProjectTest extends TestCase
         
 
     public function test_can_update_project(){
-        $project = Project::factory()->create();
+        $project = Project::factory()->forClient()->create([
+            'name' => 'ABC',
+
+        ]);
         $this->assertTrue(Project::all()->count() == 1);
 
         $this->put('/projects/'.$project->id, ['name' => 'Maker']);
         $this->assertDatabaseHas('projects', ['name' => 'Maker']);
     }
 
-    public function test_user_can_see_a_project()
+    public function test_user_can_read_a_project()
     {
         $this->withoutExceptionHandling();
 

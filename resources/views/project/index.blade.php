@@ -8,7 +8,7 @@
 </head>
 <body>
     @forelse ($projects as $project)
-<p>{{$project->name}}</p>
+<p>Name: {{$project->name}}</p>
     
 @empty
     <p>No project</p>
