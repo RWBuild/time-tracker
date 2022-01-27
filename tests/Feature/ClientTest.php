@@ -9,7 +9,11 @@ use App\Models\Client;
 
 class ClientTest extends TestCase
 {
-    use RefreshDatabase;
+
+// TODO: Code works well, but you could add some more space between your methods to make
+// the file more readable
+// also indentation should be the same
+  use RefreshDatabase;
     public function test_user_can_create_a_client()
     {
         $this->withoutExceptionHandling();
@@ -17,6 +21,7 @@ class ClientTest extends TestCase
        $response->assertStatus(200);
         $this->assertTrue(Client::all()->count()==1);
     }
+
     public function test_user_can_update_a_client()
     {
         $this->withoutExceptionHandling();
@@ -25,8 +30,8 @@ class ClientTest extends TestCase
         $response= $this->put('/clients/'.$client->id, [
             'name' => 'ABC Company Updated',
             'code'=>$client->code
-    ]);
-    $this->assertDatabaseHas('clients',['name'=>'ABC Company Updated']);
+        ]);
+      $this->assertDatabaseHas('clients',['name'=>'ABC Company Updated']);
 
     }
     public function test_user_can_see_a_client ()
