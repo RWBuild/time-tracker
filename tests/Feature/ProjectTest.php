@@ -11,6 +11,7 @@ class ProjectTest extends TestCase
 {
    use RefreshDatabase;
     
+   
     public function test_user_can_create_a_project(){
 
         $this->withoutExceptionHandling();
@@ -24,7 +25,11 @@ class ProjectTest extends TestCase
         $this->assertTrue(Project::all()->count() == 1);
     }
 
-        
+// ------------------------------------        
+//TODO: when naming test methods, make sure to use the same naming as the others
+// test_user_can_update_project() NOT test_can_update_project()
+// your test name doesn't tell us who is attempting the update
+// ------------------------------------
 
     public function test_can_update_project(){
         $project = Project::factory()->forClient()->create([

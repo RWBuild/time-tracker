@@ -77,6 +77,10 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
+      //TODO: Remove lines of codes like this, this is an update() method
+      // if this line was uncommented, you would be creating a new client
+      // instead of editing one. This line is very dangerous here.
+      
        # $client ->name =  new Client();
         $client->name = $request->name;
         $client->code = $request->code;
