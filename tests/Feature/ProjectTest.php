@@ -25,6 +25,8 @@ class ProjectTest extends TestCase
         $this->assertTrue(Project::all()->count() == 1); 
     }
 
+    //TODO: This test failed. Remember, don't push up your changes unless you run your tests and they pass.
+    // Looks like a typo on the project name
 
     public function test_user_can_update_a_project(){
         $this->withoutExceptionHandling();
