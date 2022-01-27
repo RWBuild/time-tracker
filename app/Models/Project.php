@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    public function client()
+    {
+        return $this->beLongsTo(Client::class);
+    }
+    
 }

@@ -14,7 +14,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => 1,
+           // 'client_id' => 1,
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'badget' => $this->faker->randomFloat(),
