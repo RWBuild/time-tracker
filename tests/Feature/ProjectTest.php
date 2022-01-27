@@ -52,6 +52,7 @@ class ProjectTest extends TestCase
 //done: get one project not working
     public function test_user_can_update_project()
     {
+        //$project = Project::factory()->forClient()->create(); to add relationship
         $project =Project::factory([
             'client_id' => '1', 
             'name' => 'Stock Management'

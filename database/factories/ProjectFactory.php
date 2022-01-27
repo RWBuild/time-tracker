@@ -16,6 +16,7 @@ class ProjectFactory extends Factory
         return [
             
             'client_id' => '1',
+            //remove id to use relation
             'name'=>$this->faker->name(),
             'description'=>$this->faker->paragraph(1, true),
             'budget'=>'1000.00',
