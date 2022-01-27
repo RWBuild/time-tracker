@@ -28,6 +28,5 @@ require __DIR__.'/auth.php';
 Route::group(['middleware'=> 'auth'], function(){
     Route::resource('/clients','App\Http\Controllers\ClientController');
     Route::resource('/projects','App\Http\Controllers\ProjectController');
-    // Route::resource('projects/','App\Http\Controllers\ProjectController');
 });
 
