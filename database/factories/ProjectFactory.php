@@ -15,9 +15,9 @@ class ProjectFactory extends Factory
     {
         return [
             'name'=>$this->faker->company(),
-            'client_id'=>$this->faker->numberBetween(1,10),
+            // 'client_id'=>$this->faker->numberBetween(1,10),
             'description'=>$this->faker->text(),
-            'budget'=>$this->faker->currencyCode()
+            'budget'=>$this->faker->randomFloat()
         ];
     }
 }
