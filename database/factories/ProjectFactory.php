@@ -16,7 +16,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => Client::factory()->create()->id,
+            //'client_id' => 1,
             'name' => $this->faker->sentence( 3, true) ,
             'description' => $this->faker->paragraph(3, true),
             'budget' => $this->faker->randomFloat(2,10000,99999),

@@ -15,7 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->references('id')->on('clients');
+            $table->bigInteger('client_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->float('budget',10,2)->nullable();
