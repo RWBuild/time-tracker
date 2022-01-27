@@ -40,7 +40,6 @@ class ProjectTest extends TestCase
     $response = $this->put('/projects/'.$project->id, [
       'client_id' => $project->client_id,
       'name' => 'ABC Project Updated',
-      
     ]);
 
     $this->assertDatabaseHas('projects',['name' => 'ABC Project Updated']);
