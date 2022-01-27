@@ -111,7 +111,7 @@ class ClientTest extends TestCase
     $client = Client::factory()->create();
 //     $array_count=[];
 //     $array_count[0]= Client::all()->count();
-    $this->assertTrue(Client::all()->count() == 0);
+    $this->assertTrue(Client::all()->count() == 1);
 //     var_dump($array_count[0], 'before delete user');
     $response = $this->actingAs($this->user)->delete('/clients/'.$client->id);
 //     $array_count[0]= Client::all()->count();
@@ -125,12 +125,12 @@ class ClientTest extends TestCase
     $client = Client::factory()->create();
 //     $array_count=[];
 //     $array_count[0]= Client::all()->count();
-    $this->assertTrue(Client::all()->count() == 0);
+    $this->assertTrue(Client::all()->count() == 1);
 //     var_dump($array_count[0], 'before delete guest');
     $response = $this->delete('/clients/'.$client->id);
 //     $array_count[0]= Client::all()->count();
 //     var_dump($array_count[0], 'after delete guest');
-    $this->assertTrue(Client::all()->count() == 0);
+    $this->assertTrue(Client::all()->count() == 1);
 
   }
 
