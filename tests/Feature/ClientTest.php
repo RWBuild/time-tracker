@@ -34,7 +34,7 @@ class ClientTest extends TestCase
             'code' => $client->code
         ]);
         $this->assertDatabaseHas('clients', [
-            'id' => $client->id,
+            'id' => $client->id, //TODO: Good idea to also check that the id is a match, may not be needed though.
             'name' => 'ABC Company Updated'
         ]);
     }
