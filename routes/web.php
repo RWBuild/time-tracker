@@ -19,13 +19,19 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-// ADMIN IN USER GROUP
+// ADMIN USER GROUP
 Route::group(['middleware' => 'is_admin'], function(){
     Route::get('/dashboard',function(){ return view('dashboard');})->name('dashboard');
 
 });
 
-// Route::get()->name('dashboard');
+// Route::get()->name('dashboard'); 'is_owner'
+
+// OWNER USER GROUP
+Route::group(['middleware' => 'is_owner'], function(){
+    Route::get('/owner', function(){ return 'This is the owner page';})->name('owner');
+
+});
 
 // LOGGED IN USER GROUP
 Route::group(['middleware' => 'auth'], function(){
