@@ -28,6 +28,14 @@ Route::group(['middleware' => 'is_admin'], function() {
          return view ('dashboard');})->name('dashboard');
         });
 
+//owner role group
+Route::group(['middleware' => 'is_owner'], function() {
+
+    Route::get('/owner-page', function () {
+    return 'You are currently on Owner page';
+    })->name('owner-page');
+});
+
 //logged in user group
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/projects','App\Http\Controllers\ProjectController');

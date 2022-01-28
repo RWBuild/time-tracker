@@ -53,5 +53,10 @@ class User extends Authenticatable
     {
         return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
     }
+
+    public function isOwner():Bool
+    {
+        return in_array(Role::IS_OWNER, $this->roles()->pluck('id')->toArray());
+    }
     
 }
