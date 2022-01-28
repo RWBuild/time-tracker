@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Node\Expr\Cast\Bool_;
 
 class User extends Authenticatable
 {
@@ -41,9 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
-    
+    //role method checks
+    public function isAdmin(): Bool
+    {
+       return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
+    }
 }
