@@ -11,6 +11,7 @@ use App\Models\User;
 class ClientTest extends TestCase
 {
   use RefreshDatabase;
+  
   public function setUp(): void 
   {
   parent::setUp();
