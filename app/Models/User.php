@@ -42,4 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    //Relationship Methods
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    // Role Method Checks
+    public function isAdmin(): Bool
+    {
+        return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
+    }
 }
