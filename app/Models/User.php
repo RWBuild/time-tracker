@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -42,8 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    //Relationship Methods
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    //Role Method checks
+    public function isAdmin(): bool
+    {
+        return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
     }
 }
