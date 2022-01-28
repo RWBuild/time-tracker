@@ -40,4 +40,9 @@ Route::resource('/clients','App\Http\Controllers\ClientController');
 Route::resource('/projects','App\Http\Controllers\ProjectController');
 });
 
-//Is_owner
+//OWNER ROLE GROUP
+Route::group(['middleware'=>'is_owner'], function(){
+    Route::get('/owner', function() {
+        return 'owner';
+    });
+});

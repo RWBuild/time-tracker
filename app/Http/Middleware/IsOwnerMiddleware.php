@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class IsOwnerMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        //the guest can login
+        if(!auth()->check()){
+            return redirect(route('login'));
+        }
+
+       //Check if user has owner role
+        if(!auth()->user()->isOwner()){
+            abort(403);
+        }    
+
+        return $next($request);
+    }
+}
