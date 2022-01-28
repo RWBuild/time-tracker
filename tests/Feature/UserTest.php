@@ -22,4 +22,9 @@ class UserTest extends TestCase
        $response = $this->actingAs($this->user)->get('/dashboard');
         $response->assertStatus(403);
     }
+    
+    public function test_user_can_not_access_the_owner_page(){
+        $response = $this->actingAs($this->user)->get('/owner');
+         $response->assertStatus(403);
+     }
 }

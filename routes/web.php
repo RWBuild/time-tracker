@@ -20,6 +20,12 @@ Route::get('/', function () {
 
 
 require __DIR__ . '/auth.php';
+//OWNER ROLE GROUP
+Route::group(['middleware' => 'is_owner'], function () {
+    Route::get('/owner', function () {
+    return 'owner page';
+});
+});
 //ADMIN ROLE GROUP
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/dashboard', function () {
