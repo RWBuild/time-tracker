@@ -39,6 +39,8 @@ class ProjectTest extends TestCase
       'description' => 'This is a description',
       'budget' => 10000.14,
     ]);
+    $response->assertStatus(302);
+    $response->assertRedirect('login');
     $this->assertTrue(Project::all()->count() == 0);
   }
 
