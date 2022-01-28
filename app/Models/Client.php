@@ -9,8 +9,8 @@ class Client extends Model
 {
     use HasFactory;
     
-    //TODO: projects misspelled
-    public function projcts() {
+    
+    public function projects() {
         return $this->hasMany(Project::class);
     }
 }

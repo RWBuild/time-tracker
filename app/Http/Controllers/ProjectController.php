@@ -60,9 +60,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //TODO: finish this edit method
+        return view('projects.edit', compact('project'));
     }
 
     /**
