@@ -28,8 +28,15 @@ Route::group(['middleware' => 'is_admin'], function() {
     Route::get('/dashboard', function() { return view('dashboard')->name('dashboard'); });
 });
 
+//OWNER ROLE GROUP 
+Route::group(['middleware' => 'is_owner'], function() {
+    Route::get('/owner', function() { return 'WELCOME TO THE OWNER PAGE'; })->name('owner'); 
+});
 
-//LOGGED IN USE GROUPE
+
+
+
+//LOGGED IN USER GROUP
 Route::group(['middleware' => 'auth'], function() {    
     Route::resource('/clients','App\Http\controllers\ClientController');
     Route::resource('/projects','App\Http\controllers\ProjectController');

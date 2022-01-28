@@ -20,6 +20,7 @@ class UserTest extends TestCase
         $this->user->roles()->attach(Role::IS_USER);
     }
 
+    //USER CAN NOT ACCESS DASHBOARD PAGE
     public function test_user_can_not_acces_the_dashboard()
     {
         $response = $this->actingAS($this->user)->get('/dashboard');
@@ -27,4 +28,11 @@ class UserTest extends TestCase
 
     }
     
+    //USER CAN NOT ACCESS OWNER PAGE
+    public function test_user_can_not_acces_the_owner_page()
+    {
+        $response = $this->actingAS($this->user)->get('/owner');
+        $response->assertStatus(403);
+
+    }
 }
