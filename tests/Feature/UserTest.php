@@ -23,7 +23,7 @@ class UserTest extends TestCase
     public function test_user_can_not_access_dashboard()
     {
     $response = $this->actingAs($this->user)->get('/dashboard');
-    $response->assertStatus(200);
+    $response->assertStatus(403);
     }
     public function test_user_can_see_client()
     {
