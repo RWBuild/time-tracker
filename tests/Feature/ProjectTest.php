@@ -74,7 +74,7 @@ class ProjectTest extends TestCase
   }
 
   
-  //GUEST CAN NOT UPDATE A Project
+  //GUEST CAN NOT UPDATE A PROJECT
   public function test_guest_can_not_update_a_project()
   {
     
@@ -104,7 +104,7 @@ class ProjectTest extends TestCase
     $response->assertSee($project->name);
   }
 
-  // USER CAN DELETE A CLIENT
+  // USER CAN DELETE A PROJECT
   public function test_user_can_delete_a_project()
   {
     $project = Project::factory()->forClient()->create();

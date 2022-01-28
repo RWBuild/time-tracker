@@ -21,10 +21,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
 require __DIR__.'/auth.php';
 
-Route::group(['middleware' => 'auth'], function(){
-Route::resource('/clients','App\Http\controllers\ClientController');
-Route::resource('/projects','App\Http\controllers\ProjectController');
+//ADMIN ROLE GROUP
+Route::group(['middleware' => 'is_admin'], function() {
+    Route::get('/dashboard', function() { return view('dashboard')->name('dashboard'); });
+});
+
+
+//LOGGED IN USE GROUPE
+Route::group(['middleware' => 'auth'], function() {    
+    Route::resource('/clients','App\Http\controllers\ClientController');
+    Route::resource('/projects','App\Http\controllers\ProjectController');
 });
