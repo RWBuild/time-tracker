@@ -17,12 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
+// TODO Added admin role group
+// ADMIN ROLE GROUP
+Route::group(['middleware' => 'is_admin'], function(){
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+// TODO make another route with middleware with auth(is_owner);
+Route::get('/owner', function() {return 'you are an onwer';})->name('owner');
+
+// LOGGED IN USER GROUP
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('/clients','App\Http\Controllers\ClientController');
     Route::resource('/projects','App\Http\Controllers\ProjectController');
