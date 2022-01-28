@@ -2,20 +2,14 @@
 
 namespace App\Models;
 
+use Facade\FlareClient\Time\Time;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Task extends Model
 {
     use HasFactory;
-
-    public function client()
-    {
-      return $this->belongsTo(Client::class);
-    }
-
-    public function timeEntries()
-    {
+    public function timeEntries(){
         return $this->hasMany(Time::class);
     }
 }

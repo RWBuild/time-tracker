@@ -42,11 +42,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+//Relationship Function
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
+    public function timeEntries()
+    {
+        return $this->hasMany(Time::class);
+    }
+    //Role methods Check
     public function isAdmin(): Bool
     {
         return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
