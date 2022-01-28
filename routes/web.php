@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//owner group
+Route::group(['middleware' => 'is_owner'], function(){
+    Route::get('/owner', function(){
+        return '<h1>owner page</h1>';
+    });
+ });
 
 
 

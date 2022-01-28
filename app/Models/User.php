@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PhpParser\Node\Expr\Cast\Bool_;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -52,5 +53,9 @@ class User extends Authenticatable
     public function isAdmin(): Bool
     {
        return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
+    }
+    public function isOwner(): Bool
+    {
+       return in_array(Role::IS_OWNER, $this->roles()->pluck('id')->toArray());
     }
 }
