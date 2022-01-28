@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use phpDocumentor\Reflection\Types\Boolean;
 use App\Models\Role;
+use App\Models\TimeEntry;
 
 class User extends Authenticatable
 {
@@ -47,6 +48,10 @@ class User extends Authenticatable
     // relationship Method
     public function roles(){
         return $this->belongsToMany(Role::class);
+    }
+
+    public function time_entry(){
+        return $this->belongsToMany(TimeEntry::class);
     }
 
     // Role Method Checks

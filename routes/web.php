@@ -37,3 +37,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/clients','App\Http\Controllers\ClientController');
     Route::resource('/projects','App\Http\Controllers\ProjectController');
 });
+
+Route::resource('/time-entry', 'App\Http\Controllers\TimeEntryController');
