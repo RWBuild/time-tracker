@@ -17,13 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 
+//admin role group
+Route::group(['middleware' => 'is_admin'], function() {
+
+    Route::get('/dashboard',function () {
+         return view ('dashboard');})->name('dashboard');
+        });
+
+//logged in user group
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('/projects','App\Http\Controllers\ProjectController');
     Route::resource('/clients','App\Http\Controllers\ClientController');
