@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -43,5 +44,11 @@ class User extends Authenticatable
     ];
     public function roles(){
         return $this->belongsToMany(Role::class);
+    }
+    //Role method checks 
+
+    public function isAdmin(): Bool
+    {
+      return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());
     }
 }
