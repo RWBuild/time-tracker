@@ -28,7 +28,9 @@ Route::group(['middleware' => 'is_admin'], function(){
 });
 
 // TODO make another route with middleware with auth(is_owner);
-Route::get('/owner', function() {return 'you are an onwer';})->name('owner');
+Route::group(['middleware' => 'is_owner'], function(){
+    Route::get('/owner', function() { return 'you are an onwer'; })->name('owner');
+});
 
 // LOGGED IN USER GROUP
 Route::group(['middleware' => 'auth'], function(){

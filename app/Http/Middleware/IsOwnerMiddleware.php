@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsAdminMiddleware {
+class IsOwnerMiddleware
+{
     /**
      * Handle an incoming request.
      *
@@ -13,16 +14,16 @@ class IsAdminMiddleware {
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next) {
-        // redirect a guest to the login screen
+    public function handle(Request $request, Closure $next)
+    {
+        // check if is auth
         if(!auth()->check()){
-          return redirect(route('login'));
+            return redirect(route('login'));
         }
 
-        // TODO admin middleware as isAdmin
-        // check if user had admin role
-        if(!auth()->user()->isAdmin()){
-          abort(403);
+        // check if is owner
+        if(!auth()->user()->isOwner()){
+           abort(403);
         }
 
         return $next($request);
