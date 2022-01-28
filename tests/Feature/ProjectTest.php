@@ -47,7 +47,10 @@ class ProjectTest extends TestCase
       'budget' => 10000.14,
     ]);
 
+    $response->assertStatus(302);
+    $response->assertRedirect("login");
     $this->assertTrue(Project::all()->count() ==0);
+    
   }
 
 
@@ -99,8 +102,11 @@ class ProjectTest extends TestCase
     $response = $this->actingAs($this->user)->get('/projects/'.$project->id);
     $response->assertStatus(200);
     $response->assertSee($project->name);
+
   }
 
+
+  
   public function test_user_can_delete_a_project()
   {
     $project = Project::factory()->forClient()->create();

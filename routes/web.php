@@ -17,14 +17,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware([''])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
+
+//ADMIN ROLE GROUP
+Route::group(['middleware'=>'is_admin'], function(){
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
+    
+});
+
+
 //LOGGED IN USER GROUP
 Route::group(['middleware'=>'auth'], function(){
-Route::resource('/clients','App\Http\Controllers\ClientController')->middleware('auth');
-Route::resource('/projects','App\Http\Controllers\ProjectController')->middleware('auth');
+    //Route::get('/dashboard', function(){return view('dashboard');})
+Route::resource('/clients','App\Http\Controllers\ClientController');
+Route::resource('/projects','App\Http\Controllers\ProjectController');
 });
+
+//Is_owner
