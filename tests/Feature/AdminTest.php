@@ -39,7 +39,7 @@ class AdminTest extends TestCase
 
    public function test_admin_can_access_dashboard_page()
    {
-       $response = $this->actingAs($this->admin)->get('/dashboard');
+       $response = $this->actingAs($this->admin)->get('/');
        $response->assertStatus(200);
    }
 }

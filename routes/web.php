@@ -25,12 +25,13 @@ require __DIR__.'/auth.php';
 
 //ADMIN ROLE GROUP
 Route::group(['middleware'=>'is_admin'], function(){
-    Route::get('/dashboard',function() { return view('dashboard')->name('dashobard');});
+    Route::get('/dashboard',function() { return view('dashboard');})->name('dashobard');
 });
 // is_owner
-// Route::group(['middleware'=>'is_owner'], function(){
-//     Route::get('/dashboard',function() { return view('dashboard')->name('dashobard');});
-// });
+Route::group(['middleware'=>'is_owner'], function(){
+    Route::get('/owner',function() { return 'owner' ;});
+});
+// Route::get('/owner',function() { return view("you're the owner")->name('dashobard');});
 
 //LOGGED IN USER GROUP
 Route::group(['middleware'=>'auth'], function(){
