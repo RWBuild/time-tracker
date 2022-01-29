@@ -48,6 +48,10 @@ class User extends Authenticatable
         public function roles(){
             return $this->belongsToMany(Role::class);
         }
+        public function time_entries() {
+            return $this->hasMany(TimeEntry::class);
+          }
+      
         // Role Method checks
 
         public function isOwner():Bool

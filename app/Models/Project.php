@@ -13,4 +13,9 @@ class Project extends Model
     {
       return $this->belongsTo(Client::class);
     }
+    public function time_entries() {
+      return $this->hasMany(TimeEntry::class);
+    }
+
+
 }
