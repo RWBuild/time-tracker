@@ -38,6 +38,8 @@ Route::group(['middleware'=>'auth'], function(){
     //Route::get('/dashboard', function(){return view('dashboard');})
 Route::resource('/clients','App\Http\Controllers\ClientController');
 Route::resource('/projects','App\Http\Controllers\ProjectController');
+Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
+
 });
 
 //OWNER ROLE GROUP

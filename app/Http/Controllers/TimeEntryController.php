@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TimeEntry;
 
 class TimeEntryController extends Controller
 {
@@ -13,8 +14,9 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-      $projects = TimeEntry::all();
-      return view('time-entry.index',compact('time-entry'));
+      $timeEntry = TimeEntry::all();
+      return view('time_entries.index',compact('time_entries'));
+      return "time entries";
     
     }
 
@@ -25,7 +27,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-      return view('time-entry.create');
+      return view('time_entries.create', compact('time_entries'));
 
     }
 
@@ -37,7 +39,12 @@ class TimeEntryController extends Controller
      */
     public function store(Request $request)
     {
-    //
+      $timeEntry = new TimeEntry();
+      $timeEntry->project_id = $request->project_id;
+      $timeEntry->user_id = $request->user_id;
+      $timeEntry->task_id = $request->task_id;
+      $timeEntry->duration= $request->duration;
+      $timeEntry->save();
     }
 
     /**
@@ -46,9 +53,10 @@ class TimeEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TimeEntry $timeEntry)
     {
-        //
+    //   return view('time_entries.show', compact('time_entry'));
+      return "show one time entry";
     }
 
     /**
@@ -57,9 +65,10 @@ class TimeEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TimeEntry $timeEntry)
     {
-        //
+        //return view('time_entries.show', compact('time_entry'));
+        return "edit one time entry";
     }
 
     /**
@@ -69,9 +78,12 @@ class TimeEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->project_id = $request->project_id;
+        $timeEntry->user_id = $request->user_id;
+        $timeEntry->task_id = $request->task_id;
+        $timeEntry->duration = $request->duration;
     }
 
     /**
@@ -80,8 +92,8 @@ class TimeEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->delete();
     }
 }

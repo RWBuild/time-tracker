@@ -14,7 +14,7 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            //
+           'name' => str::random(10). "task",
         ];
     }
 }
