@@ -15,7 +15,7 @@ class TimeEntryController extends Controller
     public function index()
     {
         //
-        $time_entries = TimeEntry::all();
+        $  timeEntry = TimeEntry::all();
         // return view('time_entries.index', compact('time_entries'));
         return "i am time entries";
 
@@ -42,10 +42,11 @@ class TimeEntryController extends Controller
     public function store(Request $request)
     {
         $timeEntry = new TimeEntry();
-        $timeEntry->project_id=$request->project_id;
+        $timeEntry->project_id =$request->project_id;
         $timeEntry->user_id = $request->user_id;
         $timeEntry->task_id = $request->task_id;
         $timeEntry->duration = $request->duration;
+        $timeEntry->save();
    }
 
     /**
