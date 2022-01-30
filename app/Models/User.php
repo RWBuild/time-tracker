@@ -49,6 +49,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function timeEntries()
+    {
+        return $this->hasMany(TimeEntry::class);
+    }
+
+    // role checker methods
     public function isAdmin():Bool
     {
         return in_array(Role::IS_ADMIN, $this->roles()->pluck('id')->toArray());

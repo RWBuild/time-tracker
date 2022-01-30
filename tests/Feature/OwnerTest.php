@@ -26,7 +26,7 @@ class OwnerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_owner_can_access_dashboard()
+    public function test_owner_can_not_access_dashboard()
     {
         $response = $this->actingAs($this->owner)->get('/dashboard');
         $response->assertStatus(403);

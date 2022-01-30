@@ -9,8 +9,15 @@ class Project extends Model
 {
     use HasFactory;
 
+
+    // relationships methods
     public function client()
     {
       return $this->belongsTo(Client::class);
+    }
+
+    public function timeEntries()
+    {
+        return $this->hasMany(TimeEntry::class);
     }
 }
