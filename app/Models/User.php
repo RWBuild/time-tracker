@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 use PhpParser\Node\Expr\Cast\Bool_;
 use phpDocumentor\Reflection\Types\Boolean;
 
+use function PHPUnit\Framework\returnSelf;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -48,6 +50,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+    public function time_entries()
+    {
+        return $this->hasMany(TimeEntry::class);
     }
     //role method checks
     public function isAdmin(): Bool
