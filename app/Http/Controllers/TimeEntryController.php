@@ -15,7 +15,7 @@ class TimeEntryController extends Controller
     public function index()
     {
       $timeEntry = TimeEntry::all();
-      return view('time_entries.index',compact('time_entries'));
+      // return view('time_entries.index',compact('time_entries'));
       return "time entries";
     
     }
