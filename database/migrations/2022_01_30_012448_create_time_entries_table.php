@@ -18,7 +18,7 @@ class CreateTimeEntriesTable extends Migration
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('task_id');
-            $table->integer('duration');
+            $table->integer('duration')->nullable();
             $table->timestamps();
         });
     }

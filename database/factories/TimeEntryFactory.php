@@ -15,6 +15,7 @@ class TimeEntryFactory extends Factory
     {
         return [
             //
+            'duration' => $this->faker->numberBetween(1,100),
         ];
     }
 }
