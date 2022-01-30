@@ -15,6 +15,10 @@ class TimeEntryController extends Controller
     public function index()
     {
         //
+        $time_entries = TimeEntry::all();
+        // return view('time_entries.index', compact('time_entries'));
+        return "i am time entries";
+
     }
 
     /**
@@ -25,6 +29,8 @@ class TimeEntryController extends Controller
     public function create()
     {
         //
+        // return view('time_entries.create', compact('time_entries'));
+        return "create time entry here";
     }
 
     /**
@@ -35,8 +41,12 @@ class TimeEntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $timeEntry = new TimeEntry();
+        $timeEntry->project_id=$request->project_id;
+        $timeEntry->user_id = $request->user_id;
+        $timeEntry->task_id = $request->task_id;
+        $timeEntry->duration = $request->duration;
+   }
 
     /**
      * Display the specified resource.
@@ -47,6 +57,9 @@ class TimeEntryController extends Controller
     public function show(TimeEntry $timeEntry)
     {
         //
+        // return view('time_entries.show', compact('time_entry'));
+
+        return "show one time_entry here";
     }
 
     /**
@@ -58,6 +71,8 @@ class TimeEntryController extends Controller
     public function edit(TimeEntry $timeEntry)
     {
         //
+        // return view('time_entries.edit', compact('time_entry'));
+        return "edit your time entry here";
     }
 
     /**
@@ -70,6 +85,10 @@ class TimeEntryController extends Controller
     public function update(Request $request, TimeEntry $timeEntry)
     {
         //
+        $timeEntry->project_id=$request->project_id;
+        $timeEntry->user_id = $request->user_id;
+        $timeEntry->task_id = $request->task_id;
+        $timeEntry->duration = $request->duration;
     }
 
     /**
@@ -80,6 +99,6 @@ class TimeEntryController extends Controller
      */
     public function destroy(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->delete();
     }
 }

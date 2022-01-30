@@ -35,5 +35,9 @@ Route::group(['middleware'=> 'is_admin'], function(){
 //User role Group
 Route::group(['middleware'=> 'auth'], function(){
     Route::resource('/clients','App\Http\Controllers\ClientController');
+    Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
     Route::resource('/projects','App\Http\Controllers\ProjectController');
 });
+
+
+

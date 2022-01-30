@@ -16,7 +16,7 @@ class TaskFactory extends Factory
     {
         return [
             //
-            'name'=>$this->Str::random(10)." task",
+            'name'=>Str::random(10)." task",
         ];
     }
 }
