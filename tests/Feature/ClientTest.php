@@ -16,7 +16,6 @@ class ClientTest extends TestCase
     parent::setUp();
     $this->user = User::factory()->create();
   }
-
   public function test_user_can_create_a_client()
   {
     $response = $this->actingAs($this->user)->post('/clients',[

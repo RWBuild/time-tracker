@@ -38,7 +38,6 @@ class ProjectTest extends TestCase
       'description' => 'This is a description',
       'budget' => 10000.14,
     ]);
-    // $response->assertStatus(200);
     $this->assertTrue(Project::all()->count() == 0);
   }
 
@@ -82,14 +81,10 @@ class ProjectTest extends TestCase
 
   // public function test_guest_can_not_see_a_project()
   // {
-  //   $this->withoutExceptionHandling();
-
   //   $project = Project::factory()->forClient()->create();
   //   $this->assertTrue(Project::all()->count() == 1);
 
   //   $response = $this->get('/projects/'.$project->id);
-  //   $response->assertStatus(200);
-  //   $response->assertSee($project->name);
   // }
 
   public function test_user_can_delete_a_project()
