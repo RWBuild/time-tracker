@@ -10,7 +10,6 @@ use App\Models\Role;
 
 class OwnerTest extends TestCase
 {
-
     use RefreshDatabase;
     public function setUp(): void
     {

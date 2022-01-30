@@ -22,9 +22,6 @@ Route::group(['middleware' => 'is_owner'], function(){
         return '<h1>owner page</h1>';
     });
  });
-
-
-
 require __DIR__.'/auth.php';
 //required user login 
 
