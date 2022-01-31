@@ -11,6 +11,8 @@ class CreateTimeEntriesTable extends Migration
      *
      * @return void
      */
+
+    //  TODO 1: we updated time-entry migration
     public function up()
     {
         Schema::create('time_entries', function (Blueprint $table) {
@@ -18,7 +20,7 @@ class CreateTimeEntriesTable extends Migration
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('task_id');
-            $table->integer('duration')->default()->nullable();
+            $table->integer('duration')->default(0)->nullable();
             $table->date('date');
             $table->timestamps();
         });
