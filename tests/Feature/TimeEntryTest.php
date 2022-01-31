@@ -94,4 +94,11 @@ class TimeEntryTest extends TestCase
         $this->assertTrue(TimeEntry::all()->count() == 1);
         $this->assertDatabaseHas('time_entries', ['duration' => '120']);
     }
+
+    public function test_user_can_delete_time_entry(){
+        $timeEntry = TimeEntry::factory()->create();
+        $response = $this->actingAs($this->user)->delete('/time-entries/'.$timeEntry->id);
+        $response->assertStatus(200);
+        $this->assertTrue(TimeEntry::all()->count() == 0);
+    }
 }

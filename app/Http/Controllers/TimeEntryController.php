@@ -8,16 +8,15 @@ use App\Http\Requests\TimeEntryRequest;
 use Auth;
 
 // TODO: 2: we updated time-entry cntroller
-class TimeEntryController extends Controller
-{
+class TimeEntryController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $timeEntries = TimeEntry::all();
+        return view('time-entries.index', compact('timeEntries'));
     }
 
     /**
@@ -25,9 +24,8 @@ class TimeEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+       return view('time-entries.create');
     }
 
     /**
@@ -38,14 +36,6 @@ class TimeEntryController extends Controller
      */
     public function store(TimeEntryRequest $request) {
         $timeEntry = TimeEntry::create($request->validated());
-
-        // $timeEntry = new TimeEntry();
-        // $timeEntry->project_id = $request->project_id;
-        // $timeEntry->user_id = auth()->user()->id;
-        // $timeEntry->task_id = $request->task_id;
-        // $timeEntry->date = $request->date;
-        // $timeEntry->duration = $request->duration;
-        // $timeEntry->save();
     }
 
     /**
@@ -54,9 +44,8 @@ class TimeEntryController extends Controller
      * @param  \App\Models\TimeEntry  $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function show(TimeEntry $timeEntry)
-    {
-        //
+    public function show(TimeEntry $timeEntry) {
+        return view('time-entries.show', compact('timeEntry'));
     }
 
     /**
@@ -65,9 +54,8 @@ class TimeEntryController extends Controller
      * @param  \App\Models\TimeEntry  $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function edit(TimeEntry $timeEntry)
-    {
-        //
+    public function edit(TimeEntry $timeEntry) {
+        return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**
@@ -87,8 +75,7 @@ class TimeEntryController extends Controller
      * @param  \App\Models\TimeEntry  $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TimeEntry $timeEntry)
-    {
-        //
+    public function destroy(TimeEntry $timeEntry) {
+        $timeEntry->delete();
     }
 }
