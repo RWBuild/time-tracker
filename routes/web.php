@@ -36,8 +36,17 @@ Route::group(['middleware' => 'is_owner'], function() {
 
 
 
-//LOGGED IN USER GROUP
-Route::group(['middleware' => 'auth'], function() {    
+
+    Route::group(['middleware' => 'auth'], function() {    
+
+    //LOGGED IN USER GROUP
     Route::resource('/clients','App\Http\controllers\ClientController');
     Route::resource('/projects','App\Http\controllers\ProjectController');
+   
+    //TIME-ENTRY ROUTE
+    Route::get('/time-entry', function(){ return view('time-entry'); });
+
+    //Route::resource('time-entry', 'App\Http\controllers\TimeEntryController');
+    
 });
+

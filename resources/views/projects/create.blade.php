@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  This is where a form to create a project would go...
+  <p>This is where a form to create a project would go...<p>
 
 </body>
 </html>
