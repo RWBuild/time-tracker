@@ -44,8 +44,7 @@ Route::resource('/projects','App\Http\Controllers\ProjectController');
 
 //Time_Entry Route
 
-Route::get('/time-entry', function () {
-    return view('time-entry');})->name('time-entry'); 
 
+Route::resource('/time-entry','App\Http\Controllers\Time-EntryController');
 
 });

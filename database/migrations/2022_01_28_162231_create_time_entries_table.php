@@ -16,7 +16,7 @@ class CreateTimeEntriesTable extends Migration
         Schema::create('time_entries', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('project_id');
-           $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('task_id');
             $table->int ('duration ')->nullable();
             $table->timestamps();

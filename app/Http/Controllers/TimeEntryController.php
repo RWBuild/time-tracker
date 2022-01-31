@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TimeEntry extends Controller
+class TimeEntryController extends Controller
 {
     /**
      * Display a listing of the resource.
