@@ -14,7 +14,7 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
-      \DB::table('tasks')->truncate();
+      \DB::table('tasks')->truncate();  // truncate database table to not conflict with this new data
 
       Task::create(['id' => 1, "name" => 'Administration']);
       Task::create(['id' => 2, "name" => 'Backend Development']);
