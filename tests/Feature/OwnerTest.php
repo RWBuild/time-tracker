@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Client;
 
 class OwnerTest extends TestCase
 {
@@ -18,6 +19,16 @@ class OwnerTest extends TestCase
     $this->owner = User::factory()->create();
     $this->owner->roles()->attach(Role::IS_OWNER);
 }
+
+public function test_owner_can_access_clients_page(){
+    $client = Client::factory()->create();
+    $this->assertTrue(Client::all()->count() ==1);
+
+    $response = $this->actingAs($this->owner)->get('/clients/'.$client->id);
+    $response->assertStatus(200);
+    $response->assertSee($client->name);
+}
+
 
 public function test_owner_can_access_owner_page(){
     $response = $this->actingAs($this->owner)->get('/owner');

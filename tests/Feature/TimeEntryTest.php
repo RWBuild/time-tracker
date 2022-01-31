@@ -21,7 +21,7 @@ class TimeEntryTest extends TestCase
         $this->user ->roles()->attach(Role::IS_USER);
     }
 
-    public function test_user_can_see_time_entry(){
+    public function test_user_can_create_time_entry(){
         $this->withoutExceptionHandling();
         $response = $this->actingAs($this->user)->post('time-entries',[
             'project_id' => 1,
@@ -67,6 +67,22 @@ class TimeEntryTest extends TestCase
 
         $this->assertTrue(TimeEntry::all()->count() ==1);
         $response->assertStatus(200);
+        $this->assertDatabaseHas('time_entries', ['duration' => "90"]);
+
+    }
+
+    public function test_user_can_add_duration_with_decimal_format(){
+
+        $response = $this->actingAs($this->user)->post('time-entries',[
+            'project_id' => 1,
+            'task_id' => 1,
+            'duration' => '1.5',
+            'date' => Date('Y-m-d')
+
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertTrue(TimeEntry::all()->count() ==1);
         $this->assertDatabaseHas('time_entries', ['duration' => "90"]);
 
     }
