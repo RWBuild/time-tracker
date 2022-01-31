@@ -1,0 +1,26 @@
+Work presentation
+===================
+i. Create middleware: IsOwnerMiddleware and register it like we did for IsAdminMiddleware
+ii. Create a test route group to test owner middleware protection
+iii. Create a OwnerTest and test:
+- Owner can access owner page
+- Owner can not access dashboard
+vi. Update UserTest
+- Add new test user can not access owner’s page
+v. ALL TESTS PASSING and Commit your name/role branch
+=================================================================
+
+1. Create a new branch name/time-entry
+2. Create a new Model: TimeEntry + migration file, factory,
+    resource controller, resource routes (uri ‘/time-entry’), test
+3. Create a new Model: Task + migration file, factory, seeder
+4. Hookup the Task Seeder in the main Database Seeder class
+5. Hookup all the relationships:
+- time entry belongs to user
+- time entry belongs to task
+- time entry belongs to a project
+- user has many time entries
+- project has many time entries
+- task has many time entries
+
+
