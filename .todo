@@ -1,0 +1,5 @@
+-1-Make middleware -> middleware dir
+-2-registe middleware in -> kernel
+-3-implement middle group in -> route dir
+-4-registe role ownship in -> user model
+-5- test owner in  -> ownertest
