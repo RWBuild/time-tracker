@@ -44,16 +44,16 @@ class User extends Authenticatable
     ];
 
     // Relationship Methods
-    public function timeEntries()
-    {
-      return $this->hasMany(TimeEntry::class);
-    }
-
     public function roles() 
     {
       return $this->belongsToMany(Role::class);
     }
 
+    public function timeEntries()
+    {
+      return $this->hasMany(TimeEntry::class);
+    }
+    
     // Role Method Checks
     public function isAdmin(): Bool
     {
