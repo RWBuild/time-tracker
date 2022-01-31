@@ -25,8 +25,9 @@ require __DIR__.'/auth.php';
 
 //ADMIN ROLE GROUP
 Route::group(['middleware'=>'is_admin'], function(){
-    Route::get('/dashboard',function() { return view('dashboard');})->name('dashobard');
+    Route::get('/dashboard',function() { return view('dashboard');})->name('dashboard');
 });
+
 // is_owner
 Route::group(['middleware'=>'is_owner'], function(){
     Route::get('/owner',function() { return 'owner' ;});

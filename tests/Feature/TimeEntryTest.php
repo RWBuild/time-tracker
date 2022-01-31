@@ -17,11 +17,4 @@ class TimeEntryTest extends TestCase
         $response->assertStatus(200);
     }
 
-//     public function setUp(): void
-//    {
-//     parent::setUp();
-//     $this->project = User::factory()->create();
-//     $this->project = Project::factory()->create();
-    
-//    }
 }
