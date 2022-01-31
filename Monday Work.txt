@@ -1,0 +1,17 @@
+Homework - Monday, Jan 31st
+-----------------------------------------------------------------------------------------------
+1. Create a Form Request for Client (ClientRequest) and Project (ProjectRequest) --DONE
+
+2. Add validation rules to 
+ClientRequest and ProjectRequest
+3. Use ClientRequest + ProjectRequest
+in the ClientController + ProjectController
+ (store and update methods)
+4. Use validated data to create/update 
+clients and projects in their controllers.
+5. Add fillable array to Client --DONE
+ and Project models
+6. Finish TimeEntryController (index, 
+show, create, edit, delete methods) --DONE
+7. Create “ugly” views for time entry --DONE
+8. Create test for deleting Time Entry --DONE
