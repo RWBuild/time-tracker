@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Services\DurationService;
 class TimeEntry extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['project_id','user_id','task_id','duration','date'];
 
     public function project()
     {
@@ -25,4 +27,13 @@ class TimeEntry extends Model
     }
 
     
+    public function setDurationAttribute($value)
+    {
+      $this->attributes['duration'] = (new DurationService())->convertToMinutes($value);
+    }
+    
+    public function getDurationAttribute($value)
+    {
+      return $value;
+    }
 }
