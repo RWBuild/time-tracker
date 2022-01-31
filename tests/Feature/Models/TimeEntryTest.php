@@ -21,26 +21,34 @@ class TimeEntryTest extends TestCase
         $this->user = User::factory()->create();
        
     }
-   //TODO: can't figure out why this is not working
-    // public function test_user_can_create_time_entry()
-    // {
-    //     $project = Project::factory()->forClient()->create(
-    //         [
-    //             'name'=>'ABC project'
-    //         ]
-    //     );
-    //     $user = User::factory()->create();
-    //     $task = Task::factory()->create();
-    //     $response = $this->actingAs($this->user)->post('/time-entries',[
-    //         'project_id' => $project->project_id,
-    //         'user_id' =>$user->user_id,
-    //         'task_id' => $task->task_id,
-    //         'duration'=> 20,
-    //     ]);
+    public function test_user_can_create_time_entry()
+    {
+        $project = Project::factory()->forClient()->create();
+        $user = User::factory()->create();
+        $task = Task::factory()->create();
+        $response = $this->actingAs($this->user)->post('/time-entries',[
+            'project_id' => $project->id,
+            'user_id' =>$user->id,
+            'task_id' => $task->id,
+            'duration'=> 20,
+        ]);
 
-    //     $this->assertTrue(TimeEntry::all()->count() == 1);
-    // }
-    
+        $this->assertTrue(TimeEntry::all()->count() == 1);
+    }
+    public function test_guest_can_not_create_time_entry()
+    {
+        $project = Project::factory()->forClient()->create();
+        $user = User::factory()->create();
+        $task = Task::factory()->create();
+        $response = $this->post('/time-entries',[
+            'project_id' => $project->id,
+            'user_id' =>$user->id,
+            'task_id' => $task->id,
+            'duration'=> 20,
+        ]);
+
+        $this->assertTrue(TimeEntry::all()->count() == 0);
+    }
 
     public function test_user_can_see_time_entry()
     {
@@ -51,5 +59,32 @@ class TimeEntryTest extends TestCase
     {
         $response = $this->get('/time-entries');
         $response->assertStatus(302);
+    }
+
+    public function test_user_can_update_time_entry()
+    {
+        $project = Project::factory()->forClient()->create([
+            'name' => 'ABC Project'
+          ]);
+          $user = User::factory()->create();
+          $task = Task::factory()->create();
+
+          $time_entry = TimeEntry::factory()->create(
+
+            [   'user_id' =>$user->id,
+                'project_id' => $project->id,
+                'task_id' =>$task->id,
+                'duration'=>20
+            ]
+        );
+        $response =$this->actingAs($this->user)->put('/time-entries/'.$time_entry->id,
+        [
+        'project_id' => $project->id,
+        'user_id' =>$user->id,
+        'task_id' => $task->id,
+        'duration'=>25
+        ]);
+    // //TODO: can not update 
+    // $this->assertDatabaseHas('time_entries',['duration'=>25]);
     }
 }
