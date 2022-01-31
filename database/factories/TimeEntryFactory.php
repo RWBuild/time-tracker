@@ -15,7 +15,11 @@ class TimeEntryFactory extends Factory
     {
         return [
             //
-            'duration' => $this->faker->numberBetween(1,100),
+            "project_id" => 1,
+            "task_id" => 1,
+            "user_id" => 1,
+            "date" => Date("Y-m-d"),
+            'duration' => "1:30",
         ];
     }
 }

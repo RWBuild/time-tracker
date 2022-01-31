@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TimeEntry;
+use App\Http\Requests\TimeEntryRequest;
+use auth;
 
 class TimeEntryController extends Controller
 {
@@ -37,14 +39,25 @@ class TimeEntryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TimeEntryRequest $request)
     {
-      $timeEntry = new TimeEntry();
-      $timeEntry->project_id = $request->project_id;
-      $timeEntry->user_id = $request->user_id;
-      $timeEntry->task_id = $request->task_id;
-      $timeEntry->duration= $request->duration;
-      $timeEntry->save();
+
+      // $request->validate([
+
+      //   'project_id' => ['required','numeric'],
+      //   'task_id' => ['required','numeric'],
+      //   'duration' => ['numeric'],
+      // ]);
+
+      $timeEntry = TimeEntry::create($request->validated());
+
+      // $timeEntry = new TimeEntry();
+      // $timeEntry->project_id = $request->project_id;
+      // $timeEntry->user_id = auth()->user()->id;
+      // $timeEntry->task_id = $request->task_id;
+      // $timeEntry->duration= $request->duration;
+      // $timeEntry->date= $request->date;
+      // $timeEntry->save();
     }
 
     /**
@@ -78,12 +91,9 @@ class TimeEntryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TimeEntry $timeEntry)
+    public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
-        $timeEntry->project_id = $request->project_id;
-        $timeEntry->user_id = $request->user_id;
-        $timeEntry->task_id = $request->task_id;
-        $timeEntry->duration = $request->duration;
+        $timeEntry->update($request->validated());
     }
 
     /**
