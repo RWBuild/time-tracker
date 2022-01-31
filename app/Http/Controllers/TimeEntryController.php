@@ -14,7 +14,8 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        //
+        $timeEnties = TimeEntry::all();
+        return view('time_entry.index',compact('timeEntries'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('time_entry.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class TimeEntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $timeEntry = new TimeEntry();
+        $timeEntry->project_id = $request->project_id;
+        $timeEntry->user_id = $request->user_id;
+        $timeEntry->task_id = $request->task_id;
+        $timeEntry->duration = $request->duration;
+        $timeEntry->save();
     }
 
     /**
@@ -46,7 +52,7 @@ class TimeEntryController extends Controller
      */
     public function show(TimeEntry $timeEntry)
     {
-        //
+        return view('time_entry.show', compact('timeEntry'));
     }
 
     /**
@@ -57,7 +63,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-        //
+        return view('time_entry.edit',compact('timeEntry'));
     }
 
     /**
@@ -69,7 +75,8 @@ class TimeEntryController extends Controller
      */
     public function update(Request $request, TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->duration = $request->duration;
+        $timeEntry->save();
     }
 
     /**
@@ -80,6 +87,6 @@ class TimeEntryController extends Controller
      */
     public function destroy(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->delete();
     }
 }
