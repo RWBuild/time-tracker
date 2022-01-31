@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
 
@@ -34,12 +35,9 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-      $client = new Client();
-      $client->name = $request->name;
-      $client->code = $request->code;
-      $client->save();
+      Client::create($request->validated());
     }
 
     /**
@@ -71,11 +69,9 @@ class ClientController extends Controller
      * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-      $client->name = $request->name;
-      $client->code = $request->code;
-      $client->save();
+      $client->update($request->validated());
     }
 
     /**

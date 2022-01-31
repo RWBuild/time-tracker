@@ -16,7 +16,9 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        //
+        $timeEntries = TimeEntry::all();
+      return view('time-entries.index',compact('timeEntries'));
+    
     }
 
     /**
@@ -26,7 +28,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('time-entries.create');
     }
 
     /**
@@ -63,7 +65,7 @@ class TimeEntryController extends Controller
      */
     public function show(TimeEntry $timeEntry)
     {
-        //
+        return view('time-entries.show', compact('timeEntry'));
     }
 
     /**
@@ -74,7 +76,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-        //
+        return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**
@@ -97,6 +99,6 @@ class TimeEntryController extends Controller
      */
     public function destroy(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->delete();
     }
 }
