@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\TimeEntryRequest;
 
 class TimeEntryController extends Controller
 {
@@ -33,14 +35,26 @@ class TimeEntryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TimeEntryRequest $request)
     {
-      $timeEntry = new TimeEntry();
-      $timeEntry->project_id = $request->project_id;
-      $timeEntry->user_id = $request->user_id;
-      $timeEntry->task_id = $request->task_id;
-      $timeEntry->duration = $request->duration;
-      $timeEntry->save();
+
+        //validate
+    //   $request->validate([
+    //       'project_id' =>['required','numeric'],
+    //       'task_id' =>['required','numeric'],
+    //       'duration' =>['numeric'],
+    //       'date' =>['date','required'],
+          
+
+    //   ]);
+      $timeEntry = TimeEntry::create($request->validated());
+    //   $timeEntry = new TimeEntry();
+    //   $timeEntry->project_id = $request->project_id;
+    //   $timeEntry->user_id = Auth()->user()->id;
+    //   $timeEntry->task_id = $request->task_id;
+    //   $timeEntry->duration = $request->duration;
+    //   $timeEntry->date = $request->date;
+    //   $timeEntry->save();
     }
 
     /**
@@ -60,9 +74,9 @@ class TimeEntryController extends Controller
      * @param  \App\Models\TimeEntry  $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function edit(TimeEntry $timeEntry)
+    public function edit(TimeEntryRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -72,9 +86,10 @@ class TimeEntryController extends Controller
      * @param  \App\Models\TimeEntry  $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TimeEntry $timeEntry)
+    public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
         //
+        $timeEntry->update($request->validated());
     }
 
     /**
