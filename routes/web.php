@@ -39,7 +39,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('/projects','App\Http\Controllers\ProjectController');
 });
 
-// Route::group(['middleware'=>'is_user'], function(){
-//     // view route
-// });
+// Time entry resource routes
+Route::resource('/time-entry','App\Http\Controllers\TimeEntryController');
 

@@ -13,7 +13,8 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        //
+        $time_entry = TimeEntry::all();
+        return "Hi there am time entry";
     }
 
     /**
@@ -23,7 +24,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-        //
+        return "Create time entry";
     }
 
     /**
@@ -34,51 +35,59 @@ class TimeEntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $timeEntry = new TimeEntry();
+        $timeEntry->project_id=$request->project_id;
+        $timeEntry->user_id=$request->user_id;
+        $timeEntry->task_id=$request->task_id;
+        $timeEntry->duration=$request->duration;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  TimeEntry $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TimeEntry $timeEntry)
     {
-        //
+        return "Show time entry";
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  TimeEntry $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TimeEntry $timeEntry)
     {
-        //
+        return "Edit time entry";
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  TimeEntry $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TimeEntry $timeEntry)
     {
-        //
+        // $timeEntry = new TimeEntry();
+        $timeEntry->project_id=$request->project_id;
+        $timeEntry->user_id=$request->user_id;
+        $timeEntry->task_id=$request->task_id;
+        $timeEntry->duration=$request->duration;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  TimeEntry $timeEntry
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TimeEntry $timeEntry)
     {
-        //
+        $timeEntry->delete();
     }
 }

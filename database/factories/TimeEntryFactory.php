@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TimeEntryFactory extends Factory
 {
@@ -14,7 +15,7 @@ class TimeEntryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "duration" => $this->faker->numberBetween(1,100),
         ];
     }
 }
