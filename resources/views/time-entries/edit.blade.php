@@ -10,8 +10,10 @@
   
 <p>Project: {{ $timeEntry->project->name }}</p>
 <p>Task: {{ $timeEntry->task->name }}</p>
+<p>User: {{ $timeEntry->user->name }}</p>
 
 </div>
+
 
 </body>
 </html>

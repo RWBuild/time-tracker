@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
@@ -34,13 +35,17 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+   /*  old fashion of validating 
+   
+   public function store(Request $request)
     {
       $client = new Client();
       $client->name = $request->name;
       $client->code = $request->code;
       $client->save();
     }
+*/
+
 
     /**
      * Display the specified resource.
@@ -48,10 +53,13 @@ class ClientController extends Controller
      * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
+   /* old way to validate 
+
     public function show(Client $client)
     {
       return view('clients.show', compact('client'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -59,6 +67,10 @@ class ClientController extends Controller
      * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
+    public function store(ClientRequest $request)
+    { 
+    $timeEntry = Client::create($request->validated());
+    }
     public function edit(Client $client)
     {
       return view('clients.edit', compact('client'));
@@ -71,13 +83,16 @@ class ClientController extends Controller
      * @param  Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
-    {
-      $client->name = $request->name;
-      $client->code = $request->code;
-      $client->save();
-    }
-
+   // public function update(Request $request, Client $client)
+    //{
+   //   $client->name = $request->name;
+    //  $client->code = $request->code;
+     // $client->save();
+   // }
+   public function update(ClientRequest $request, Client $client)
+   {
+       $client->update($request->validated());
+   }
     /**
      * Remove the specified resource from storage.
      *
