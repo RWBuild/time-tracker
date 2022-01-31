@@ -29,14 +29,13 @@ class TimeEntryRequest extends FormRequest
             'project_id' => ['required', 'numeric'],
             'user_id' => ['required', 'numeric'],
             'task_id' => ['required', 'numeric'],
-            'duration' => ['numeric'],
+            'duration' => ['numeric'], 
             'date' => ['date', 'required'],
         ];
     }
     public function prepareForValidation():void
     {
 
-        // $duration = (new DurationService())->convertToMinutes($this->duration);
         $duration = (new DurationService())->convertToMinutes($this->duration);
 
         $this->merge([
