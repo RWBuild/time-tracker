@@ -35,7 +35,12 @@ class TimeEntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $timeEntry = new TimeEntry();
+      $timeEntry->project_id = $request->project_id;
+      $timeEntry->user_id = $request->user_id;
+      $timeEntry->task_id = $request->task_id;
+      $timeEntry->duration = $request->duration;
+      $timeEntry->save();
     }
 
     /**
