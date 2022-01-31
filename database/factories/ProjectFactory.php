@@ -15,10 +15,15 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-          // "client_id" => 1,
-          "name" => Str::random(10)." Project",
-          "description" => $this->faker->text(200),
-          "budget" => $this->faker->randomFloat(2,100,10000),
+        //   // "client_id" => 1,
+        //   "name" => Str::random(10)." Project",
+        //   "description" => $this->faker->text(200),
+        //   "budget" => $this->faker->randomFloat(2,100,10000),
+         
+        "id" => 1,
+        "name" => "CEO",
+        "description" => "Company",
+        "budget" => ("10,3")
         ];
     }
 }

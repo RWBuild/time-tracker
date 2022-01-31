@@ -15,10 +15,16 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company(),
-            'code' => Str::random(5),
-            'phone' => $this->faker->phoneNumber(),
-            'address' => $this->faker->streetAddress.', '.$this->faker->city.', '.$this->faker->stateAbbr.' '.$this->faker->postcode(),
+            // 'name' => $this->faker->company(),
+            // 'code' => Str::random(5),
+            // 'phone' => $this->faker->phoneNumber(),
+            // 'address' => $this->faker->streetAddress.', '.$this->faker->city.', '.$this->faker->stateAbbr.' '.$this->faker->postcode(),
+        
+        "id" => 1,
+        "name" => "Sangwa",
+        "code" => 1,
+        "phone" => (15),
+        "address" => "city",
         ];
     }
 }

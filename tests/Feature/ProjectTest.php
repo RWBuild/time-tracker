@@ -56,7 +56,7 @@ class ProjectTest extends TestCase
 
   public function test_user_can_update_a_project()
   {
-    //$this->withoutExceptionHandling();
+    $this->withoutExceptionHandling();
 
     $project = Project::factory()->forClient()->create([
       'name' => 'ABC Project'
