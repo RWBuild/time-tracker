@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsAdminMiddleware
+class IsOwnerMiddleware
 {
   /**
    * Handle an incoming request.
@@ -22,7 +22,7 @@ class IsAdminMiddleware
     }
     
     // Check if user has admin role
-    if (!auth()->user()->isAdmin()) {
+    if (!auth()->user()->isOwner()) {
       abort(403);
     }
 
