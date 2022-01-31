@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function timeEntries() {
+        return $this->hasMany(TimeEntry::class);
+    }
+
     //Role Method checks
     public function isAdmin(): bool
     {
