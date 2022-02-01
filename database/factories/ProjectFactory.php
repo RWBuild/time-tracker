@@ -16,7 +16,7 @@ class ProjectFactory extends Factory
     {
         return [
           // "client_id" => 1,
-          "name" => Str::random(10)." Project",
+          "name" => $this->faker->company()." Project",
           "description" => $this->faker->text(200),
           "budget" => $this->faker->randomFloat(2,100,10000),
         ];
