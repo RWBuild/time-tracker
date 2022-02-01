@@ -28,7 +28,7 @@ class ProjectRequest extends FormRequest
             'client_id' => ['required', 'numeric'],
             'name' => ['required', 'string'],
             'description' => ['string'],
-            'budget' => ['numeric']
+            'budget' => ['numeric', 'nullable']
         ];
     }
 }

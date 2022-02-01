@@ -27,8 +27,8 @@ class ClientRequest extends FormRequest
         return [
            'name' =>['required', 'string'],
            'code' =>['string'],
-           'address' =>['string'],
-           'phone'=>['string']
+           'address' =>['string', 'nullable'],
+           'phone'=>['string', 'nullable']
 
         ];
     }
