@@ -1,6 +1,6 @@
 <div class="main-nav">
   <div>
-      <h3 class="text-xl font-black flex items-center space-x-1"><i class="ri-timer-2-line text-4xl"></i><span>Time Tracker</span> </h3>
+      <a href="/" class="text-xl font-black flex items-center space-x-1"><i class="ri-timer-2-line text-4xl"></i><span>Time Tracker</span> </a>
   </div>
 
   @if (Route::has('login'))

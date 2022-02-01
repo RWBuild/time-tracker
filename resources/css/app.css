@@ -14,4 +14,26 @@
     .btn-danger {
         @apply bg-red-500 focus:ring-4;
     }
+
+    .card {
+        @apply bg-white py-6 px-7 rounded-md shadow-sm;
+    }
+
+    .main-table {
+        @apply border-collapse;
+    }
+
+    .main-table tr {
+        @apply py-4 px-3 shadow rounded;
+    }
+}
+
+@layer utilities {
+    .wrapper {
+        @apply w-3/5 max-w-full mx-auto my-0 py-12;
+    }
+
+    .btn-sm {
+        @apply py-2 px-3;
+    }
 }
