@@ -13,7 +13,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -26,8 +26,8 @@ class ClientRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'code' => ['required', 'string'],
-            'address'=>['string'],
-            'phone'=>['string'],
+            'address'=>['string', 'nullable'],
+            'phone'=>['string', 'nullable'],
         ];
     }
 }

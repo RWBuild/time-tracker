@@ -26,7 +26,7 @@ class ProjectRequest extends FormRequest
         return [
             'client_id'=> ['required' ,'string'],
             'name'=> ['required' ,'string'],
-            'description'=> ['text'],
+            'description'=> ['text', 'nullable'],
             'budget'=>['float'],
 
             
