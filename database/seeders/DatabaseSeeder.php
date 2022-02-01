@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
           RoleSeeder::class,
           TaskSeeder::class,
           TimeEntrySeeder::class,
+          ProjectSeeder::class,
+          ClientSeeder::class,
         ]);
     }
 }
