@@ -15,7 +15,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-        <div class="home_page">
+        <div class="pages">
             <div>
                 @yield('header')
             </div>
