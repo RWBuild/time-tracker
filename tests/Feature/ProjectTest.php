@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Role;
 
 class ProjectTest extends TestCase
 {
@@ -15,7 +16,12 @@ class ProjectTest extends TestCase
   public function setUp(): void
   {
     parent::setUp();
+    $this->artisan('db:seed --class=RoleSeeder');
     $this->user = User::factory()->create();
+    $this->user->roles()->attach(Role::IS_USER);
+    $this->owner = User::factory()->create();
+    $this->owner->roles()->attach(Role::IS_OWNER);
+    
   }
 
   public function test_user_can_create_a_project()
@@ -27,10 +33,40 @@ class ProjectTest extends TestCase
       'budget' => 10000.14,
     ]);
 
+    $response->assertStatus(403);
+
+    $this->assertTrue(Project::all()->count() == 0);
+  }
+
+
+  public function test_owner_can_create_a_project()
+  {
+    $response = $this->actingAs($this->owner)->post('/projects',[
+      'client_id' => 1,
+      'name' => 'ABC Project',
+      'description' => 'This is a description',
+      'budget' => 10000.14,
+    ]);
+
     $response->assertStatus(200);
 
     $this->assertTrue(Project::all()->count() == 1);
   }
+
+  public function test_user_can_not_create_a_project()
+  {
+    $response = $this->actingAs($this->user)->post('/projects',[
+      'client_id' => 1,
+      'name' => 'ABC Project',
+      'description' => 'This is a description',
+      'budget' => 10000.14,
+    ]);
+
+    $response->assertStatus(403);
+
+    $this->assertTrue(Project::all()->count() == 0);
+  }
+  
 
   public function test_guest_can_not_create_a_project()
   {
@@ -44,7 +80,7 @@ class ProjectTest extends TestCase
     $this->assertTrue(Project::all()->count() == 0);
   }
 
-  public function test_user_can_update_a_project()
+  public function test_owner_can_update_a_project()
   {
     $project = Project::factory()->forClient()->create([
       'name' => 'ABC Project'
@@ -52,7 +88,7 @@ class ProjectTest extends TestCase
 
     $this->assertDatabaseHas('projects',['name' => 'ABC Project']);
 
-    $response = $this->actingAs($this->user)->put('/projects/'.$project->id, [
+    $response = $this->actingAs($this->owner)->put('/projects/'.$project->id, [
       'client_id' => $project->client_id,
       'name' => 'ABC Project Updated',
     ]);
