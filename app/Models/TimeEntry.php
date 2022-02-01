@@ -32,8 +32,6 @@ class TimeEntry extends Model
     }
     public function getDurationAttribute($value)
     { 
-      //GET CHECK null and return $value
-      //convert value(int) number of minutes to 1.30 decimal
     return $value;      
     }
     

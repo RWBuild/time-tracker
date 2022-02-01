@@ -9,7 +9,8 @@
 <body>
 
   @forelse ($timeEntries as $timeEntry)
-      <p>{{ $timeEntry->project->name }} {{ $timeEntry->duration }}</p>
+      <p>{{ $timeEntry->project->name }} - {{$timeEntry->task->name
+      }} - {{$timeEntry->user->name}} - {{ $timeEntry->duration }}</p>
   @empty
       <p>No time entries for this date.</p>
   @endforelse
