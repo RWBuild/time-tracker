@@ -23,8 +23,8 @@ class ProjectRequest extends FormRequest {
         return [
             'client_id' => ['required', 'numeric'],
             'name' => ['string', 'required'],
-            'description' => ['string'],
-            'budget' => ['numeric']
+            'description' => ['string', 'nullable'],
+            'budget' => ['numeric', 'nullable']
         ];
     }
 }
