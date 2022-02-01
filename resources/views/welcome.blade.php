@@ -13,9 +13,16 @@
         <div>
             @if (Route::has('login'))
                 @auth
-                @if (Auth::User()->isAdmin())
-                    <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
-                @endif
+                    @if (Auth::User()->isAdmin())
+                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                    @else
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button type="submit">Logout</button>
+                        </form>
+                    @endif
+
                 @else
                     <a href="{{ route('login') }}" class="">Log in</a>
 
@@ -23,6 +30,13 @@
                         <a href="{{ route('register') }}" class="ml-4 ">Register</a>
                     @endif
                 @endauth
+                {{-- @if (Auth::User()->isAdmin() === false)
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button type="submit">Logout</button>
+                    </form>
+                @endif --}}
             @endif
         </div>
     </div>

@@ -1,27 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-</head>
-<body>
+@extends('layouts.main')
 
-  {{-- @foreach ($clients as $client) --}}
-  
-      {{-- <p>{{ $client->name }} {{ $client->code }}</p> --}}
-      <div class="content-children">
-      <h2> List of Clients</h2>
+@section('header')
+    <div class="navbar">
+        <div>
+            <h1>Time tracker</h1>
+        </div>
+        <div>
+            <a href="/clients">Clients</a>
+            <a href="/projects">Projects</a>
+            <a href="/time-entries">Time entry</a>
+        </div>
+        <div>
+            @if (Route::has('login'))
+                @auth
+                    @if (Auth::User()->isAdmin())
+                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                    @endif
+                @else
+                    <a href="{{ route('login') }}" class="">Log in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 ">Register</a>
+                    @endif
+                @endauth
+                @if (Auth::user())
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button type="submit">Logout</button>
+                    </form>
+                @endif
+            @endif
+        </div>
+    </div>
+
+@section('content')
+
+
+    <h2> List of Clients</h2>
+    <div class="clients_container">
         <table>
             <tr>
                 <th>No</th>
                 <th>Name</th>
                 <th>Code</th>
                 <th>adress</th>
-   
-
+                <th></th>
             <tr>
                 <tbody>
                     @foreach ($clients as $client)
@@ -34,11 +58,11 @@
                             </td>
 
                             <td>
-                                {{ $client->code}}
+                                {{ $client->code }}
                             </td>
 
                             <td>
-                                {{ $client->address}}
+                                {{ $client->address }}
                             </td>
                             <td class="action">
                                 <a href="/clients/{{ $client->id }}" class="action-view">view</a>
@@ -51,23 +75,8 @@
                             </td>
                         </tr>
                 </tbody>
-                
-
-
-
-
-
                 @endforeach
-                <button><a href="/clients/create">Add Clients</a></button>
-
-
         </table>
-      </div>
-
-  {{-- @empty
-      <p>No clients in the database.</p> --}}
-
-  {{-- @endforelse --}}
-  
-</body>
-</html>
+    </div>
+    <button><a href="/clients/create">Add Clients</a></button>
+@endsection
