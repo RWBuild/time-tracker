@@ -24,7 +24,10 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'client_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'budget' => ['numeric'],
         ];
     }
 }

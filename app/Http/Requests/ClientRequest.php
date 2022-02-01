@@ -22,24 +22,14 @@ class ClientRequest extends FormRequest
      *
      * @return array
      */
-    // public function up()
-    // {
-    //     Schema::create('clients', function (Blueprint $table) {
-    //       $table->id();
-    //       $table->string('name');
-    //       $table->string('code');
-    //       $table->text('address')->nullable();
-    //       $table->string('phone')->nullable();
-    //       $table->timestamps();
-    //     });
-    // }
+
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'code' => ['required','numeric'],
-            'address' => ['text'],
-            'phone' => ['numeric'],
+           'name' =>['required', 'string'],
+           'code' =>['string'],
+           'address' =>['string'],
+           'phone'=>['string'],
         ];
     }
 }
