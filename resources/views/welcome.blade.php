@@ -6,9 +6,9 @@
             <h1>Time tracker</h1>
         </div>
         <div>
-            <a href="">Clients</a>
-            <a href="">Projects</a>
-            <a href="">Time entry</a>
+            <a href="/clients">Clients</a>
+            <a href="/projects">Projects</a>
+            <a href="/time-entries">Time entry</a>
         </div>
         <div>
             @if (Route::has('login'))
