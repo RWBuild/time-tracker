@@ -6,6 +6,9 @@ use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\TimeEntryRequest;
+use App\Models\Project;
+use App\Models\Task;
+use App\Models\User;
 
 class TimeEntryController extends Controller
 {
@@ -16,10 +19,9 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        $timeEntry = TimeEntry::all();
-        return view('time-entries.index', compact('timeEntry'));
+        $timeEntries = TimeEntry::all();
+        return view('time-entries.index', compact('timeEntries'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +62,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-        return view('time-entries.edit',compact('timeEntry'));
+        return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**

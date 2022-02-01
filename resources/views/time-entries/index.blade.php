@@ -9,10 +9,15 @@
 <body>
 
   @forelse ($timeEntries as $timeEntry)
-      <p>{{ $timeEntry->project->name }} {{ $timeEntry->duration }}</p>
-  @empty
+  <div>
+<p>Project Name: {{ $timeEntry->project->name }}</p>
+<p>Task Name: {{ $timeEntry->task->name }}</p>
+<p>User Name: {{ $timeEntry->user->name }}</p>
+<p>Duration: {{ $timeEntry->duration }} minutes</p>
+</div>
+@empty
       <p>No time entries for this date.</p>
   @endforelse
-  
+
 </body>
 </html>

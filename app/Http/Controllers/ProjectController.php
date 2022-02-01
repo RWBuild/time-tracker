@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::all();
-      return view('projects.index',compact('projects'));
-    
+        $projects = Project::all();
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -26,8 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-      return view('projects.create');
-
+        return view('projects.create');
     }
 
     /**
@@ -36,14 +35,9 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-      $project = new Project();
-      $project->client_id = $request->client_id;
-      $project->name = $request->name;
-      $project->description = $request->description;
-      $project->budget = $request->budget;
-      $project->save();
+        $project = Project::create($request->validated());
     }
 
     /**
@@ -54,7 +48,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-      return view('projects.show', compact('project'));
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -65,7 +59,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-      return view('projects.edit', compact('project'));
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -75,15 +69,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-      $project->client_id = $request->client_id;
-      $project->name = $request->name;
-      $project->description = $request->description;
-      $project->budget = $request->budget;
-      $project->save();
+        $project->update($request->validated());
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -92,6 +81,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-      $project->delete();
+        $project->delete();
     }
 }

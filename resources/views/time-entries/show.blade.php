@@ -7,10 +7,11 @@
   <title>Time Entry: {{ $timeEntry->date }}</title>
 </head>
 <body>
-  
-<p>Project: {{ $timeEntry->project->name }}</p>
-<p>Task: {{ $timeEntry->task->name }}</p>
-
+  <div>
+<p>Project Name: {{ $timeEntry->project->name }}</p>
+<p>Task Name: {{ $timeEntry->task->name }}</p>
+<p>User Name: {{ $timeEntry->user->name }}</p>
+<p>Duration: {{ $timeEntry->duration }} minutes</p>
 </div>
 
 </body>
