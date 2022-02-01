@@ -36,7 +36,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ClientRequest $request)
-    {
+
+    {  
+      $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
     }
 
@@ -48,6 +50,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
+      // $this->authorize('create', Client::class);
       return view('clients.show', compact('client'));
     }
 
@@ -59,6 +62,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+      $this->authorize('edit', Client::class);
       return view('clients.edit', compact('client'));
     }
 
@@ -71,6 +75,7 @@ class ClientController extends Controller
      */
     public function update(ClientRequest $request, Client $client)
     {
+      $this->authorize('update', $client);
       $client->update($request->validated());
     }
     
@@ -82,6 +87,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+      $this->authorize('delete', $client);
+
       $client->delete();
     }
 }
