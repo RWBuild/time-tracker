@@ -25,7 +25,7 @@ class ClientObserver
      */
     public function updated(Client $client)
     {
-        //
+        // This is green
     }
 
     /**
