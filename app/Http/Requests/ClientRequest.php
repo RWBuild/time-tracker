@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
         return [
             'name'=>['required', 'string'],
             'address'=>['string'],
-            'code'=>['string'],
+            'code'=>['string','required'],
             'phone'=>['string']
         ];
     }

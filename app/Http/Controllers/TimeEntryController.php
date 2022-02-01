@@ -61,7 +61,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-        return view('time-entries.edit', compact('timeEntiry'));
+        return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**
