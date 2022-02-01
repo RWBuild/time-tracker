@@ -7,6 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Client;
 use App\Models\User;
+use App\Models\Role;
+
 
 class ClientTest extends TestCase
 {
@@ -15,12 +17,29 @@ class ClientTest extends TestCase
   public function setUp(): void
   {
     parent::setUp();
+    $this->artisan('db:seed --class=RoleSeeder');
     $this->user = User::factory()->create();
+    $this->user->roles()->attach(Role::IS_USER);
+
+    $this->owner = User::factory()->create();
+    $this->owner->roles()->attach(Role::IS_OWNER);
   }
 
   public function test_user_can_create_a_client()
   {
     $response = $this->actingAs($this->user)->post('/clients',[
+      'name' => 'ABC Company',
+      'code' => 'ABCCO'
+    ]);
+
+    $response->assertStatus(403);
+
+    $this->assertTrue(Client::all()->count() == 0);
+  }
+
+  public function test_owner_can_create_a_client()
+  {
+    $response = $this->actingAs($this->owner)->post('/clients',[
       'name' => 'ABC Company',
       'code' => 'ABCCO'
     ]);
@@ -49,6 +68,23 @@ class ClientTest extends TestCase
     $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
 
     $response = $this->actingAs($this->user)->put('/clients/'.$client->id, [
+      'name' => 'ABC Company Updated',
+      'code' => $client->code,
+    ]);
+
+    $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
+    
+  }
+
+  public function test_owner_can_update_a_client()
+  {
+    $client = Client::factory()->create([
+      'name' => 'ABC Company'
+    ]);
+
+    $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
+
+    $response = $this->actingAs($this->owner)->put('/clients/'.$client->id, [
       'name' => 'ABC Company Updated',
       'code' => $client->code,
     ]);
@@ -90,6 +126,15 @@ class ClientTest extends TestCase
     $this->assertTrue(Client::all()->count() == 1);
 
     $response = $this->actingAs($this->user)->delete('/clients/'.$client->id);
+    $this->assertTrue(Client::all()->count() == 1);
+  }
+
+  public function test_owner_can_delete_a_client()
+  {
+    $client = Client::factory()->create();
+    $this->assertTrue(Client::all()->count() == 1);
+
+    $response = $this->actingAs($this->owner)->delete('/clients/'.$client->id);
     $this->assertTrue(Client::all()->count() == 0);
   }
 

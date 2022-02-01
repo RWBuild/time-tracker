@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Role;
 
 class ProjectTest extends TestCase
 {
@@ -15,10 +16,29 @@ class ProjectTest extends TestCase
   public function setUp(): void
   {
     parent::setUp();
+    $this->artisan('db:seed --class=RoleSeeder');
     $this->user = User::factory()->create();
+    $this->user->roles()->attach(Role::IS_USER);
+
+    $this->owner = User::factory()->create();
+    $this->owner->roles()->attach(Role::IS_OWNER);
   }
 
   public function test_user_can_create_a_project()
+  {
+    $response = $this->actingAs($this->user)->post('/projects',[
+      'client_id' => 1,
+      'name' => 'ABC Project',
+      'description' => 'This is a description',
+      'budget' => 10000.14,
+    ]);
+
+    $response->assertStatus(403);
+
+    $this->assertTrue(Project::all()->count() == 0);
+  }
+
+  public function test_owner_can_create_a_project()
   {
     $response = $this->actingAs($this->user)->post('/projects',[
       'client_id' => 1,
