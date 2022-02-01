@@ -26,6 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+      $this->authorize('create', Project::class);
       return view('projects.create');
     }
 
@@ -35,8 +36,8 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
-    {
+    public function store(ProjectRequest $request){
+        $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
     }
 
@@ -46,8 +47,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
-    {
+    public function show(Project $project) {
       return view('projects.show', compact('project'));
     }
 
@@ -57,9 +57,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
-    {
-      return view('projects.edit', compact('project'));
+    public function edit(Project $project) {
+        $this->authorize('update', $project);
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -69,9 +69,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, Project $project)
-    {
-      $project->update($request->validated());
+    public function update(ProjectRequest $request, Project $project) {
+        $this->authorize('update', $project);
+        $project->update($request->validated());
     }
 
     /**
@@ -80,8 +80,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
-    {
+    public function destroy(Project $project) {
       $project->delete();
     }
 }

@@ -26,10 +26,11 @@ class ClientController extends Controller
      */
     public function create()
     {
-      return view('clients.create');
+        $this->authorize('create', Client::class);
+        return view('clients.create');
     }
 
-    /**
+    /**d
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,7 +38,8 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-      $client = Client::create($request->validated());
+        $this->authorize('create', Client::class);
+        $client = Client::create($request->validated());
     }
 
     /**
@@ -59,7 +61,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-      return view('clients.edit', compact('client'));
+        $this->authorize('update', $client);
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -71,9 +74,10 @@ class ClientController extends Controller
      */
     public function update(ClientRequest $request, Client $client)
     {
-      $client->update($request->validated());
+        $this->authorize('update', $client);
+        $client->update($request->validated());
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -82,6 +86,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-      $client->delete();
+        $this->authorize('update', $client);
+        $client->delete();
     }
 }
