@@ -27,8 +27,8 @@ class ProjectRequest extends FormRequest
             
             'name' => ['required','string'],
             'client_id' => ['required','numeric'],
-            'description' => ['string'],
-            'budget' => ['numeric'],
+            'description' => ['string','nullable'],
+            'budget' => ['numeric','nullable'],
         ];
 
         // $this->merge([
