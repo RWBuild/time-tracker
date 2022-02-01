@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
-use Auth;
 
 class TimeEntryController extends Controller
 {
@@ -16,7 +15,8 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        //
+      $timeEntries = TimeEntry::all();
+      return view('time-entries.index',compact('timeEntries'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-        //
+      return view('time-entries.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class TimeEntryController extends Controller
      */
     public function show(TimeEntry $timeEntry)
     {
-        //
+      return view('time-entries.show', compact('timeEntry'));
     }
 
     /**
@@ -59,7 +59,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-        //
+      return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TimeEntryController extends Controller
      */
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
-        $timeEntry->update($request->validated());
+      $timeEntry->update($request->validated());
     }
 
     /**
@@ -82,6 +82,6 @@ class TimeEntryController extends Controller
      */
     public function destroy(TimeEntry $timeEntry)
     {
-        //
+      $timeEntry->delete();
     }
 }

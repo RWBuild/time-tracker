@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -16,7 +17,6 @@ class ProjectController extends Controller
     {
       $projects = Project::all();
       return view('projects.index',compact('projects'));
-    
     }
 
     /**
@@ -27,7 +27,6 @@ class ProjectController extends Controller
     public function create()
     {
       return view('projects.create');
-
     }
 
     /**
@@ -36,14 +35,9 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-      $project = new Project();
-      $project->client_id = $request->client_id;
-      $project->name = $request->name;
-      $project->description = $request->description;
-      $project->budget = $request->budget;
-      $project->save();
+      $project = Project::create($request->validated());
     }
 
     /**
@@ -75,13 +69,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-      $project->client_id = $request->client_id;
-      $project->name = $request->name;
-      $project->description = $request->description;
-      $project->budget = $request->budget;
-      $project->save();
+      $project->update($request->validated());
     }
 
     /**
