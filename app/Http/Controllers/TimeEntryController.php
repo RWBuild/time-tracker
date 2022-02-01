@@ -39,22 +39,8 @@ class TimeEntryController extends Controller
      */
     public function store(TimeEntryRequest $request)
     {
-        // validation
-    //     $request->validate([
-    //         'project_id'=>['required','numeric'],
-    //         'task_id'=>['required','numeric'],
-    //         'duration'=>['numeric'],
-    //         'date'=>['date','required']
-    // ]);
     $timeEntry=TimeEntry::create($request->validated());
 
-    //   $timeEntry = new TimeEntry();
-    //   $timeEntry->project_id = $request->project_id;
-    //   $timeEntry->user_id = auth()->user()->id;
-    //   $timeEntry->task_id = $request->task_id;
-    //   $timeEntry->duration = $request->duration;
-    //   $timeEntry->date = $request->date;
-    //   $timeEntry->save();
     }
 
     /**
