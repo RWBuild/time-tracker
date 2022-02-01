@@ -16,6 +16,13 @@
 <p>{{ $client->phone }}</p>
 <p>{{ $client->address }}</p>
 
+<p>This is my form</p>
+  <form action="{{ route('clients.update', $client->id) }}" method="POST">
+    @csrf
+    @method('put')
+
+  </form>
+
 </div>
 
 </body>

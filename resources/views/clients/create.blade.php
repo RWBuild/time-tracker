@@ -7,8 +7,13 @@
   <title>Create Client</title>
 </head>
 <body>
-  
-  This is where a form to create a client would go...
+
+  <p>This is my form</p>
+  <form action="{{ route('clients.store') }}" method="POST">
+    @csrf
+
+
+  </form>
 
 </body>
 </html>
