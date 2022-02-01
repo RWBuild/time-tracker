@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Models\Client;
+use App\Models\Project;
 use App\Models\Role;
 use App\Models\User;
 
@@ -144,6 +145,20 @@ class ClientTest extends TestCase
 
     $response = $this->delete('/clients/'.$client->id);
     $this->assertTrue(Client::all()->count() == 1);
+
+  }
+
+  public function test_clients_projects_are_deleted_when_client_is_deleted()
+  {
+    $client = Client::factory()->hasProjects(4)->create();
+    $otherClient = Client::factory()->hasProjects(3)->create();
+
+    $this->assertTrue(Client::all()->count() == 2);
+    $this->assertTrue(Project::all()->count() == 7);
+
+    $response = $this->actingAs($this->owner)->delete('/clients/'.$client->id);
+    $this->assertTrue(Client::all()->count() == 1);
+    $this->assertTrue(Project::all()->count() == 3);
 
   }
 
