@@ -5,9 +5,10 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+
 use App\Models\Client;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 
 class ClientTest extends TestCase
 {
@@ -19,12 +20,11 @@ class ClientTest extends TestCase
     $this->artisan('db:seed --class=RoleSeeder');
     $this->user = User::factory()->create();
     $this->user->roles()->attach(Role::IS_USER);
-
     $this->owner = User::factory()->create();
     $this->owner->roles()->attach(Role::IS_OWNER);
   }
 
-  public function test_owner_can_not_create_a_client()
+  public function test_owner_can_create_a_client()
   {
     $response = $this->actingAs($this->owner)->post('/clients',[
       'name' => 'ABC Company',
@@ -32,7 +32,6 @@ class ClientTest extends TestCase
     ]);
 
     $response->assertStatus(200);
-
     $this->assertTrue(Client::all()->count() == 1);
   }
 
@@ -43,7 +42,7 @@ class ClientTest extends TestCase
       'code' => 'ABCCO'
     ]);
 
-    //$response->assertStatus(403);
+    $response->assertStatus(403);
     $this->assertTrue(Client::all()->count() == 0);
   }
 
@@ -87,7 +86,8 @@ class ClientTest extends TestCase
       'name' => 'ABC Company Updated',
       'code' => $client->code,
     ]);
-    //$response->assertStatus(403);
+    
+    $response->assertStatus(403);
     $this->assertDatabaseHas('clients',['name' => 'ABC Company']);
     
   }
