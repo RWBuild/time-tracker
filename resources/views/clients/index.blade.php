@@ -36,7 +36,7 @@
                             </td>
 
                             <td>
-                                {{ $client->adress}}
+                                {{ $client->address}}
                             </td>
                             <td class="action">
                                 <a href="/clients/{{ $client->id }}" class="action-view">view</a>
