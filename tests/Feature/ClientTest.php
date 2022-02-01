@@ -8,7 +8,7 @@ use Tests\TestCase;
 use App\Models\Client;
 use App\Models\User;
 use App\Models\Role;
-
+use App\Models\project;
 
 
 class ClientTest extends TestCase
@@ -27,17 +27,7 @@ class ClientTest extends TestCase
 
   }
 
-  public function test_user_can_create_a_client()
-  {
-    $response = $this->actingAs($this->user)->post('/clients',[
-      'name' => 'ABC Company',
-      'code' => 'ABCCO'
-    ]);
-
-    $response->assertStatus(200);
-
-    $this->assertTrue(Client::all()->count() == 1);
-  }
+ 
   public function test_owner_can_create_a_client()
   {
     $response = $this->actingAs($this->owner)->post('/clients',[
@@ -61,7 +51,7 @@ class ClientTest extends TestCase
   
   public function test_user_can_not_create_a_client()
   {
-    $response = $this->post('/clients',[
+    $response = $this->actingAs($this->user)->post('/clients',[
       'name' => 'ABC Company',
       'code' => 'ABCCO'
     ]);
@@ -140,5 +130,15 @@ class ClientTest extends TestCase
     $this->assertTrue(Client::all()->count() == 1);
 
   }
+  public function test_client_project_are_deleted_when_client_id_deleted()
+  {
+    $client = Client::factory()->hasProjects(4)->create();
+    $this->assertTrue(Client::all()->count() == 1);
+    $this->assertTrue(Project::all()->count() == 4);
 
+
+    $response = $this->actingAs($this->owner)->delete('/clients/'.$client->id);
+    $this->assertTrue(Client::all()->count() == 0);
+    $this->assertTrue(Project::all()->count() == 0);
+  }
 }

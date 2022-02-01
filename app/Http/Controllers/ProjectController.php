@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -26,6 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+      $this->authorize('create', Project::class);
       return view('projects.create');
     }
 
@@ -37,6 +38,7 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
+      $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
     }
 
@@ -58,7 +60,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
-    {
+    { $this->authorize('update', $project);
       return view('projects.edit', compact('project'));
     }
 
@@ -70,7 +72,8 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(ProjectRequest $request, Project $project)
-    {
+    { 
+      $this->authorize('update', $project);
       $project->update($request->validated());
     }
 
