@@ -8,17 +8,17 @@
 </head>
 <body>
 
-  @foreach ($clients as $client)
+  {{-- @foreach ($clients as $client) --}}
   
       {{-- <p>{{ $client->name }} {{ $client->code }}</p> --}}
       <h2>Clients</h2>
         <table>
             <tr>
                 <th>No</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Action</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>adress</th>
+   
 
             <tr>
                 <tbody>
@@ -28,15 +28,15 @@
                                 {{ $client->id }}
                             </td>
                             <td>
-                                {{ $client->first_name }}
+                                {{ $client->name }}
                             </td>
 
                             <td>
-                                {{ $client->last_name }}
+                                {{ $client->code}}
                             </td>
 
                             <td>
-                                {{ $client->email }}
+                                {{ $client->adress}}
                             </td>
                             <td class="action">
                                 <a href="/clients/{{ $client->id }}" class="action-view">view</a>
@@ -49,16 +49,20 @@
                             </td>
                         </tr>
                 </tbody>
+                
 
 
 
 
 
                 @endforeach
+                <button><a href="/clients/create">Add Clients</a></button>
+
+
         </table>
 
-  @empty
-      <p>No clients in the database.</p>
+  {{-- @empty
+      <p>No clients in the database.</p> --}}
 
   {{-- @endforelse --}}
   
