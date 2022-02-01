@@ -27,6 +27,8 @@ class ClientController extends Controller
      */
     public function create()
     {
+
+      $this->authorize('create', Client::class);
       return view('clients.create');
     }
 
@@ -39,6 +41,7 @@ class ClientController extends Controller
     public function store(ClientRequest $request)
     {
 
+      $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
 
       // $client = new Client();
@@ -66,6 +69,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
+      $this->authorize('update', $client);
       return view('clients.edit', compact('client'));
     }
 
@@ -79,6 +83,7 @@ class ClientController extends Controller
     public function update(ClientRequest $request, Client $client)
     {
 
+      $this->authorize('update', $client);
       $client->update($request->validated());
 
       // $client->name = $request->name;
@@ -94,6 +99,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+      $this->authorize('delete', $client);
       $client->delete();
     }
 }

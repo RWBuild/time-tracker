@@ -22,7 +22,7 @@ class ClientFactory extends Factory
         
         "id" => 1,
         "name" => "Sangwa",
-        "code" => 1,
+        "code" => "asdf",
         "phone" => (15),
         "address" => "city",
         ];
