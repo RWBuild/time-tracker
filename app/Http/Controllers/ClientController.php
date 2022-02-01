@@ -15,8 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-      $clients = Client::all();
-      return view('clients.index', compact('clients'));
+        $clients = Client::all();
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -26,7 +26,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-      return view('clients.create');
+        $this->authorize('create', Client::class);
+        return view('clients.create');
     }
 
     /**
@@ -37,7 +38,8 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-      $client = Client::create($request->validated());
+        $this->authorize('create', Client::class);
+        $client = Client::create($request->validated());
     }
 
     /**
@@ -48,7 +50,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-      return view('clients.show', compact('client'));
+        return view('clients.show', compact('client'));
     }
 
     /**
@@ -59,7 +61,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-      return view('clients.edit', compact('client'));
+        $this->authorize('update', $client);
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -71,9 +74,10 @@ class ClientController extends Controller
      */
     public function update(ClientRequest $request, Client $client)
     {
-      $client->update($request->validated());
+        $this->authorize('update', $client);
+        $client->update($request->validated());
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -82,6 +86,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-      $client->delete();
+        $this->authorize('delete', $client);
+        $client->delete();
     }
 }
