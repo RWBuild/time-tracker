@@ -134,6 +134,7 @@ class ProjectTest extends TestCase
 
   public function test_user_can_not_delete_a_project()
   {
+    //$this->withoutExceptionHandling();
     $project = Project::factory()->forClient()->create();
     $this->assertTrue(Project::all()->count() == 1);
     $response = $this->actingAs($this->user)->delete('/projects/'.$project->id);
