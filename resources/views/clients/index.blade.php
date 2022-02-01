@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  @if (Auth::User()->isAdmin)
+  asdsa
+  @endif
+
   @forelse ($clients as $client)
       <p>{{ $client->name }} {{ $client->code }}</p>
   @empty
