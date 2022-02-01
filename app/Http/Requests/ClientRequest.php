@@ -29,8 +29,8 @@ class ClientRequest extends FormRequest
             //
             'name'=>['required','string'],
             'code'=>['required','string'],
-            'address'=>['string'],
-            'phone'=>['string'],
+            'address'=>['string','nullable'],
+            'phone'=>['string','nullable'],
         ];
     }
 }
