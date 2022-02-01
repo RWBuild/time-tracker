@@ -1,3 +1,17 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer components {
+    .main-nav {
+        @apply bg-white border border-b-gray-200 py-6 px-9 flex justify-between items-center;
+    }
+
+    .btn {
+        @apply py-3 px-4 inline-block border-none bg-primary text-white uppercase cursor-pointer text-sm rounded-xl font-bold transition-all focus:ring-4 hover:shadow-lg hover:transform-cpu;
+    }
+
+    .btn-danger {
+        @apply bg-red-500 focus:ring-4;
+    }
+}
