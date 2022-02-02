@@ -23,5 +23,8 @@
 
     @endforelse
     <a href="projects/create">Create Project</a>
+    <a href="projects/{{{ $project->id }}}/edit">Create Project</a>
+
+
 
 @endsection
