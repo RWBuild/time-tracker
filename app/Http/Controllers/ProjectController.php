@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Client;
 
 class ProjectController extends Controller
 {
@@ -15,8 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::all();
-      return view('projects.index',compact('projects'));
+      $clients = Client::all();
+      return view('projects.index',compact('clients'));
     }
 
     /**
@@ -27,7 +28,8 @@ class ProjectController extends Controller
     public function create()
     {
       $this->authorize('create', Project::class);
-      return view('projects.create');
+      $clients = Client::all();
+      return view('projects.create',compact('clients'));
     }
 
     /**
@@ -40,6 +42,7 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+      return redirect()->route('projects.index')->with('success', 'Project created successsfully');
     }
 
     /**
@@ -62,7 +65,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
       $this->authorize('update', $project);
-      return view('projects.edit', compact('project'));
+      $clients = Client::all();
+      return view('projects.edit', compact('project','clients'));
     }
 
     /**
@@ -76,6 +80,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
+      return redirect()->route('projects.index')->with('success', 'Project updated successsfully');
     }
 
     /**
@@ -88,5 +93,6 @@ class ProjectController extends Controller
     {
       $this->authorize('delete', $project);
       $project->delete();
+      return redirect()->route('projects.index')->with('success', 'Project deleted successsfully');
     }
 }
