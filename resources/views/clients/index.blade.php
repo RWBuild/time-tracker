@@ -6,9 +6,18 @@
 @section('content')
 
 
-<h1 class="font-bold text-4xl text-center text-gray-700 bg-gray-100 m-3 p-4">Clients</h1>
 
-<div class="   flex  flex-wrap justify-center items-center ">
+<div class="flex justify-center items-center  bg-gray-100 sticky top-0 z-50 ">
+  <h1 class="font-bold text-4xl text-center text-gray-700 m-3 p-4">Clients</h1>
+  @if (Auth::User()->isAdmin() ||  Auth::User()->isOwner())
+  
+  <button class="button"  > <a href="/clients/create" class="">add clients</a></button>
+  
+  @endif
+
+</div>
+
+<div class="   flex  flex-wrap pl-28 ">
 
  
 
@@ -21,12 +30,12 @@
 <div class="card ">
           
   <div class="my-2 ">
-      <h3 class="font-bold"> name:{{ $client->name }} </h3>
+      <h3 class="font-bold">Name: {{ $client->name }} </h3>
   
 
-      <p class="m-1"> code:{{ $client->code }}</p>
+      <p class="m-1"> Code:  {{ $client->code }}</p>
 
-      <p class="m-2"> Phone:+250 {{$client->phone }}</p>
+      <p class="m-2"> Phone:  {{$client->phone }}</p>
     
       
 
@@ -58,15 +67,7 @@
   
 
 </div>
-<div class="flex justify-center items-center">
 
-  @if (Auth::User()->isAdmin() ||  Auth::User()->isOwner())
-  
-  <button  class="button"  > <a href="/clients/create" class="">add clients</a></button>
-  
-  @endif
-
-</div>
 
 
 

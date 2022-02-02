@@ -41,7 +41,7 @@
     </div>
     <div class="input-field">
         
-        {{-- <input type="text" id="address" name="address" value="{{ $client->address }}"> --}}
+      
         <div class="error">
             @error('address')
             {{ $message }}
@@ -68,7 +68,7 @@
   
   
   <div class="flex justify-center" >
-    <button type="submit" class="button"  >submit</button>
+    <button type="submit" class="button"  >Edit</button>
 </div>
   
   

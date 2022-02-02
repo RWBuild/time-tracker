@@ -16,7 +16,7 @@
         <div class=" text-blue-100">Time Tracker</div>
 
         <div> <a href="/clients" class="text-sm text-white dark:text-gray-500  m-2  no-underline hover:bg-gray-400 p-4 rounded-lg active:bg-white ">Clients</a>
-          <a href="/clients" class="text-sm text-white dark:text-gray-500  m-2 no-underline">Projects</a>
+          <a href="/projects" class="text-sm text-white dark:text-gray-500  m-2 no-underline">Projects</a>
           <a href="/clients" class="text-sm text-white dark:text-gray-500 no-underline m-2">Time Entry</a>
         </div>
 
@@ -24,10 +24,12 @@
 
           @if (Route::has('login'))
 
-          <form class="button" method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit">Logout</button>
-          </form>
+          @if (Auth::check())
+            <form class="button" method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit">Logout</button>
+            </form>
+          @endif
 
           <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
               @auth

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Client;
 
 class ProjectController extends Controller
 {
@@ -15,8 +16,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::all();
-      return view('projects.index',compact('projects'));
+      // $projects = Project::all();No projects in the database.
+
+      $clients = Client::all();
+      return view('projects.index',compact('clients'));
     }
 
     /**
@@ -76,6 +79,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
+      $this->redirect()->view('projects.updated',compact('project'));
     }
 
     /**

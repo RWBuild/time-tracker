@@ -4,7 +4,7 @@
 @section('content')
 <div class=" bg-gray-100 flex flex-col justify-center items-center min-h-screen">
        
-  <header class="font-bold text-4xl text-center text-gray-700 m-2"> Add Clients </header>
+  <header class="font-bold text-4xl text-center text-gray-700 m-2"> Add Client </header>
  
 
 
@@ -15,9 +15,9 @@
     @csrf
     <div class="input-field">
      
-      {{-- <input type="text" id="name" name="name"  placeholder="fullname"> --}}
+  
 
-      <x-input type="text" name='name'  placeholder="fullname"/>
+      <x-input type="text" name='name'  placeholder="Fullname"/>
 
       <div class="error">
           @error('name')
@@ -31,7 +31,7 @@
 
   
   <div class="input-field">
-    <x-input type="text" name='code' placeholder="email" />
+    <x-input type="text" name='code' placeholder="Code" />
      
     
       <div class="error">
@@ -44,7 +44,7 @@
   </div>
   <div class="input-field">
       
-      <input type="text" id="address" name="address" placeholder="address">
+      <input type="text" id="address" name="address" placeholder="Address">
 
       <div class="error">
         @error('address')
@@ -58,7 +58,7 @@
 
 <div class="input-field">
       
-  <input type="number" id="address" name="phone" placeholder="phone">
+  <input type="number" id="address" name="phone" placeholder="+250 ....">
   <div class="error">
       @error('phone')
       {{ $message }}
@@ -71,7 +71,7 @@
 
 
   <div class="flex justify-center" >
-      <x-button type="submit"  >submit</x-button>
+      <x-button type="submit">Add Client</x-button>
   </div>
 
 
