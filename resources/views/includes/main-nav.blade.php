@@ -9,6 +9,9 @@
           <li><a class="text-lg font-semibold" href="/clients">Clients</a></li>
           <li><a class="text-lg font-semibold" href="/projects">Projects</a></li>
           <li><a class="text-lg font-semibold" href="/time-entries">Time Entry</a></li>
+          @if (Auth::user()->isAdmin())
+          <li><a class="text-lg font-semibold" href="/dashboard">Dashboard</a></li>
+          @endif
       </ul>
       <div>
          <div class="flex items-center space-x-1">

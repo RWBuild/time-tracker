@@ -686,6 +686,19 @@ select {
   padding-right: 0.75rem;
   font-weight: 700;
 }
+table thead {
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+table th, table td {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: left;
+  font-weight: 500;
+}
 .fixed {
   position: fixed;
 }

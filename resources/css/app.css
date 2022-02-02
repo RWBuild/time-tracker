@@ -26,6 +26,15 @@
     .alert {
         @apply py-2 px-3 w-full rounded my-1 font-bold;
     }
+
+    table thead {
+        @apply bg-gray-100 rounded;
+    }
+
+    table th,
+    table td {
+        @apply px-6 py-3 text-left font-medium;
+    }
 }
 
 @layer utilities {
