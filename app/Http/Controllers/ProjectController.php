@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      // $projects = Project::all();No projects in the database.
+      // $projects = Project::all();
 
       $clients = Client::all();
       return view('projects.index',compact('clients'));
@@ -30,7 +30,8 @@ class ProjectController extends Controller
     public function create()
     {
       $this->authorize('create', Project::class);
-      return view('projects.create');
+        $clients = Client::all();
+      return view('projects.create',compact('clients'));
     }
 
     /**
@@ -64,8 +65,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+
       $this->authorize('update', $project);
-      return view('projects.edit', compact('project'));
+      $clients = Client::all();
+      return view('projects.edit', compact('project','clients'));
     }
 
     /**
@@ -79,7 +82,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
-      $this->redirect()->view('projects.updated',compact('project'));
+      return redirect()->route("projects.show", $project->id)->with("projects-message-true", "project updated successfully");
     }
 
     /**

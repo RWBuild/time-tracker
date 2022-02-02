@@ -32,5 +32,6 @@ Route::group(['middleware' => 'is_owner'], function() {
 Route::group(['middleware' => 'auth'], function() {  
   Route::resource('/clients','App\Http\Controllers\ClientController');
   Route::resource('/projects','App\Http\Controllers\ProjectController');
+  Route::get('/project/create/{client}', function () { return view('create'); });
   Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
 });
