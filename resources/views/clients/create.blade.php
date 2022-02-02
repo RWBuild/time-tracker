@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Create Client</title>
-</head>
-<body>
+@extends('layout.app')
 
-  <p>This is my form</p>
+
+@section('content')
+<div class=" bg-gray-100 flex flex-col justify-center items-center min-h-screen">
+       
+  <header class="font-bold text-4xl text-center text-gray-700 m-2"> Add Clients </header>
+ 
+
+
+
+
+
   <form action="{{ route('clients.store') }}" method="POST">
     @csrf
     <div class="input-field">
      
-      <input type="text" id="name" name="name"  placeholder="fullname">
+      {{-- <input type="text" id="name" name="name"  placeholder="fullname"> --}}
+
+      <x-input type="text" name='name'  placeholder="fullname"/>
+
       <div class="error">
           @error('name')
           {{ $message }}
@@ -26,8 +31,9 @@
 
   
   <div class="input-field">
+    <x-input type="text" name='code' placeholder="email" />
      
-      <input type="text" id="email" name="code" placeholder="Email">
+    
       <div class="error">
           @error('code')
           {{ $message }}
@@ -39,12 +45,12 @@
   <div class="input-field">
       
       <input type="text" id="address" name="address" placeholder="address">
-      <div class="error">
-          @error('address')
-          {{ $message }}
-      @enderror
 
-      </div>
+      <div class="error">
+        @error('address')
+        {{ $message }}
+    @enderror
+    </div>
     
       
   </div>
@@ -64,13 +70,14 @@
 </div>
 
 
-  <div >
-      <button type="submit" class="" >submit</button>
+  <div class="flex justify-center" >
+      <x-button type="submit"  >submit</x-button>
   </div>
 
 
     
   </form>
 
-</body>
-</html>
+</div>
+
+  @endsection

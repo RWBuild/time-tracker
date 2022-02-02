@@ -1,3 +1,39 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+@layer base{
+   input {
+       
+    @apply w-full rounded-lg m-1 p-3 bg-gray-100
+
+    }
+      /*
+    select{
+        @apply w-full rounded-lg m-1 p-3 bg-gray-100
+    }
+    textarea{
+        @apply w-full rounded-lg m-1 p-3 bg-gray-100
+    } */
+    form{
+        @apply bg-white w-96 p-8 rounded-lg shadow-lg flex flex-col justify-center items-center
+    }
+
+    .button{
+        @apply  inline-flex items-center m-2 px-4 py-2 bg-gray-700 border 
+border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 active:bg-gray-900 
+focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150
+    }
+    .btn-card{
+        @apply font-semibold bg-gray-700 m-2 w-16 p-1 rounded-lg  text-white transition duration-150 ease-in-out 
+        transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300
+    }
+    
+    .error{
+        @apply text-red-600
+    }
+    .card{
+    @apply bg-white  rounded-lg mx-2 shadow-lg border p-6 w-64 flex flex-col justify-center items-center mb-4
+    }
+}

@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Client Edit: {{ $client->name }}</title>
-</head>
-<body>
-  
-<div>
-  {{-- <h2>Edit {{ $client->name }}</h2>
-<p>Name: {{ $client->name }}</p>
-<p>Code: {{ $client->code }}</p>
 
-<p>{{ $client->phone }}</p>
-<p>{{ $client->address }}</p> --}}
+@extends('layout.app')
 
-<p>This is my form</p>
+
+@section('content')  
+<div class=" bg-gray-100 flex flex-col justify-center items-center min-h-screen">
+       
+  <header class="font-bold text-4xl text-center text-gray-700 m-2"> Edit Clients </header>
+
   <form action="{{ route('clients.update', $client->id) }}" method="POST">
+    
     @csrf
     @method('put')
 
@@ -37,7 +28,7 @@
   
     
     <div class="input-field">
-       
+       <label>code</label>
         <input type="text" id="email" name="code" value="{{ $client->code }}">
         <div class="error">
             @error('code')
@@ -48,7 +39,7 @@
         
     </div>
     <div class="input-field">
-        
+      <label>address</label>
         <input type="text" id="address" name="address" value="{{ $client->address }}">
         <div class="error">
             @error('address')
@@ -62,7 +53,7 @@
     
   
   <div class="input-field">
-        
+    <label>phone</label>
     <input type="number" id="address" name="phone" value="{{ $client->phone }}">
     <div class="error">
         @error('phone')
@@ -75,9 +66,11 @@
   </div>
   
   
-    <div >
-        <button type="submit" class="" >submit</button>
-    </div>
+  <div class="flex justify-center" >
+    <button type="submit"  onclick="return confirm('confirm edit')" class="inline-flex items-center m-2 px-4 py-2 bg-gray-700 border 
+    border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 active:bg-gray-900 
+    focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" >submit</button>
+</div>
   
   
       
@@ -87,5 +80,4 @@
 
 </div>
 
-</body>
-</html>
+@endsection

@@ -1,20 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Project: {{ $project->name }}</title>
-</head>
-<body>
-  
-  <div>
-    <h2>Edit {{ $project->name }}</h2>
-    <p>Name: {{ $project->name }}</p>
-    <p>Client: {{ $project->client_id }}</p>
-    <p>{{ $project->budget }}</p>
-    <p>{{ $project->description }}</p>
-  </div>
 
-</body>
-</html>
+
+
+
+@extends('layout.app')
+
+
+@section('content')
+<div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
+       
+  
+  
+  <div class=" bg-white p-4 flex shadow-lg ">
+ 
+
+  {{-- clients details --}}
+
+
+
+  <div class=" flex flex-col justify-center items-center">
+       
+    <div class="p-2 ">
+
+    
+      <div class="border-b-4 px-32 m-2 border-gray-700 p-4">
+    <p class="font-semibold">project: {{ $project->name }}</p>
+    {{-- <p>Client: {{ $project->client_id }}</p> --}}
+      </div>
+    <div class="m-2 text-center">
+
+      <p>{{ $project->budget }}</p>
+    <p>{{ $project->description }}</p>
+ 
+
+    
+</div>
+</div>
+
+
+</div>
+  {{--  --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+@endsection
