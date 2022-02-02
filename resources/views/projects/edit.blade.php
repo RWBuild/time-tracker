@@ -42,7 +42,7 @@
                     <textarea name="description" id="" cols="55" rows="3">{{ $project->description }}</textarea>
                 </div>
                 <div class="txt_field">
-                    <input type="submit" value="Add">
+                    <input type="submit" value="Update">
                 </div>
             </form>
         </div>

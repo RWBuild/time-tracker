@@ -30,13 +30,24 @@
                     </div>
                     <div class="project-table">
                         <table class="clientproject-table">
+                            
+                                <tr>
+                                <td>Project Name</td>
+                                <td>Budget</td>
+                                <td>Action</td>
+                                </tr>
+                            
                             <tbody>
                                 @forelse ($client->projects as $project)
                                     <tr class="project-2">
                                         <td>{{ $project->name }}</td>
+<<<<<<< HEAD
                                         <td>{{ $project->description }}</td>
                                         <td>{{ $project->budget }}<span class="font-bold">rwf</span></td>
 
+=======
+                                        <td>${{ $project->budget }}</td>
+>>>>>>> bdb8717 (update seeders, project views)
                                         <td>
                                             <div class="project-buttons">
                                                 @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
@@ -47,7 +58,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <p>No projects available here yet...</p><br>
+                                    <td>No projects available here yet...</td>
                                 @endforelse
                             </tbody>
                         </table>
