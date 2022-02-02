@@ -32,9 +32,9 @@ class ClientSeeder extends Seeder
         $user1->roles()->attach(Role::IS_USER);
         //Clients
         DB::table('clients')->truncate();
-        $client1 = Client::create(['name' => 'Prince', 'code' => 'RWB101', 'address' => 'Kigali city', 'phone' => '+250788888']);
-        $client2 = Client::create(['name' => 'Philipe', 'code' => 'RWB102', 'address' => 'Kigali city', 'phone' => '+250788888']);
-        $client3 = Client::create(['name' => 'Robert', 'code' => 'RWB103', 'address' => 'Kigali city', 'phone' => '+250788888']);
+        $client1 = Client::factory()->create();
+        $client2 = Client::factory()->create();
+        $client3 = Client::factory()->create();
 
         //Projects
         DB::table('projects')->truncate();
