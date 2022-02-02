@@ -13,6 +13,6 @@
   @empty
       <p>No clients in the database.</p>
   @endforelse
-  
+
 </body>
 </html>
