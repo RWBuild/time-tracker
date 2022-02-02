@@ -8,6 +8,7 @@
             <h1>Add Project</h1>
             @csrf
             <select name="client_id">
+                <option value="">--- Select client ---</option>
                 @foreach ($clients as $client)
                     <option value="{{ $client->id }}">
 
