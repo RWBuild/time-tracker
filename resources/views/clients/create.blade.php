@@ -1,45 +1,38 @@
 @extends('layouts.main')
-@section('content')
-    
 
-<div class="create_client">
-    <h2>Add a Client to Database</h2>
-    <form action="{{ route('clients.store') }}" method="POST">
-        
+
+
+@section('content')
+    <div class="form_page">
+        <form action="{{ route('clients.store') }}" method="POST">
+            <h1>Add client</h1>
             @csrf
-            <div class="all_form">
-            <input type="text" placeholder="Add Name" name="name" />
+            <input type="text" placeholder="Fullname" name="name" />
             @error('name')
-                <div class="message-color">
+                <span class="message-color">
                     {{ $message }}
-                </div>
+                </span>
             @enderror
             <input type="text" placeholder="Add Code" name="code" />
             @error('code')
-                <div class="message-color">
+                <span class="message-color">
                     {{ $message }}
-                </div>
+                </span>
             @enderror
-            <input type="text" placeholder="Add Address" name="address" />
+            <input type="text" placeholder="Address" name="address" />
             @error('address')
-                <div class="message-color">
+                <span class="message-color">
                     {{ $message }}
-                </div>
+                </span>
             @enderror
             <input type="text" placeholder="Phone Number" name="phone" />
             @error('phone')
-                <div class="message-color">
+                <span class="message-color">
                     {{ $message }}
-                </div>
+                </span>
             @enderror
 
-
             <button type="submit"> Submit</button>
-
-
-        </div>
-
-    </form>
-</div>
-
-    @endsection
+        </form>
+    </div>
+@endsection

@@ -1,39 +1,41 @@
 @extends('layouts.main')
+
+
+
 @section('content')
+    <div class="form_page">
 
-    <div>
-        {{-- <h2>Edit {{ $client->name }}</h2>
-        <p>Name: {{ $client->name }}</p>
-        <p>Code: {{ $client->code }}</p>
+        <form action="{{ route('clients.update', $client->id) }}" method="POST">
+            @csrf
+            @method('put')
+            <h1>Edit client</h1>
+            <input type="text" placeholder="Add Name" name="name" value="{{ $client->name }}" />
+            <span>
+                @error('name')
+                    {{ $message }}
+                @enderror
+            </span>
+            <input type="text" placeholder="Add Code" name="code" value="{{ $client->code }}" />
+            <span>
+                @error('code')
+                    {{ $message }}
+                @enderror
+            </span>
+            <input type="text" placeholder="Add Address" name="address" value="{{ $client->address }}" />
+            @error('address')
+                <span>
+                    {{ $message }}
+                </span>
+            @enderror
+            <input type="text" placeholder="Phone Number" name="phone" value="{{ $client->phone }}" />
+            <span>
+                @error('phone')
+                    {{ $message }}
+                @enderror
+            </span>
 
-        <p>{{ $client->phone }}</p>
-        <p>{{ $client->address }}</p> --}}
+            <button type="submit"> Edit</button>
+        </form>
 
-        <div class="edit_client">
-            <h2>Edit {{$client->name}} Information</h2>
-            <form action="{{ route('clients.update', $client->id) }}" method="POST">
-                <div class="all_form">
-                    @csrf
-                    @method('PUT')
-                    
-                    <input type="text" name="name" value="{{ $client->name }}" class="form-control">
-                    <input type="text" name="code" value="{{ $client->code }}" class="form-control">
-                    <input type="text" name="address" value="{{ $client->address }}" class="form-control">
-
-                    <input type="tel" name="phone" value="{{ $client->phone }}" class="form-control">
-                    <button type="submit">Submit</button>
-
-
-
-                </div>
-            </form>
-
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-            @endif
-
-
-        </div>
-
-    @endsection
+    </div>
+@endsection

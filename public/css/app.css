@@ -614,6 +614,9 @@ select {
 .z-50 {
   z-index: 50;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -624,6 +627,30 @@ select {
 .-ml-px {
   margin-left: -1px;
 }
+<<<<<<< HEAD
+=======
+.ml-4 {
+  margin-left: 1rem;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -653,9 +680,6 @@ select {
 }
 .mt-2 {
   margin-top: 0.5rem;
-}
-.mr-2 {
-  margin-right: 0.5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -711,6 +735,18 @@ select {
 .w-5 {
   width: 1.25rem;
 }
+<<<<<<< HEAD
+=======
+.w-11\/12 {
+  width: 91.666667%;
+}
+.w-20 {
+  width: 5rem;
+}
+.w-full {
+  width: 100%;
+}
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 .w-auto {
   width: auto;
 }
@@ -731,6 +767,9 @@ select {
 }
 .w-8 {
   width: 2rem;
+}
+.w-64 {
+  width: 16rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -886,8 +925,13 @@ select {
 .p-2 {
   padding: 0.5rem;
 }
+<<<<<<< HEAD
 .p-6 {
   padding: 1.5rem;
+=======
+.p-5 {
+  padding: 1.25rem;
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 }
 .px-4 {
   padding-left: 1rem;
@@ -946,11 +990,16 @@ select {
 .pt-8 {
   padding-top: 2rem;
 }
+<<<<<<< HEAD
 .pl-3 {
   padding-left: 0.75rem;
 }
 .pr-4 {
   padding-right: 1rem;
+=======
+.pt-5 {
+  padding-top: 1.25rem;
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 }
 .text-center {
   text-align: center;
@@ -970,13 +1019,30 @@ select {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+<<<<<<< HEAD
+=======
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+<<<<<<< HEAD
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+=======
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 }
 .font-medium {
   font-weight: 500;
@@ -1018,7 +1084,15 @@ select {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
+<<<<<<< HEAD
 .text-gray-800 {
+=======
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+.text-indigo-600 {
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
@@ -1129,12 +1203,15 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+:root {
+    --primary-color : rgb(15 23 42)
+}
 .pages {
     background-color: #F3F4F6;
     min-height: 100vh;
 }
 .navbar {
-    background-color: rgb(15 23 42);
+    background-color: var(--primary-color);
     color: #ffffff;
     height: 80px;
     width: 100%;
@@ -1166,61 +1243,54 @@ select {
 .home_page h2 {
     font-size: 30px;
 }
+<<<<<<< HEAD
 .message-color{
     color:red
 }
 .action-delete{
     color:red;
+=======
+/* list of clients */
+.clients_list {
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
+    align-items: center;
 }
-/* 
-table,th,td{
-    border:1px solid rgb(190, 178, 178);
-    border-collapse: collapse;
-    padding: 10px;
-   
+.add_client {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
 }
-.action{
-    display: flex;
-    flex-direction: row;
-}
-.action-view{
-    padding: 5px;
-    color:blue;
-    display: flex;
-    flex-direction:column;
-} */
-.clients_container {
+.clients_table {
     background-color: white;
     height: auto;
-    /* width: 50%; */
     margin: 30px 30px 20px 30px;
-    padding: 20px;
+    padding: 10px;
+    width: 80%;
 }
-.clients_container table {
+.clients_table table {
     border-collapse: collapse;
     background-color: white;
     padding: 20px;
     width: 100%;
 }
-.clients_container table a {
-    color: #009688;
-    margin: 0 10px;
-    
+.clients_table table a {
+    color: #2e87cfd8;
 }
-.clients_container th,td {
-    border: 1px solid rgb(219, 219, 219);
-    padding: 4px 10px;
+.clients_table th,td {
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding: 6px 10px;
 }
-/* tr:nth-child(even){background-color: #f2f2f2;} */
-.clients_container tr:hover {background-color: rgb(245, 245, 245);}
-.clients_container th {
+.clients_table tr:hover {background-color: rgb(245, 245, 245);}
+.clients_table th {
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: left;
     background-color: rgb(245, 245, 245);
     color: black;
+<<<<<<< HEAD
   }
 /* create a client style */
 .create_client{
@@ -1278,6 +1348,69 @@ h2{
     flex-direction: column;
     align-items:center;
 
+=======
+}
+/* add client */
+.form_page {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form_page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.form_page form h1 {
+    font-size: 25px;
+    font-weight: 400;
+    padding: 20px 40px;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+span {
+    color: red;
+}
+.form_page form input,select,textarea {
+    border: 1px solid #9db9f3;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.form_page form input {
+    width: 90%;
+}
+.form_page form select {
+    width: 95%;
+}
+.form_page form textarea {
+    width: 90%;
+    height: 70px;
+}
+.form_page form button {
+    width: 90%;
+    padding: 10px 10px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    margin: 10px 0 30px 0;
+    font-size: 20px;
+}
+.form_page form button:hover {
+    transform: scale(1.06);
+}
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+>>>>>>> 7765123a44a314cb3a4ae976501cd4d3c969d289
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
