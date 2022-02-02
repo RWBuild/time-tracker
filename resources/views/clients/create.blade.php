@@ -6,6 +6,7 @@
     <div class="form_page">
         <form action="{{ route('clients.store') }}" method="POST">
             <h1>Add client</h1>
+            
             @csrf
             <input type="text" placeholder="Fullname" name="name" />
             @error('name')
