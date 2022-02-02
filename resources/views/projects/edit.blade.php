@@ -8,6 +8,7 @@
             @csrf
             @method('put')
             <h1>Edit project</h1>
+          
             <input type="text" placeholder="Add Name" name="name" value="{{ $project->name }}" />
             @error('name')
                 <span>
@@ -26,7 +27,7 @@
                     {{ $message }}
                 </span>
             @enderror
-            <input type="text" placeholder="Phone Number" name="description" value="{{ $project->description }}" />
+            <textarea placeholder="Description" name="description" value="{{ $project->description }}" ></textarea>
             @error('description')
                 <span>
                     {{ $message }}
