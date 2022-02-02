@@ -30,7 +30,13 @@
               </thead>
               <tbody>
                   <tr>
+                    @php
+                        $total = 0;
+                    @endphp
                       @forelse ($project->timeEntries as $timeEntry)
+                        @php
+                            $total += $timeEntry->duration;
+                        @endphp
                           <tr>
                              <td>{{ date('d-m-Y', strtotime($timeEntry->date)) }}</td>
                              <td>{{ $timeEntry->user->name }}</td>
@@ -42,6 +48,13 @@
                       @empty
                           <p>No time entries</p>
                       @endforelse
+                  </tr>
+                  <tr class="bg-gray-200">
+                    <td colspan="4">
+                      <div class="float-right">
+                        <span class="font-semibold">Total Duration: </span> <span class="font-bold">{{  intdiv($total, 60) . ':' . ($total % 60) }}</span>
+                      </div>
+                    </td>
                   </tr>
               </tbody>
           </table>
