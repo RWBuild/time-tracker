@@ -34,3 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::resource('/projects','App\Http\Controllers\ProjectController');
   Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
 });
+
+// layout routes
+
+Route:: get('/welcome',function(){return view('welcome');})-> name('welcome');
