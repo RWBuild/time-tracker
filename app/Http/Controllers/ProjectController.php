@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function create()
     {
       $this->authorize('create', Project::class);
-        $clients = Client::all();
+      $clients = Client::all();
       return view('projects.create',compact('clients'));
     }
 
