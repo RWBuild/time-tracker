@@ -64,8 +64,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+      $clients = Client::all();
+      // return view('clients.index', compact('clients'));
       $this->authorize('update', $project);
-      return view('projects.edit', compact('project'));
+      return view('projects.edit', compact('project','clients'));
     }
 
     /**
