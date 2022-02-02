@@ -7,6 +7,7 @@
             @component('components.card')
                 @slot('content')
                     <h2 class="text-xl">Client</h2>
+                    
                     <hr>
                     <p>{{ $client->name }}</p>
                     <h2 class="text-xl mt-5">Projects</h2>
