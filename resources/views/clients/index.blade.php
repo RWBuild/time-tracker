@@ -14,6 +14,17 @@
     @extends('layouts.navbar')
 
     @section('content')
+        @if (Route::has('login'))
+            @auth
+                @if (Auth::User()->isAdmin())
+                <div class="client-add">
+                    <a href="{{ route('clients.create') }}">Add
+                        a client</a>
+                </div>
+                   
+                @endif
+            @endauth
+        @endif
         <table class="client-table">
             <thead>
                 <tr>
@@ -27,11 +38,11 @@
                         <td>{{ $client->name }}</td>
                         <td>
                             <div class="clients-buttons">
-                                
-                                @if(Auth::User()->isAdmin() || Auth::User()-> isOwner() )
-                                <a href="/clients/{{$client->id}}/edit">Edit</a>
+
+                                @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+                                    <a href="/clients/{{ $client->id }}/edit">Edit</a>
                                 @endif
-                                <a href="/clients/{{$client->id}}">View</a>
+                                <a href="/clients/{{ $client->id }}">View</a>
                             </div>
                         </td>
                     </tr>

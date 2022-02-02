@@ -7,13 +7,18 @@
   <title>Project: {{ $project->name }}</title>
 </head>
 <body>
-  
+  @extends('layouts.navbar')
+
+    @section('content')
+
+    @endsection
   <div>
     <h2>Edit {{ $project->name }}</h2>
     <p>Name: {{ $project->name }}</p>
     <p>Client: {{ $project->client_id }}</p>
     <p>{{ $project->budget }}</p>
     <p>{{ $project->description }}</p>
+    <p>{{ $project->timeEntries }}</p>
   </div>
 
 </body>
