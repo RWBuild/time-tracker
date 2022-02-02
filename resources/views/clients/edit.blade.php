@@ -1,29 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Client Edit: {{ $client->name }}</title>
-</head>
-<body>
-  
-<div>
-  <h2>Edit {{ $client->name }}</h2>
-<p>Name: {{ $client->name }}</p>
-<p>Code: {{ $client->code }}</p>
+@extends('layouts.main')
 
-<p>{{ $client->phone }}</p>
-<p>{{ $client->address }}</p>
 
-<p>This is my form</p>
-  <form action="{{ route('clients.update', $client->id) }}" method="POST">
-    @csrf
-    @method('put')
 
-  </form>
+@section('content')
+    <div class="form_page">
 
-</div>
+        <form action="{{ route('clients.update', $client->id) }}" method="POST">
+            @csrf
+            @method('put')
+            <h1>Edit client</h1>
+            <input type="text" placeholder="Add Name" name="name" value="{{ $client->name }}" />
+            <span>
+                @error('name')
+                    {{ $message }}
+                @enderror
+            </span>
+            <input type="text" placeholder="Add Code" name="code" value="{{ $client->code }}" />
+            <span>
+                @error('code')
+                    {{ $message }}
+                @enderror
+            </span>
+            <input type="text" placeholder="Add Address" name="address" value="{{ $client->address }}" />
+            @error('address')
+                <span>
+                    {{ $message }}
+                </span>
+            @enderror
+            <input type="text" placeholder="Phone Number" name="phone" value="{{ $client->phone }}" />
+            <span>
+                @error('phone')
+                    {{ $message }}
+                @enderror
+            </span>
 
-</body>
-</html>
+            <button type="submit"> Edit</button>
+        </form>
+
+    </div>
+@endsection
