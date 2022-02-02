@@ -77,7 +77,7 @@ class ClientController extends Controller
     {
         $this->authorize('update', $client);
         $client->update($request->validated());
-        return redirect()->route('clients.index')->with('success', 'Client updated successsfully');;
+        return redirect()->route('clients.index')->with('success', 'Client updated successsfully');
     }
 
     /**
@@ -90,6 +90,6 @@ class ClientController extends Controller
     {
         $this->authorize('delete', $client);
         $client->delete();
-        return redirect()->route('clients.index')->with('success', 'Client deleted successsfully');;
+        return redirect()->route('clients.index')->with('success', 'Client deleted successsfully');
     }
 }
