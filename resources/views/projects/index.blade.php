@@ -13,6 +13,6 @@
   @empty
       <p>No projects in the database.</p>
   @endforelse
-  
+
 </body>
 </html>

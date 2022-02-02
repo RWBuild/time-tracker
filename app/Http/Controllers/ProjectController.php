@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 
@@ -15,8 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::all();
-      return view('projects.index',compact('projects'));
+      $projectsWithClients = Client::all();
+      return view('projects.index',compact('projectsWithClients'));
     }
 
     /**
@@ -40,6 +41,7 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+      return redirect()->back()->with('project-message-true', 'projects created successfully');
     }
 
     /**
@@ -76,6 +78,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
+      return redirect()->route('projects.edit', $project->id)->with('project-message-true', 'project updated successfully');
     }
 
     /**
@@ -88,5 +91,6 @@ class ProjectController extends Controller
     {
       $this->authorize('delete', $project);
       $project->delete();
+      return redirect()->back()->with('project-message-true', 'project deleted successfully');
     }
 }

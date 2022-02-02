@@ -33,7 +33,7 @@ class ProjectTest extends TestCase
       'budget' => 10000.14,
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(Project::all()->count() == 1);
   }
 
@@ -58,7 +58,7 @@ class ProjectTest extends TestCase
       'description' => 'This is a description',
       'budget' => 10000.14,
     ]);
-  
+
     $this->assertTrue(Project::all()->count() == 0);
   }
 
@@ -74,8 +74,8 @@ class ProjectTest extends TestCase
       'client_id' => $project->client_id,
       'name' => 'ABC Project Updated',
     ]);
-    
-    $response->assertStatus(200);
+
+    $response->assertStatus(302);
     $this->assertDatabaseHas('projects',['name' => 'ABC Project Updated']);
   }
 
@@ -91,7 +91,7 @@ class ProjectTest extends TestCase
       'client_id' => $project->client_id,
       'name' => 'ABC Project Updated',
     ]);
-    
+
     $response->assertStatus(403);
     $this->assertDatabaseHas('projects',['name' => 'ABC Project']);
   }
@@ -138,7 +138,7 @@ class ProjectTest extends TestCase
     $project = Project::factory()->forClient()->create();
     $this->assertTrue(Project::all()->count() == 1);
     $response = $this->actingAs($this->user)->delete('/projects/'.$project->id);
-    
+
     $response->assertStatus(403);
     $this->assertTrue(Project::all()->count() == 1);
   }

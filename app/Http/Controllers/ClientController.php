@@ -40,6 +40,7 @@ class ClientController extends Controller
     {
       $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
+      return redirect()->back()->with('client-message-true', 'client created successfully');
     }
 
     /**
@@ -76,8 +77,9 @@ class ClientController extends Controller
     {
       $this->authorize('update', $client);
       $client->update($request->validated());
+      return redirect()->route('clients.edit', $client->id)->with('client-message-true', 'client updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -88,5 +90,6 @@ class ClientController extends Controller
     {
       $this->authorize('delete', $client);
       $client->delete();
+      return redirect()->back()->with('client-message-true', 'client deleted successfully');
     }
 }

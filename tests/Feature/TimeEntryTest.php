@@ -32,7 +32,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
   }
 
@@ -45,7 +45,7 @@ class TimeEntryTest extends TestCase
       'duration' => 'abc',
       'date' => Date('Y-m-d'),
     ]);
-    
+
     $this->assertTrue(TimeEntry::all()->count() == 0);
     $response->assertStatus(302);
     $response->assertSessionHasErrors();
@@ -60,7 +60,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
     $this->assertDatabaseHas('time_entries',['duration' => 90]);
   }
@@ -74,7 +74,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
     $this->assertDatabaseHas('time_entries',['duration' => 90]);
   }
@@ -84,10 +84,10 @@ class TimeEntryTest extends TestCase
     $timeEntry = TimeEntry::factory()->create([
       'duration' => '1.5',
     ]);
-    
+
     $this->assertTrue(TimeEntry::all()->count() == 1);
     $this->assertDatabaseHas('time_entries',['duration' => 90]);
-    
+
     $response = $this->actingAs($this->user)->put('/time-entries/'.$timeEntry->id,[
       'project_id' => $timeEntry->project_id,
       'task_id' => $timeEntry->task_id,
