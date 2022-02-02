@@ -17,7 +17,7 @@
 												@forelse ($clients as $client)
 
 																<div>
-																				<p class="font-bold text-xl">{{ $client->name }}</p>
+																				<p class="font-bold text-xl m-2"> Client : {{ $client->name }}</p>
 																</div>
 
 
@@ -47,7 +47,9 @@
 																												</td>
 																								</tr>
 																				@empty
-																								<p>No projects in the database.</p>
+																								<div class="bg-white p-10 text-center">
+																												<p class="bg-red-100">No projects assigned to this client</p>
+																								</div>
 
 																				@endforelse
 

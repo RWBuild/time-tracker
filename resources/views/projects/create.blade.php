@@ -10,11 +10,13 @@
 												@method('post')
 												<div class="input-field">
 																<x-label>Client</x-label>
-																<select name="client_id">
+																<select name="client_id"
+																				class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 w-64
+focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
 
 
 																				@foreach ($clients as $client)
-
+																								<option>Select Client..</option>
 																								<option value="{{ $client->id }} ">{{ $client->name }} </option>
 
 																				@endforeach
@@ -36,7 +38,7 @@
 
 												<div class="input-field">
 																<x-label> Project name</x-label>
-																<input type="text" id="" name="name">
+																<x-input type="text" id="" name="name" placeholder="Project Name"></x-input>
 
 																<div class="error">
 																				@error('name')
@@ -51,7 +53,7 @@
 
 												<div class="input-field">
 																<x-label>Budget</x-label>
-																<input type="text" id="budget" name="budget">
+																<x-input type="text" id="budget" name="budget" placeholder="Budget"></x-input>
 																<div class="error">
 																				@error('budget')
 																								{{ $message }}
@@ -64,7 +66,9 @@
 																<div class="input-field">
 																				<x-label>description</x-label>
 
-																				<textarea id="description" name="description"></textarea>
+																				<textarea id="description" name="description" placeholder="description"
+																								class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 
+                                     focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-64"></textarea>
 
 																				<div class="error">
 																								@error('description')
@@ -86,6 +90,7 @@
 
 								</form>
 
+				</div>
 				</div>
 
 @endsection

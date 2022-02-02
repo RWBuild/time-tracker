@@ -12,7 +12,7 @@
 
 												<div class="input-field">
 																<x-label> Project name</x-label>
-																<input type="text" id="clientid" name="name" value="{{ $project->name }}">
+																<x-input type="text" id="clientid" name="name" value="{{ $project->name }}"></x-input>
 
 																<div class="error">
 																				@error('name')
@@ -27,7 +27,7 @@
 
 												<div class="input-field">
 																<x-label>Budget</x-label>
-																<input type="text" id="budget" name="budget" value="{{ $project->budget }}">
+																<x-input type="text" id="budget" name="budget" value="{{ $project->budget }}"></x-input>
 																<div class="error">
 																				@error('budget')
 																								{{ $message }}
@@ -36,7 +36,9 @@
 												</div>
 												<div class="input-field">
 																<x-label>Client</x-label>
-																<select name="client_id">
+																<select name="client_id"
+																				class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 
+                                                                            focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-64">
 
 
 																				@foreach ($clients as $client)
@@ -65,6 +67,8 @@
 																<x-label>description</x-label>
 
 																<textarea id="description" name="description"
+																				class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 
+                                     focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-64"
 																				value="{{ $project->description }}">{{ $project->description }}</textarea>
 
 																<div class="error">
