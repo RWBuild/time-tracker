@@ -19,7 +19,7 @@ class TimeEntrySeeder extends Seeder
         DB::table('time_entries')->truncate();
         $projects = Project::all();
         foreach( $projects as $project){
-            TimeEntry::factory(3)->create(['project_id' =>$project->id]);
+            TimeEntry::factory(3)->for($project)->create();
         }
         
     }
