@@ -10,7 +10,9 @@
         <div class="py-2 flex items-center justify-between">
           <h3 class="text-2xl font-bold text-primary">{{ $client->name }}</h3>
         <div>
-          <a href="#" class="btn btn-sm">Edit</a>
+          @if (Auth::user()->isAdmin() || Auth::user()->isOwner())
+          <a href="{{ route('clients.edit',$client) }}" class="btn btn-sm">Edit</a>
+          @endif
         </div>
         </div>
 
