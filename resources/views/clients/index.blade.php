@@ -15,7 +15,16 @@
             {{ session('success') }}
         </div>
     @endif
-    <table class="min-w-full divide-y divide-primary">
+    @if (Auth::user()->isAdmin() || Auth::user()->isOwner())
+    <div class="py-4">
+      <a href="{{ route('clients.create') }}" class="btn btn-sm">
+        <div class="flex items-center">
+          <i class="ri-add-line text-2xl"></i> <span>Add Client</span>
+        </div>
+      </a>
+    </div>
+    @endif
+    <table class="min-w-full">
         <thead>
           <tr>
             <th>Name</th>
@@ -43,15 +52,7 @@
         </tbody>
     </table>
     
-    @if (Auth::user()->isAdmin() || Auth::user()->isOwner())
-    <div class="py-4">
-      <a href="{{ route('clients.create') }}" class="btn btn-sm">
-        <div class="flex items-center">
-          <i class="ri-add-line text-2xl"></i> <span>Add Client</span>
-        </div>
-      </a>
-    </div>
-    @endif
+
 
   </div>
 </div>

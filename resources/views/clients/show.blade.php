@@ -20,7 +20,7 @@
         <h4 class="text-lg font-semibold">Address : {{ $client->address }}</h4>
         <h4 class="text-lg font-semibold">Projects: </h4>
         <div class="py-4">
-          <table class="min-w-full divide-y divide-primary">
+          <table class="min-w-full">
             <thead>
               <tr>
                 <th>Project</th>
