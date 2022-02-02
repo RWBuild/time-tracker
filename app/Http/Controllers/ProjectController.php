@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 
@@ -15,7 +16,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::all();
+      $projects = Project::where(function ($query) {
+        $query->select('name')
+            ->from('clients')
+            ->whereColumn('projects.id', 'projects.client_id');
+    },)->get();
+
+
+      //$projects = Project::all();
       return view('projects.index',compact('projects'));
     }
 

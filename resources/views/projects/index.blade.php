@@ -16,7 +16,8 @@
         <table class="client-table">
             <thead>
                 <tr>
-                    <th>Projects names</th>
+                  <th>Projects names</th>
+                  <th>Client ID</th>
                     <th>Description</th>
                     <th>Header</th>
                 </tr>
@@ -25,6 +26,7 @@
                 @forelse ($projects as $project)
                     <tr class="active-row">
                         <td>{{ $project->name }}</td>
+                        <td>{{ $project->client_id }}</td>
                         <td>{{ $project->description }}</td>
                         <td>${{ $project->budget }}</td>
                     </tr>
