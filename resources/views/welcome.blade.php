@@ -9,6 +9,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
 </head>
 
 <body class="antialiased">
@@ -20,8 +21,9 @@
         <div>
             <img src="{{URL::to('/assets/img/img1.png')}}" alt="img" class="w-9/12 px-10">
         </div>
-        <div>
-            <h1 class="text-3xl absolute top-2/4 right-96">Time Tracking<span>Web</span></h1>
+        <div class="intro-text">
+            <h1>Time Tracking</h1>
+            <p><q>Plan better with us!!</q></p>
         </div>
     </div>
     
