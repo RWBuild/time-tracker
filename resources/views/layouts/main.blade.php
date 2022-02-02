@@ -21,7 +21,9 @@
     <div class="pages">
         <div class="navbar">
             <div>
-                <h1>Time tracker</h1>
+                <a href="/">
+                    <h1>Time tracker</h1>
+                </a>
             </div>
             <div>
                 <a href="/clients">Clients</a>
