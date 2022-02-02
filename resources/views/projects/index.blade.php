@@ -23,7 +23,8 @@
 
     @endforelse
     <a href="projects/create">Create Project</a>
-    <a href="projects/{{{ $project->id }}}/edit">Create Project</a>
+    ggg
+    <a href="projects/{{{ $project->id }}}/edit">edit</a>
 
 
 
