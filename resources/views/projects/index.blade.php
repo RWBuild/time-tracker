@@ -1,27 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-
-    @forelse ($clients->$projects as $company)
-        <p>{{ $company->name }}</p>
-        @forelse ($projects as $project)
-            <p>{{ $project->name }} {{ $project->budget }}</p>
-        @empty
-            <p>No projects in the database.</p>
-        @endforelse
-    @empty
-        <p>No company saved yet</p>
-    @endforelse
+@extends('layouts.main')
 
 
-</body>
-
-</html>
+@section('content')
+    <div class="flex flex-wrap w-11/12 mx-auto">
+        @forelse ($clients as $client)
+            @component('components.card')
+                @slot('content')
+                    <h2 class="text-xl">Client</h2>
+                    <hr>
+                    <p>{{ $client->name }}</p>
+                    <h2 class="text-xl mt-5">Projects</h2>
+                    <hr>
+                    <table>
+                        @forelse ($client->projects as $project)
+                            <tr class="border-none">
+                                <td>
+                                    <p>{{ $project->name }} {{ $project->budget }}</p>
+                                </td>
+                                <td>
+                                    <a class="ml-5 text-blue-600" href="/projects/{{ $project->id }}">View</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <p>No projects in the database.</p>
+                        @endforelse
+                    </table>
+                    <a class="text-blue-600" href="/projects/create">Add project</a>
+                @endslot
+            @endcomponent
+            @empty
+                <p>No company saved yet</p>
+            @endforelse
+        </div>
+    @endsection
