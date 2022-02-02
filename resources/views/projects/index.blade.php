@@ -23,22 +23,32 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($projects as $project)
-                    <tr class="active-row">
-                        <td>{{ $project->name }}</td>
-                        <td>{{ $project->client_id }}</td>
-                        <td>{{ $project->description }}</td>
-                        <td>${{ $project->budget }}</td>
-                    </tr>
-                @empty
-                    <p>No projects in the database.</p>
-                @endforelse
+                
             </tbody>
         </table>
+
+        @forelse ($clientWithProject as $client)
+                    <tr class="active-row">
+                        <td>{{ $client->name }}</td>
+                    </tr>
+                    <h3>{{ $client->name }} projects</h3>
+                    <div style="margin-left: 30px">
+                      
+                      @forelse ($client->projects as $project)
+                          <tr>
+                            <td>{{ $project->name }}</td>
+                            <td>{{ $project->description }}</td>
+                            <td>{{ $project->budget }}</td>
+                          </tr>
+                          <br>
+                      @empty
+                        <p>No projects in the database.</p>
+                      @endforelse
+                    </div>
+                @empty
+                      <p>No projects in the database.</p>
+                @endforelse
     @endsection
-
-    <p> </p>
-
 
 </body>
 

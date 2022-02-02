@@ -28,6 +28,7 @@ class ClientController extends Controller
     {
       $this->authorize('create', Client::class);
       return view('clients.create');
+      
     }
 
     /**
@@ -40,6 +41,9 @@ class ClientController extends Controller
     {
       $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
+      //return redirect()->route('clients.index')->with('success','Client saved successfully!');
+      return redirect()->route('clients.index')->with('message', 'Client saved successfully!');
+      
     }
 
     /**
@@ -76,6 +80,7 @@ class ClientController extends Controller
     {
       $this->authorize('update', $client);
       $client->update($request->validated());
+      return redirect()->route('clients.index')->with('message', 'Client Updated successfully!');
     }
     
     /**
@@ -88,5 +93,7 @@ class ClientController extends Controller
     {
       $this->authorize('delete', $client);
       $client->delete();
+      return redirect()->route('clients.index')->with('message', 'Client Deleted successfully!');
+
     }
 }

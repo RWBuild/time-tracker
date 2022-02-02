@@ -16,15 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-      $projects = Project::where(function ($query) {
-        $query->select('name')
-            ->from('clients')
-            ->whereColumn('projects.id', 'projects.client_id');
-    },)->get();
-
-
-      //$projects = Project::all();
-      return view('projects.index',compact('projects'));
+      $clientWithProject = Client::all();
+      return view('projects.index',compact('clientWithProject'));
+      
     }
 
     /**
@@ -48,6 +42,7 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+      return redirect()->route('projects.index')->with('message', 'Project Updated successfully!');
     }
 
     /**
@@ -84,6 +79,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
+      return redirect()->route('projects.index')->with('message', 'Project Updated successfully!');
     }
 
     /**
@@ -96,5 +92,7 @@ class ProjectController extends Controller
     {
       $this->authorize('delete', $project);
       $project->delete();
+      return redirect()->route('projects.index')->with('message', 'Project Updated successfully!');
+
     }
 }

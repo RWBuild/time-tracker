@@ -11,18 +11,28 @@
 </head>
 
 <body>
+    
     @extends('layouts.navbar')
 
     @section('content')
         <table class="client-table">
             <thead>
+                <tr><td colspan="2" class="active-row"><center>
+                    @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+            </center></td></tr>
                 <tr>
-                    <th>Clients names</th>
-                    <th></th>
+                    <th colspan="2">Clients names</th>
+                    
                 </tr>
+                
             </thead>
             <tbody>
                 @forelse ($clients as $client)
+               
                     <tr class="active-row">
                         <td>{{ $client->name }}</td>
                         <td>
