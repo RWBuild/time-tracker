@@ -5,8 +5,17 @@
 @section('content')
 @include('includes.main-nav')
 <div class="wrapper">
+  <div class="mb-2">
+    <h3 class="text-2xl font-bold text-primary">Clients</h3>
+    <p>list of clients</p>
+   </div>
   <div class="card">
-    <table class="w-full main-table">
+    @if (session('success'))
+        <div class="alert bg-green-500">
+            {{ session('success') }}
+        </div>
+    @endif
+    <table class="min-w-full divide-y divide-primary">
         <thead>
           <tr>
             <th>Name</th>

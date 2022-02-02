@@ -8,17 +8,17 @@
     <div class="card">
         
         <div class="py-2 flex items-center justify-between">
-          <h3>{{ $client->name }}</h3>
+          <h3 class="text-2xl font-bold text-primary">{{ $client->name }}</h3>
         <div>
           <a href="#" class="btn btn-sm">Edit</a>
         </div>
         </div>
 
-        <h4>Code : {{ $client->code }}</h4>
-        <h4>Address : {{ $client->address }}</h4>
-        <h4>Projects: </h4>
+        <h4 class="text-lg font-semibold" >Code : {{ $client->code }}</h4>
+        <h4 class="text-lg font-semibold">Address : {{ $client->address }}</h4>
+        <h4 class="text-lg font-semibold">Projects: </h4>
         <div class="py-4">
-          <table class="w-full table">
+          <table class="min-w-full divide-y divide-primary">
             <thead>
               <tr>
                 <th>Project</th>

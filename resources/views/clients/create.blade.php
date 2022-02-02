@@ -7,43 +7,31 @@
 
 <div class="wrapper">
   <div class="card">
-    <p>This is my form</p>
+   <div class="mb-2">
+    <h3 class="text-2xl font-bold text-primary">Create Client,</h3>
+    <p>fill out form fields</p>
+   </div>
+   <div class="py-1">
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+   </div>
   <form action="{{ route('clients.store') }}" method="POST">
     @csrf
-    <div class="py-2 flex space-x-2 items-center">
-      <div>
-        <x-input label="Name *" id='name' placeholder='name' name='name' />
-        {{-- <label for="name">Name *</label>
-        <input type="text" name="name" id="name"
-        class=" @error('name')
-          border border-red-500
-        @enderror "
-        >
-        @error('name')
-          <pre class="text-red-500">{{ $message }}</pre>
-        @enderror --}}
-      </div>
-      <div>
-        <label for="code">Code *</label>
-        <input type="text" name="code" id="code"
-        class=" @error('code')
-        border border-red-500
-      @enderror "
-        >
-        @error('code')
-          <pre class="text-red-500">{{ $message }}</pre>
-        @enderror
-      </div>
+    <div class="py-2">
+        <x-label>Name *</x-label>
+        <x-main-input name='name' type='text' placeholder='Name...'/>
     </div>
-    <div class="py-2 flex space-x-2 items-center">
-      <div>
-        <label for="address">Address (optional)</label>
-        <textarea name="address" id="address" cols="30" rows="10"></textarea>
-      </div>
-      <div>
-        <label for="phone">Phone</label>
-        <input type="tel" name="phone" id="phone">
-      </div>
+    <div class="py-2">
+        <x-label>Code *</x-label>
+        <x-main-input  name='code' type='text' placeholder='code...' />
+    </div>
+    <div class="py-2">
+     
+       <x-label>Address (optional)</x-label>
+       <x-textarea name='address' />
+    </div>
+    <div class="py-2">
+      <x-label>Phone</x-label>
+      <x-main-input  name='phone' type='tel' placeholder='telephone...' />
     </div>
     <div>
       <button type="submit" class="btn">create client</button>

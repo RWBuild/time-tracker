@@ -19,12 +19,12 @@
         @apply bg-white py-6 px-7 rounded-md shadow-sm;
     }
 
-    .main-table {
-        @apply border-collapse;
+    .form-input {
+        @apply w-full rounded-lg shadow-sm border-primary focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
     }
 
-    .main-table tr {
-        @apply py-4 px-3 shadow rounded;
+    .alert {
+        @apply py-2 px-3 w-full rounded my-1 font-bold;
     }
 }
 
