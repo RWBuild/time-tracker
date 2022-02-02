@@ -1,18 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
+@if (session('success'))
+@component('components.card')
+    @slot('content')
+        <p class="text-green-600">{{ session('success') }}</p>
+    @endslot
+@endcomponent
+@endif
 
-  @forelse ($projects as $project)
-      <p>{{ $project->name }} {{ $project->budget }}</p>
-  @empty
-      <p>No projects in the database.</p>
-  @endforelse
-  
-</body>
-</html>
+    @forelse ($clients as $client)
+        <p>{{ $client->name }} </p>
+        @forelse($client->projects as $project)
+            <p>{{ $project->name }}</p>
+            <a href="projects/create">Create Project</a>
+
+
+        @empty
+            <p>No projects in the database.</p>
+        @endforelse
+        @empty
+        <p>No clients in the database.</p>
+
+    @endforelse
+    <a href="projects/create">Create Project</a>
+    <a href="projects/{{{ $project->id }}}/edit">Create Project</a>
+
+
+
+@endsection
