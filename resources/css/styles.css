@@ -1,6 +1,6 @@
 .pages {
     background-color: #F3F4F6;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -43,16 +43,7 @@
     font-size: 30px;
 }
 
-.content-children{
-    /* min-height:70vh; */
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    width:100%;
-  
- 
-}
+
 .message-color{
     color:red
 }
@@ -116,3 +107,63 @@ table,th,td{
     background-color: rgb(245, 245, 245);
     color: black;
   }
+ /* create a client style */
+
+
+
+ .create_client{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+   
+ }
+ h2{
+    text-align: center;
+    font-family: Roboto Slab;
+    font-size:34px;
+    padding: 25px;
+    color:#0f172a;
+
+}
+ .all_form{
+    
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width:600px;
+    margin: 30px;
+    padding:20px;
+    box-shadow: 5px 0px 10px 8px #8888;
+
+ }
+ .all_form input,textarea,select {
+    width: 80%;
+    padding: 12px;
+    display: inline-block;
+    margin: 8px 0;
+    padding: 12px 20px;
+    border: 1px solid #0f172a;
+    border-radius: 5px;
+  }
+  .all_form button{
+    padding:12px;
+    font-size: 16px;
+    border-radius:5px;
+    border:2px solid #0f172a;
+    width: 150px;
+}
+.all_form button:hover{
+ 
+  background-color:#0f172a;
+  width: 150px;
+  color:white;
+}
+/* edit client page style */
+.edit_client{
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+}

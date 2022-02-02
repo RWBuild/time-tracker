@@ -15,7 +15,7 @@
 <p>{{ $client->phone }}</p>
 <p>{{ $client->address }}</p>
 
-</div>
+</div>m ,
 
 </body>
 </html>

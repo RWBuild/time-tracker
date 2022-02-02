@@ -1,29 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Client Edit: {{ $client->name }}</title>
-</head>
-<body>
-  
-<div>
-  <h2>Edit {{ $client->name }}</h2>
-<p>Name: {{ $client->name }}</p>
-<p>Code: {{ $client->code }}</p>
+@extends('layouts.main')
+@section('content')
 
-<p>{{ $client->phone }}</p>
-<p>{{ $client->address }}</p>
+    <div>
+        {{-- <h2>Edit {{ $client->name }}</h2>
+        <p>Name: {{ $client->name }}</p>
+        <p>Code: {{ $client->code }}</p>
 
-<p>This is my form</p>
-  <form action="{{ route('clients.update', $client->id) }}" method="POST">
-    @csrf
-    @method('put')
+        <p>{{ $client->phone }}</p>
+        <p>{{ $client->address }}</p> --}}
 
-  </form>
+        <div class="edit_client">
+            <h2>Edit {{$client->name}} Information</h2>
+            <form action="{{ route('clients.update', $client->id) }}" method="POST">
+                <div class="all_form">
+                    @csrf
+                    @method('PUT')
+                    
+                    <input type="text" name="name" value="{{ $client->name }}" class="form-control">
+                    <input type="text" name="code" value="{{ $client->code }}" class="form-control">
+                    <input type="text" name="address" value="{{ $client->address }}" class="form-control">
 
-</div>
+                    <input type="tel" name="phone" value="{{ $client->phone }}" class="form-control">
+                    <button type="submit">Submit</button>
 
-</body>
-</html>
+
+
+                </div>
+            </form>
+
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+            @endif
+
+
+        </div>
+
+    @endsection
