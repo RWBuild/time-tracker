@@ -60,6 +60,7 @@
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 .clients_table {
@@ -151,8 +152,8 @@ span {
 }
 
 .form_page form button {
-    width: 90%;
-    padding: 10px 10px;
+    width: 40%;
+    padding: 6px 10px;
     background-color: var(--primary-color);
     color: #ffffff;
     border-radius: 5px;

@@ -1,31 +1,36 @@
 @extends('layouts.main')
+
+
 @section('content')
-@if (session('success'))
-@component('components.card')
-    @slot('content')
-        <p class="text-green-600">{{ session('success') }}</p>
-    @endslot
-@endcomponent
-@endif
-
-    @forelse ($clients as $client)
-        <p>{{ $client->name }} </p>
-        @forelse($client->projects as $project)
-            <p>{{ $project->name }}</p>
-            <a href="projects/create">Create Project</a>
-
-
-        @empty
-            <p>No projects in the database.</p>
-        @endforelse
-        @empty
-        <p>No clients in the database.</p>
-
-    @endforelse
-    <a href="projects/create">Create Project</a>
-    ggg
-    <a href="projects/{{{ $project->id }}}/edit">edit</a>
-
-
-
-@endsection
+    <div class="flex flex-wrap w-11/12 mx-auto">
+        @forelse ($clients as $client)
+            @component('components.card')
+                @slot('content')
+                    <h2 class="text-xl">Client</h2>
+                    
+                    <hr>
+                    <p>{{ $client->name }}</p>
+                    <h2 class="text-xl mt-5">Projects</h2>
+                    <hr>
+                    <table>
+                        @forelse ($client->projects as $project)
+                            <tr class="border-none">
+                                <td>
+                                    <p>{{ $project->name }} {{ $project->budget }}</p>
+                                </td>
+                                <td>
+                                    <a class="ml-5 text-blue-600" href="/projects/{{ $project->id }}">View</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <p>No projects in the database.</p>
+                        @endforelse
+                    </table>
+                    <a class="text-blue-600" href="/projects/create">Add project</a>
+                @endslot
+            @endcomponent
+            @empty
+                <p>No company saved yet</p>
+            @endforelse
+        </div>
+    @endsection

@@ -66,7 +66,9 @@
                     @endforeach
             </table>
         </div>
-        <a class="add_client" href="/clients/create">Add Clients</a>
+        @if (Auth::User()->isAdmin())
+            <a class="add_client" href="/clients/create">Add Clients</a>
+        @endif
 
     </div>
 @endsection
