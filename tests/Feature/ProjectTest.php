@@ -33,7 +33,7 @@ class ProjectTest extends TestCase
       'budget' => 10000.14,
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(Project::all()->count() == 1);
   }
 
@@ -75,7 +75,7 @@ class ProjectTest extends TestCase
       'name' => 'ABC Project Updated',
     ]);
     
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertDatabaseHas('projects',['name' => 'ABC Project Updated']);
   }
 

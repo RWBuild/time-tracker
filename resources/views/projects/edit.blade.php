@@ -4,18 +4,18 @@
 @section('content')
     <div class="form_page">
 
-        <form action="" method="POST">
+        <form action="{{ route('projects.update', $project->id) }}" method="POST">
             @csrf
             @method('put')
             <h1>Edit project</h1>
-          
-            <input type="text" placeholder="Add Name" name="name" value="{{ $project->name }}" />
+
+            <input type="text" placeholder="Project name" name="name" value="{{ $project->name }}" />
             @error('name')
                 <span>
                     {{ $message }}
                 </span>
             @enderror
-            <input type="text" placeholder="Add Code" name="client_id" value="{{ $project->client_id }}" />
+            <input type="text" placeholder="Client" name="client_id" value="{{ $project->client_id }}" />
             @error('client_id')
                 <span>
                     {{ $message }}
@@ -27,7 +27,7 @@
                     {{ $message }}
                 </span>
             @enderror
-            <textarea placeholder="Description" name="description" value="{{ $project->description }}" ></textarea>
+            <textarea placeholder="Description" name="description">{{ $project->description }}</textarea>
             @error('description')
                 <span>
                     {{ $message }}
