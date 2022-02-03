@@ -36,7 +36,7 @@
                             <tr class="border-b-2">
 
                                 <th>Date</th>
-                                <th>Person</th>
+                                <!-- <th>Person</th> -->
                                 <th>Task</th>
                                 <th>Duration</th>
                             </tr>
@@ -48,8 +48,6 @@
 
                                 <tr class="border-b-2">
                                     <td>{{ $timeEntry->date }}</td>
-
-                                    <td>{{ $timeEntry->user->name }}</td>
 
                                     <td>{{ $timeEntry->task->name }}</td>
 
