@@ -23,7 +23,7 @@
 																class="text-md text-white dark:text-gray-500  m-2  no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white ">Clients</a>
 												<a href="/projects"
 																class="text-md text-white dark:text-gray-500  m-2 no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white">Projects</a>
-												<a href="/"
+												<a href="/time-entries"
 																class="text-md text-white dark:text-gray-500 no-underline m-2 hover:bg-gray-400 p-2 rounded-lg active:bg-white">Time
 																Entry</a>
 								</div>

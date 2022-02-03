@@ -16,8 +16,11 @@
     textarea{
         @apply w-full rounded-lg m-1 p-3 bg-gray-100
     } */
-    form{
+    .form_container{
         @apply bg-white w-96 p-8 rounded-lg shadow-lg flex flex-col justify-center items-center m-3
+    }
+    .form{
+      @apply  bg-white  rounded-lg shadow-lg flex  
     }
 
    

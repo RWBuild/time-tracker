@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
+use App\Models\Client;
+use App\Models\Task;
+use Carbon\Carbon;
 
 class TimeEntryController extends Controller
 {
@@ -13,10 +16,18 @@ class TimeEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $timeEntries = TimeEntry::all();
-      return view('time-entries.index',compact('timeEntries'));
+      $today =Carbon::now()->format('Y-m-d');
+      $filteredTimeEntries =TimeEntry::where('date',$request->query('date'))->get();
+
+      $currentTimeEntries = TimeEntry::where('date', Carbon::today())->get();
+      $tasks =Task::all();
+      $clients = Client::all();
+
+      return view('time-entries.index', compact('currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+
+
     }
 
     /**

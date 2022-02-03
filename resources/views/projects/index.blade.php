@@ -12,6 +12,9 @@
 
             @forelse ($clients as $client)
 
+
+
+
                 <div>
                     <p class="font-bold text-xl m-2"> Client : {{ $client->name }}</p>
                 </div>
@@ -53,6 +56,7 @@
 
                 <div>
                     @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+                    
 
                         <button class="button mb-8 w-32"> <a href="/projects/create" class="">Add
                                 Project</a></button>
