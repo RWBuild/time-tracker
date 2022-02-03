@@ -8,7 +8,6 @@
     <title>Time tracker</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    {{-- <link rel="stylesheet" href="{{mix('/css/styles.css')}}"> --}}
 </head>
 
 <body>
@@ -21,7 +20,9 @@
     <div class="pages">
         <div class="navbar">
             <div>
-                <a href="/"><h1>Time tracker</h1></a>
+                <a href="/">
+                    <h1>Time tracker</h1>
+                </a>
             </div>
             <div>
                 <a href="/clients">Clients</a>
