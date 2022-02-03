@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
-use App\Http\Requests\Task;
-use App\Http\Requests\Client;
+use App\Models\Task;
+use App\Models\Client;
+use App\Models\Project;
+use Carbon\Carbon;
+
 
 class TimeEntryController extends Controller
 {
@@ -15,13 +18,19 @@ class TimeEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $timeEntries = TimeEntry::all();
+      $today=Carbon::now()->format('Y-m-d');
+
+      $timeEntries = TimeEntry::where('date',$today)->get();
+      $entriesByDate= TimeEntry::where('date',$request->query('date'))->get();
       $tasks = Task::all();
       $clients = Client::all();
-      return view('time-entries.index',compact('timeEntries','tasks','clients'));
+      $projects = Project::all();
+      return view('time-entries.index',compact('timeEntries','tasks','clients','projects','entriesByDate'));
+      
     }
+    
 
     /**
      * Show the form for creating a new resource.
