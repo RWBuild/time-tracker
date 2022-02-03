@@ -12,14 +12,14 @@
 																<div class="  flex  	flex-col">
 																				<div class=" flex justify-center -mt-32 ">
 																								<span class="flex  	flex-row ">
-																												<h1 class="font-bold leading-6 text-3xl z-10 relative">15</h1>
+																												<h1 class="font-bold leading-6 text-3xl z-10 relative line-through ">15</h1>
 																												<span class="ml-2 z-10 relative">
 																																<p>Projects </p>
 																																<p>In Our Hand</p>
 																												</span>
 																								</span>
 																								<span class="flex  	flex-row md:ml-12 sm:ml-0">
-																												<h1 class="font-bold leading-6 text-3xl z-10 relative">2M</h1>
+																												<h1 class="font-bold leading-6 text-3xl z-10 relative line-through ">2M</h1>
 
 																												<span class="ml-2">
 																																<p>Clients </p>
@@ -36,7 +36,7 @@
 																								</h1>
 
 
-																								<p class="  text-center relative z-10 p-24 -mb-24">
+																								<p class="  text-center relative z-10 p-24 -mb-64">
 																												Know exactly where you allocate time with global and manual tracking from your desktop, mobile,
 																												or Chrome browser. Start and stop time, jump
 																												between tasks, and add details on how time was spent
@@ -52,7 +52,7 @@
 
 																<div class=" bg-gray-800 h-64 w-24 z-0 rounded-md top-28 absolute "></div>
 																<div class=" z-10 relative   ">
-																				<img src="{{ asset('/asset/images/cool.png') }}" class="object-cover ml-2 rounded-r-lg  ">
+																				<img src="{{ asset('/asset/images/time.gif') }}" class="object-cover ml-2 rounded-r-lg h-96 w-96 ">
 																</div>
 																<div
 																				class=" bg-gray-800  sm:h-10 sm:w-10 md:h-64 md:w-24 rounded-2xl z-0 absolute bottom-0 sm:right-50 md:right-20">

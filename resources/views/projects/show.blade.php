@@ -65,7 +65,9 @@
 																																</tr>
 
 																												@empty
-																																no timeEntries
+																																<div class="bg-white p-10 text-center">
+																																				<p class="bg-red-100">No Time Entry</p>
+																																</div>
 																												@endforelse
 																								</table>
 

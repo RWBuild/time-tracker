@@ -17,7 +17,7 @@
         @apply w-full rounded-lg m-1 p-3 bg-gray-100
     } */
     form{
-        @apply bg-white w-96 p-8 rounded-lg shadow-lg flex flex-col justify-center items-center
+        @apply bg-white w-96 p-8 rounded-lg shadow-lg flex flex-col justify-center items-center m-3
     }
 
    

@@ -44,6 +44,7 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+      return redirect()->route('projects.index')->with("success" , "project created");
     }
 
     /**
