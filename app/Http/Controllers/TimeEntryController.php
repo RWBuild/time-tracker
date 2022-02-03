@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
+use App\Http\Requests\Task;
+use App\Http\Requests\Client;
 
 class TimeEntryController extends Controller
 {
@@ -16,7 +18,9 @@ class TimeEntryController extends Controller
     public function index()
     {
       $timeEntries = TimeEntry::all();
-      return view('time-entries.index',compact('timeEntries'));
+      $tasks = Task::all();
+      $clients = Client::all();
+      return view('time-entries.index',compact('timeEntries','tasks','clients'));
     }
 
     /**
