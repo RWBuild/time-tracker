@@ -1,43 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Client: {{ $client->name }}</title>
-</head>
-<body>
-  
-<div>
-  @if (Auth::User()->isAdmin() ||  Auth::User()->isOwner())
-
-  <button   > <a href="/clients/{{$client->id }}/edit" >edit client</a></button>
-  @endif
-<p>Name: {{ $client->name }}</p>
-<p>Code: {{ $client->code }}</p>
-
-<p>{{ $client->phone }}</p>
-<p>{{ $client->address }}</p>
+@extends('layout.app')
 
 
-<strong>Projects</strong>
-@forelse ($client->projects as $project)
+@section('content')
+    @include('common.alert')
+    <div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
+        <div class=" bg-white p-4 flex shadow-lg ">
 
-<p>{{ $project->name}}</p>
+            {{-- clients details --}}
 
-<p> {{ $project->budget}}</p>
+            <div class="border-r-4 px-32 m-2 border-gray-700 flex flex-col justify-center items-center">
 
-@if (Auth::User()->isAdmin() ||  Auth::User()->isOwner())
+                <div class="p-2 ">
 
-<button   > <a href="/projects/{{$project->id }}/edit" >edit</a></button>
-@endif
-<button   > <a href="/projects/{{$project->id }}">view</a></button>
-@empty
-  <p>No projects in the database.</p>
+                    <h1 class="text-center border-b-4 m-2 mb-5 border-gray-700"> Clients</h1>
+                    <div class="">
+                        <p class="font-semibold">Name: {{ $client->name }}</p>
 
-@endforelse
+                        <p>Code: {{ $client->code }}</p>
+                    </div>
+                    <div class="m-2">
 
-</div>
+                        <p>+250{{ $client->phone }}</p>
+                        <p>{{ $client->address }}</p>
 
-</body>
-</html>
+
+
+                    </div>
+
+                </div>
+                @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+
+                    <button class="button w-32"> <a href="/clients/{{ $client->id }}/edit">edit client</a></button>
+
+                @endif
+
+            </div>
+            {{--  --}}
+
+
+
+
+
+
+
+
+
+
+            {{-- project details --}}
+
+            <div class="flex flex-col justify-center items-center m-2">
+                <strong class=" border-b-4 p-4 m-2 border-gray-700">Projects</strong>
+                @forelse ($client->projects as $project)
+                    <div class="">
+
+
+
+                        <p class="font-bold">{{ $project->name }}</p>
+
+                        <p> ${{ $project->budget }}</p>
+
+                        <div class="card-body">
+
+                            @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+
+                                <button class="btn-card"> <a
+                                        href="/projects/{{ $project->id }}/edit">edit</a></button>
+                            @endif
+                            <button class="btn-card"> <a href="/projects/{{ $project->id }}">view</a></button>
+
+
+
+
+                        </div>
+                    </div>
+                @empty
+                    <p>No projects in the database.</p>
+
+                @endforelse
+
+            </div>
+
+            {{--  --}}
+
+
+
+
+
+        </div>
+
+    </div>
+
+@endsection
