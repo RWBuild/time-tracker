@@ -766,6 +766,9 @@ table th, table td {
 .mt-3 {
   margin-top: 0.75rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -899,6 +902,9 @@ table th, table td {
 .cursor-default {
   cursor: default;
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .list-inside {
   list-style-position: inside;
 }
@@ -913,6 +919,9 @@ table th, table td {
 }
 .flex-col {
   flex-direction: column;
+}
+.items-start {
+  align-items: flex-start;
 }
 .items-center {
   align-items: center;
@@ -945,6 +954,16 @@ table th, table td {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.divide-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(4px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(4px * var(--tw-divide-y-reverse));
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1099,6 +1118,9 @@ table th, table td {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
+.pb-4 {
+  padding-bottom: 1rem;
+}
 .pt-1 {
   padding-top: 0.25rem;
 }
@@ -1245,6 +1267,9 @@ table th, table td {
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.opacity-50 {
+  opacity: 0.5;
 }
 .opacity-0 {
   opacity: 0;

@@ -11,5 +11,6 @@
     </head>
     <body class="bg-secondary">
         @yield('content')
+        @yield('scripts')
     </body>
 </html>
