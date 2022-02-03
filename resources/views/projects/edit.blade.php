@@ -20,7 +20,7 @@
             <form action="{{ route('projects.update', $project->id) }}" method="post">
                 @csrf
                 @method('put')
-                <div class="txt_field">
+                {{-- <div class="txt_field">
                     <select name="client_id" id="person_id" required>
                         <option value="">Select a client</option>
                         @foreach ($clients as $client)
@@ -28,6 +28,9 @@
                             </option>
                         @endforeach
                     </select>
+                </div> --}}
+                <div class="txt_field">
+                    <input type="hidden" name="client_id" value="{{ $project->client_id }}" required>
                 </div>
                 <div class="txt_field">
                     <label for="name">Name:</label>

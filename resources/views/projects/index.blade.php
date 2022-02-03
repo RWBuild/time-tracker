@@ -41,13 +41,7 @@
                                 @forelse ($client->projects as $project)
                                     <tr class="project-2">
                                         <td>{{ $project->name }}</td>
-<<<<<<< HEAD
-                                        <td>{{ $project->description }}</td>
-                                        <td>{{ $project->budget }}<span class="font-bold">rwf</span></td>
-
-=======
                                         <td>${{ $project->budget }}</td>
->>>>>>> bdb8717 (update seeders, project views)
                                         <td>
                                             <div class="project-buttons">
                                                 @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
