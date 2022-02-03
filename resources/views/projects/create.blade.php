@@ -28,7 +28,7 @@
                     {{ $message }}
                 </span>
             @enderror
-            <textarea placeholder="Decription" name="decription"></textarea>
+            <textarea placeholder="Decription" name="description"></textarea>
             @error('description')
                 <span class="message-color">
                     {{ $message }}

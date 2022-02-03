@@ -165,3 +165,69 @@ span {
 .form_page form button:hover {
     transform: scale(1.06);
 }
+
+
+/* project */
+.projects_header {
+    width: 70%;
+    margin: 20px auto 0;
+    display: flex;
+}
+
+.projects_header div:nth-child(1) {
+    margin: 0 20px;
+    width: 20%;
+}
+
+.projects_header div:nth-child(2) {
+    width: 55%;
+    margin: 0 20px;
+    padding: 0 20px;
+}
+
+.projects {
+    width: 70%;
+    background-color: #ffffff;
+    margin: 10px auto;
+    display: flex;
+    border-radius: 5px;
+}
+
+.projects div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    width: 20%;
+}
+
+.projects div:nth-child(2) {
+    /* box-shadow: 4px 4px 20px rgb(0, 0, 0, 0.25); */
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    width: 55%;
+    margin: 10px;
+    padding: 20px;
+}
+
+.projects div:nth-child(2) table {
+    width: 100%;
+}
+
+.projects div:nth-child(3) {
+    width: 15%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.projects div:nth-child(3) a {
+    /* margin-top: 20px; */
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 5px 0;
+    margin-left: 15px;
+    border-bottom: 1px solid var(--primary-color);
+    width: 110px;
+    border-radius: 5px;
+}

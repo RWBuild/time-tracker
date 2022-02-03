@@ -27,7 +27,7 @@
                     {{ $message }}
                 </span>
             @enderror
-            <textarea placeholder="Description" name="description" value="{{ $project->description }}"></textarea>
+            <textarea placeholder="Description" name="description">{{ $project->description }}</textarea>
             @error('description')
                 <span>
                     {{ $message }}
