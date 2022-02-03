@@ -864,7 +864,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: 20px;
     position: absolute;
     left: 20%;
-    top: 22%;
+    top: 34%;
 }.client-table thead tr {
     background-color: rgb(125 211 252);
     color: #ffffff;
@@ -876,9 +876,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-bottom: 1px solid #dddddd;
 }.client-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-}.client-table tbody tr:last-of-type {
+}/* .client-table tbody tr:last-of-type {
     border-bottom: 2px solid rgb(125 211 252);
-}.client-table tbody tr.active-row {
+} */.client-table tbody tr.active-row {
     font-weight: bold;
     color: black;
 }.client-table a {
@@ -964,10 +964,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-bottom: 20px;
     font-size: 18px;
 }/* End of forms styles *//* show client styles*/.user-info {
-    padding-top: 50px;
     display: inline-block;
-    box-sizing: content-box;
-    padding-left:150px;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 7px;
+    position: absolute;
+    top: 22%;
+    left: 24%;
+    width: auto;
+    height: auto;
+    padding: 50px 80px;
+    
 }.user-info h3 {
     font-size: 30px;
     font-weight: bold;
@@ -978,6 +984,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.user-title h1{
     text-align: center;
     font-size: 40px;
+    font-weight: bold;
+}.user-info p{
+    text-align: center;
+    font-size: 30px;
     font-weight: bold;
 }.project-table {
     border-collapse: collapse;
@@ -1073,12 +1083,29 @@ Ensure the default browser behavior of the `hidden` attribute.
     text-align: center;
     font-weight: bold;
     font-size: 18px;
-    margin: 37px 321px
+    margin: 70px 321px
 }.client-add:hover {
     background-color: rgb(125 211 252);
     color: white;
     transition: .5s;
     cursor: pointer;
+}/* select button for all forms */select{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+}/* Alert message styles */.client-alert{
+    font-size: 26px;
+    text-align: center;
+    box-sizing: 2px;
+    background-color: rgb(197, 238, 197);
+    margin-top: 5px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 7px;
 }.hover\:border-gray-300:hover{
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));

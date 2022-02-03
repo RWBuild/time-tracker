@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- css-link --}}
     <link rel="stylesheet" href={{ mix('css/app.css') }}>
     <title>Document</title>
 </head>
@@ -14,6 +15,9 @@
     @extends('layouts.navbar')
 
     @section('content')
+    @if (session('message'))
+            <div class="alert alert-success client-alert">{{ session('message') }}</div>
+        @endif
         <div class="project-add">
             <a href="/projects/create">Add a project</a>
         </div>
@@ -22,7 +26,7 @@
             @forelse ($clientWithProject as $client)
                 <div class="card">
                     <div class="title">
-                        <h1>{{ $client->name }}</h1>
+                        <h1>Client's name: {{ $client->name }}</h1>
                     </div>
                     <div class="project-table">
                         <table class="clientproject-table">
@@ -31,10 +35,13 @@
                                     <tr class="project-2">
                                         <td>{{ $project->name }}</td>
                                         <td>{{ $project->description }}</td>
-                                        <td>${{ $project->budget }}</td>
+                                        <td>{{ $project->budget }}<span class="font-bold">rwf</span></td>
+
                                         <td>
                                             <div class="project-buttons">
+                                                @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
                                                 <a href="/projects/{{ $project->id }}/edit">Edit</a>
+                                                @endif
                                                 <a href="/projects/{{ $project->id }}">View</a>
                                             </div>
                                         </td>
@@ -42,7 +49,6 @@
                                 @empty
                                     <p>No projects available here yet...</p><br>
                                 @endforelse
-                                <!-- and so on... -->
                             </tbody>
                         </table>
                     </div>

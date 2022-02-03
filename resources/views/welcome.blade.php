@@ -13,7 +13,6 @@
 </head>
 
 <body class="antialiased">
-
     @extends('layouts.navbar')
     @section('content')
         <div class="flex flex-nowrap">

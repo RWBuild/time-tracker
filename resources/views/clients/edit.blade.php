@@ -12,6 +12,8 @@
   @section('content')
     <div class="center">
         <h1>Edit a Client</h1>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form action="{{ route('clients.update',$client->id)}}" method="post">
           @csrf
           @method('put')

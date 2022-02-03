@@ -16,13 +16,15 @@
   @section('content')
     <div class="center">
         <h1>Add a Client</h1>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form action="{{ route('clients.store')}}" method="post">
           @csrf
             <div class="txt_field">
                 <input type="text" name="name" placeholder="Name.." required>
             </div>
             <div class="txt_field">
-                <input type="text" name="phone" placeholder="Phone number..." required>
+                <input type="tel" id="phone" name="phone" placeholder="0789874543" required>
             </div>
             <div class="txt_field">
                 <input type="text" name="code" placeholder="code.." required>

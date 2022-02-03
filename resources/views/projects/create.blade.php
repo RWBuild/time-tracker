@@ -15,17 +15,19 @@
     @section('content')
         <div class="center">
             <h1>Add a Project</h1>
+            <!-- Validation Errors -->
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
             <form action="{{ route('projects.store') }}" method="post">
                 @csrf
                 <div class="txt_field">
-                  <select name="client_id" id="person_id" required>
-                      <option value="">Select a client</option>
-                      @foreach ($clients as $client)
-                          <option value="{{ $client->id }}">{{ $client->name}}
-                          </option>
-                      @endforeach
-                  </select>
-              </div>
+                    <select name="client_id" id="person_id" required>
+                        <option value="">Select a client</option>
+                        @foreach ($clients as $client)
+                            <option value="{{ $client->id }}">{{ $client->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="txt_field">
                     <input type="text" name="name" placeholder="Project-Name.." required>
                 </div>
@@ -33,7 +35,8 @@
                     <input type="text" name="budget" placeholder="Your Budget..." required>
                 </div>
                 <div class="txt_field">
-                    <textarea name="decription" id="" cols="55" rows="3" placeholder="Add your decription here.."></textarea>
+                    <textarea name="decription" id="" cols="55" rows="3"
+                        placeholder="Add your decription here.."></textarea>
                 </div>
                 <div class="txt_field">
                     <input type="submit" value="Add">

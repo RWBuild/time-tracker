@@ -14,14 +14,17 @@
     @extends('layouts.navbar')
 
     @section('content')
+    @if (session('message'))
+            <div class="alert alert-success client-alert">{{ session('message') }}</div>
+        @endif
         @if (Route::has('login'))
             @auth
                 @if (Auth::User()->isAdmin())
-                <div class="client-add">
-                    <a href="{{ route('clients.create') }}">Add
-                        a client</a>
-                </div>
-                   
+                    <div class="client-add">
+                        <a href="{{ route('clients.create') }}">Add
+                            a client</a>
+                    </div>
+
                 @endif
             @endauth
         @endif

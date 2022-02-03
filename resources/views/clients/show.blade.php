@@ -12,9 +12,9 @@
     @extends('layouts.navbar')
 
     @section('content')
-    <div class="user-title">
-        <h1>User information</h1>
-    </div>
+        <div class="user-title">
+            <h1>User information</h1>
+        </div>
         <div class="user-info">
             <h3>Name: <span>{{ $client->name }}</span></h3>
             <h3>Code: <span>{{ $client->code }}</span></h3>
@@ -25,20 +25,26 @@
                 <thead>
                     <tr>
                         <th>Projects names</th>
-                        <th></th>
+                        <th>Description</th>
+                        <th>Budget</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr class="active-row">
-                        <td>alice</td>
-                        <td>
-                            <div class="project-buttons">
-                                <a href="/favorites">Edit</a>
-                                <a href="/clients/{id}">View</a>
-                            </div>
-                        </td>
-                    </tr>
+                    @forelse ($client->projects as $project)
+                        <tr class="active-row">
+                            <td>{{ $project->name }}</td>
+                            <td>{{ $project->description }}</td>
+                            <td>${{ $project->budget }}</td>
+                            <td>
+                                <div class="project-buttons">
+                                    <a href="/projects/{{ $project->id }}/edit">Edit</a>
+                                    <a href="/projects/{{ $project->id }}">View</a>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <p>No projects available here yet...</p><br>
+                    @endforelse
                 </tbody>
             </table>
         </div>
