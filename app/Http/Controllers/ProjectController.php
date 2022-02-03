@@ -78,7 +78,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
-      return redirect()->route('projects.edit', $project->id)->with('project-message-true', 'project updated successfully');
+      return redirect()->route('projects.show', $project->id)->with('project-message-true', 'project updated successfully');
     }
 
     /**

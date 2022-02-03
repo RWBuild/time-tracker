@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
+use App\Models\Client;
+use App\Models\Project;
+use App\Models\Task;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TimeEntryController extends Controller
 {
@@ -13,10 +18,33 @@ class TimeEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $timeEntries = TimeEntry::all();
-      return view('time-entries.index',compact('timeEntries'));
+        $clients = Client::all();
+        $tasks = Task::all();
+
+        if($request->query('client')){
+          $client_id = $request->query('client');
+          return Project::where('client_id', '=', $client_id)->get()->toJson();
+        }elseif($request->query('project')){
+            return Task::all()->toJson();
+        }else if($request->date){
+            $date = $request->date;
+            $time_entries = TimeEntry::where('date', '=', $date)->where('user_id', '=', Auth::user()->id)->get();
+            return view('time-entries.index', compact('time_entries', 'clients','tasks'));
+        }else{
+            $time_entries = TimeEntry::whereDate('created_at', Carbon::today())->get();
+            return view('time-entries.index',compact('clients', 'time_entries'));
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $clients = Client::all();
+        $date = $request->date;
+        $time_entries = TimeEntry::where('date', '=', $date)->where('user_id', '=', Auth::user()->id)->get();
+        $tasks = Task::all();
+        return view('time-entries.index', compact('time_entries', 'clients','tasks'));
     }
 
     /**
@@ -37,8 +65,9 @@ class TimeEntryController extends Controller
      */
     public function store(TimeEntryRequest $request)
     {
-      $timeEntry = TimeEntry::create($request->validated());
-      return redirect()->back()->with('time-entry-message-true', 'time-entry created successfully');
+        $timeEntry = TimeEntry::create($request->validated());
+        dd($timeEntry);
+        return redirect()->back()->with('time-entry-message-true', 'time-entry created successfully');
     }
 
     /**

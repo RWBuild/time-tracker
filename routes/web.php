@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,11 @@ Route::group(['middleware' => 'is_owner'], function() {
 });
 
 // LOGGED IN USER GROUP
-Route::group(['middleware' => 'auth'], function() {  
+Route::group(['middleware' => 'auth'], function() {
   Route::resource('/clients','App\Http\Controllers\ClientController');
   Route::resource('/projects','App\Http\Controllers\ProjectController');
+
+  Route::get('/time-entries/search','App\Http\Controllers\TimeEntryController@search');
+
   Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
 });
