@@ -40,6 +40,7 @@ class ClientController extends Controller
     {
       $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
+      return redirect('clients')->with('message','Successfully created clients');
     }
 
     /**

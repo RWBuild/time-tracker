@@ -1,3 +1,388 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Nunito&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* into-text */
+.intro-text {
+    position: absolute;
+    top: 44%;
+    left: 60%;
+    text-align: center;
+}
+
+.intro-text h1 {
+    font-size: 70px;
+    font-weight: bolder;
+}
+
+.intro-text p {
+    font-size: 20px;
+}
+
+
+.section-2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+}
+
+.section-2 .paragraph {
+    font-size: 20px;
+    text-align: center;
+    margin-left: 40px;
+}
+.paragraph h1{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 9px;
+
+}
+
+.section-2 .image-2 {
+    width: 64%
+
+}
+
+/* end of intro-text */
+/* Clients-table-styling */
+.client-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    position: absolute;
+    left: 20%;
+    top: 34%;
+}
+
+.client-table thead tr {
+    background-color: rgb(125 211 252);
+    color: #ffffff;
+    text-align: left;
+}
+
+.client-table th,
+.client-table td {
+    padding: 12px 15px;
+}
+
+.client-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.client-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* .client-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(125 211 252);
+} */
+
+.client-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+.client-table a {
+    width: 1200px;
+    height: 40px;
+    border: 1px solid;
+    background: white;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+    font-weight: 700px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.client-table a:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+
+/* End of clients table styles */
+
+/* forms styles */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: white;
+    height: 500px;
+}
+
+.center h1 {
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 2px solid silver;
+    font-size: 40px;
+    margin-top: 20px
+}
+
+.center form {
+    padding: 10px 40px;
+    box-sizing: border-box;
+    margin-top: 6px
+}
+
+form .txt_field {
+    position: relative;
+    margin: 20px 0;
+}
+
+input {
+    width: 100%;
+    background: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+label{
+    width: 100%;
+    background: none;
+    padding: 2px 4px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 20px;
+    color: #e9f4fb;
+    font-weight: 700px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    border-color: #9facb4;
+    transition: .5s;
+}
+
+textarea {
+    width: 100%;
+    background: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* End of forms styles */
+/* show client styles*/
+.user-info {
+    display: inline-block;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 7px;
+    position: absolute;
+    top: 22%;
+    left: 24%;
+    width: auto;
+    height: auto;
+    padding: 50px 80px;
+    
+}
+
+.user-info h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.user-info span {
+    font-weight: normal;
+    font-size: 30px;
+}
+.user-title h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+.user-info p{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+.project-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 200px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+
+}
+
+.project-table thead tr {
+    background-color: #ffffff;
+    color: black;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+    width: fit-content;
+}
+
+.project-table th,
+.project-table td {
+    padding: 20px 15px;
+}
+
+.project-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.project-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+.project-table a {
+    width: 100px;
+    height: 40px;
+    border: 1px solid;
+    background: white;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+    font-weight: 700px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.project-table a:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+.project-table p{
+    padding: 30px;
+}
+/* end-of clients show-info */
+/* project cards */
+.clientproject-table{
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100%;
+    font-size: 20px;
+}
+
+
+.card {
+    width: 80%;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 7px;
+    margin: 15px 10%;
+    background-color: white;
+    height: auto;
+    padding: 60px;
+   
+}
+.title {
+    font-size: 45px;
+    padding: 5px;
+    font-weight: bolder;
+}
+.project-add:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+.project-add{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    width: 208px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 48px 160px;
+    
+}
+/* end of projects styles */
+/* client-add-button */
+.client-add {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    width: 208px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 70px 321px
+}
+.client-add:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+/* select button for all forms */
+select{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+/* Alert message styles */
+.client-alert{
+    font-size: 26px;
+    text-align: center;
+    box-sizing: 2px;
+    background-color: rgb(197, 238, 197);
+    margin-top: 5px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 7px;
+}
