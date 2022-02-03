@@ -32,7 +32,7 @@ class ClientTest extends TestCase
       'code' => 'ABCCO'
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(Client::all()->count() == 1);
   }
 
