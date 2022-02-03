@@ -2,94 +2,87 @@
 
 
 @section('content')
-				<div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
+    <div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
+        <div class=" bg-white p-4 flex shadow-lg ">
+
+            {{-- clients details --}}
+
+            <div class=" flex flex-col justify-center items-center">
+
+                <div class="p-2 ">
+                    @include('common.alert')
+                    <div class="border-b-4 px-32 m-2 border-gray-700 p-4 text-center uppercase">
+                        <p class="font-semibold text-xl">Project: {{ $project->name }}</p>
+
+                    </div>
+                    <div class="m-2 text-center">
+                        <div class="">
+                            <div class="flex  my-4">
+                                <p> <strong>Client :</strong> {{ $project->client->name }}</p>
+                                <p class="ml-8"><strong>Budget :</strong> ${{ $project->budget }}</p>
+                            </div>
+                            <div class="flex justify-items-start my-4">
+                                <p> <strong>description :</strong> {{ $project->description }}</p>
+                            </div>
+                        </div>
 
 
+                        @php
+                            $total_duration = 0;
+                        @endphp
+                        <table class="w-tablewidth">
+                            <caption class="font-semibold mb-4"> Time Entry: </caption>
 
-								<div class=" bg-white p-4 flex shadow-lg ">
+                            <tr class="border-b-2">
 
-
-												{{-- clients details --}}
-
-
-
-												<div class=" flex flex-col justify-center items-center">
-
-																<div class="p-2 ">
-
-
-																				<div class="border-b-4 px-32 m-2 border-gray-700 p-4 text-center uppercase">
-																								<p class="font-semibold text-xl">Project: {{ $project->name }}</p>
-
-																				</div>
-																				<div class="m-2 text-center">
-																								<div class="">
-																												<div class="flex  my-4">
-																																<p> <strong>Client :</strong> {{ $project->client->name }}</p>
-																																<p class="ml-8"><strong>Budget :</strong> ${{ $project->budget }}</p>
-																												</div>
-																												<div class="flex justify-items-start my-4">
-																																<p> <strong>description :</strong> {{ $project->description }}</p>
-																												</div>
-																								</div>
+                                <th>Date</th>
+                                <th>Person</th>
+                                <th>Task</th>
+                                <th>Duration</th>
+                            </tr>
+                            @forelse ($project->timeEntries as $timeEntry )
+                                @php
+                                    $total_duration = $total_duration + $timeEntry->duration;
+                                @endphp
 
 
-																								@php
-																												$total_duration = 0;
-																								@endphp
-																								<table class="w-tablewidth">
-																												<caption class="font-semibold mb-4"> Time Entry: </caption>
+                                <tr class="border-b-2">
+                                    <td>{{ $timeEntry->date }}</td>
 
-																												<tr class="border-b-2">
+                                    <td>{{ $timeEntry->user->name }}</td>
 
-																																<th>Date</th>
-																																<th>Person</th>
-																																<th>Task</th>
-																																<th>Duration</th>
-																												</tr>
-																												@forelse ($project->timeEntries as $timeEntry )
-																																@php
-																																				$total_duration = $total_duration + $timeEntry->duration;
-																																@endphp
+                                    <td>{{ $timeEntry->task->name }}</td>
 
+                                    <td>{{ floor($timeEntry->duration / 60) . ':' . ($timeEntry->duration - floor($timeEntry->duration / 60) * 60) }}
+                                    </td>
+                                </tr>
 
-																																<tr class="border-b-2">
-																																				<td>{{ $timeEntry->date }}</td>
+                            @empty
+                                no timeEntries
+                            @endforelse
+                        </table>
 
-																																				<td>{{ $timeEntry->user->name }}</td>
+                        <div class="m-4 float-right mr-14">
+                            <strong>Total Duration: </strong>
+                            @php
+                                $total_hour = floor($total_duration / 60) . ':' . ($total_duration - floor($total_duration / 60) * 60);
 
-																																				<td>{{ $timeEntry->task->name }}</td>
+                                echo $total_hour;
 
-																																				<td>{{ floor($timeEntry->duration / 60) . ':' . ($timeEntry->duration - floor($timeEntry->duration / 60) * 60) }}
-																																				</td>
-																																</tr>
+                            @endphp
 
-																												@empty
-																																no timeEntries
-																												@endforelse
-																								</table>
-
-																								<div class="m-4 float-right mr-14">
-																												<strong>Total Duration: </strong>
-																												@php
-																																$total_hour = floor($total_duration / 60) . ':' . ($total_duration - floor($total_duration / 60) * 60);
-																																
-																																echo $total_hour;
-																																
-																												@endphp
-
-																								</div>
+                        </div>
 
 
 
 
 
-																				</div>
-																</div>
+                    </div>
+                </div>
 
 
-												</div>
-												{{--  --}}
+            </div>
+            {{--  --}}
 
 
 
@@ -105,8 +98,8 @@
 
 
 
-								</div>
+        </div>
 
-				</div>
+    </div>
 
 @endsection

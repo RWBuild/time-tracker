@@ -44,6 +44,7 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+      return redirect()->route('projects.show', $project->id)->with("success", "project ({$project->name}) created successfully");
     }
 
     /**
@@ -82,7 +83,7 @@ class ProjectController extends Controller
     {
       $this->authorize('update', $project);
       $project->update($request->validated());
-      return redirect()->route("projects.show", $project->id)->with("projects-message-true", "project updated successfully");
+      return redirect()->route("projects.show", $project->id)->with("success", "project ({$project->name}) updated successfully");
     }
 
     /**
@@ -95,5 +96,6 @@ class ProjectController extends Controller
     {
       $this->authorize('delete', $project);
       $project->delete();
+      return redirect()->route('projects.index')->with("success", "project ({$project->name}) deleted successfully");
     }
 }
