@@ -14,7 +14,6 @@
     @extends('layouts.navbar')
 
     @section('content')
-<<<<<<< HEAD
         <div class="user-title">
             <h1>Projects Information</h1>
         </div>
@@ -56,27 +55,6 @@
     <p>{{ $project->description }}</p>
     <p>{{ $project->timeEntries }}</p>
   </div> --}}
-=======
-    <div>
-      <p>Name: {{ $project->name }}</p>
-      <p>Client: {{ $project->client->name }}</p>
-      <p>Budget: {{ $project->budget }}</p>
-      <p>Description: {{ $project->description }}</p>
-      <h1 style="color: blue">Time entry</h1>
-      @forelse ($project->timeEntries as $timeEntry)
-      <p>Date:{{ $timeEntry->date }}</p>  
-      <p>Person:{{ $timeEntry->user->name }}</p>  
-      <p>Task Name:{{ $timeEntry->task->name }}</p>  
-      <p>Duration:{{ $timeEntry->duration }}</p>  
-      
-      @empty
-          
-      @endforelse
-      <p>Total: </p>
-    </div>
-    @endsection
-  
->>>>>>> bdb8717 (update seeders, project views)
 
 </body>
 
