@@ -660,6 +660,15 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.mt-10 {
+  margin-top: 2.5rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
+}
+.ml-10 {
+  margin-left: 2.5rem;
+}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -671,12 +680,6 @@ select {
 }
 .-mt-px {
   margin-top: -1px;
-}
-.mt-5 {
-  margin-top: 1.25rem;
-}
-.ml-5 {
-  margin-left: 1.25rem;
 }
 .block {
   display: block;
@@ -749,6 +752,9 @@ select {
 }
 .w-64 {
   width: 16rem;
+}
+.w-2\/3 {
+  width: 66.666667%;
 }
 .max-w-7xl {
   max-width: 80rem;
