@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
+use App\Models\Client;
+use App\Models\Project;
+use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 
 class TimeEntryController extends Controller
 {
@@ -83,5 +87,15 @@ class TimeEntryController extends Controller
     public function destroy(TimeEntry $timeEntry)
     {
       $timeEntry->delete();
+    }
+
+    public function getTimeEntryByDate(Request $request){
+      $user=Auth::user()->id;
+      $date= $request->date;
+      $timeEntries=TimeEntry::where('user_id',$user)->where('date',$date)->get();
+      $clients=Client::all();
+      $projects=Project::all();
+      $tasks=Task::all();
+      return view('time-entries.index',compact('timeEntries','clients','projects','tasks'));
     }
 }
