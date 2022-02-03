@@ -3,17 +3,15 @@
 @section('content')
 
     <div class="flex justify-center items-center w-11/12 mx-auto">
-        @component('components.card')
-            @slot('content')
-                <h1 class="text-2xl border mb-5">Project information</h1>
-                <p><b>Project name: </b>{{ $project->name }}</p>
-                <p><b>Client: </b>{{ $project->client->name }}</p>
-                <p><b>Budget: </b>{{ $project->budget }}</p>
-                <p><b>Description: </b>{{ $project->description }}</p>
-            @endslot
-        @endcomponent
+        <div class="mt-10 mr-10">
+            <h1 class="text-2xl border mb-5">Project information</h1>
+            <p><b>Project name: </b>{{ $project->name }}</p>
+            <p><b>Client: </b>{{ $project->client->name }}</p>
+            <p><b>Budget: </b>{{ $project->budget }}Rwf</p>
+            <p><b>Description: </b>{{ $project->description }}</p>
+        </div>
 
-        <table>
+        <table class="mt-10 ml-10">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -42,7 +40,7 @@
                 <td colspan="4">
 
                     <p class="text-center">
-                        Total: {{ intdiv($totalDuration, 60) . ':' . $totalDuration % 60 }}
+                        Total duration: {{ intdiv($totalDuration, 60) . ':' . $totalDuration % 60 }}
                     </p>
                 </td>
             </tr>
