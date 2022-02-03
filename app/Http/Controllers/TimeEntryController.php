@@ -38,6 +38,7 @@ class TimeEntryController extends Controller
     public function store(TimeEntryRequest $request)
     {
       $timeEntry = TimeEntry::create($request->validated());
+      return redirect()->back()->with("success", "Time-Entry ({$timeEntry->name}) created successfully");
     }
 
     /**
@@ -72,6 +73,7 @@ class TimeEntryController extends Controller
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
       $timeEntry->update($request->validated());
+      return redirect()->back()->with("success", "time-entry ({$timeEntry->name}) updated successfully");
     }
 
     /**
@@ -83,5 +85,6 @@ class TimeEntryController extends Controller
     public function destroy(TimeEntry $timeEntry)
     {
       $timeEntry->delete();
+      return redirect()->route("projects.index")->with("projects-message-true", "time-entry ({$timeEntry->name}) deleted successfully");
     }
 }
