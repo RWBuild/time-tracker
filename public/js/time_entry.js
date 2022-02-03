@@ -5,7 +5,7 @@ function getDate() {
         day = date.getDate();
         month = date.getMonth() + 1;
         year = date.getFullYear();
-        alert([day, month, year].join("/"));
+        alert([day, month, year].join("-"));
     });
 }
 // DisplayRow function

@@ -52,38 +52,42 @@
               </x-dropdown>
           </div>
                  </div>
-                <div>
-                    <input type="date" value="<?php echo date('Y-m-d');?>" id="date-input">
-                </div>
+                
             </div>
-            <form action="" method="POST">
+            <form>
+                <div>
+                    <input type="date" name="date" value="<?php echo date('Y-m-d');?>" id="date-input">
+                </div>
             <div class="row_container">
-
+               
                 <div class="select_field">
                     <label for="company_name">company Name:</label>
                     <select>
-                        <option>company</option>
+                        @forelse ($clients as $client)
+                        <option>{{ $client->name  }}</option>
+                        @empty
+                        <p>No Client</p>
+                        @endforelse
+                       
                     </select>
                 </div>
-
-
                 <div class="select_field">
                     <label for="project_name">project Name:</label>
-                    <select>
+                    <select id="project">
                         <option>project</option>
                     </select>
                 </div>
 
                 <div class="select_field">
                     <label for="task">Task:</label>
-                    <select>
+                    <select id="task">
                         <option>task</option>
                     </select>
                 </div>
 
                 <div class="select_field">
                     <label for="time">time:</label>
-                    <input type="text">
+                    <input  id="duration"type="text">
                 </div>
                 <div class="select_field">
                     <label for="time"></label>
@@ -91,7 +95,7 @@
                 </div>
             </div>
             </form>
-            <div id="form-container"></div>
+            {{-- <div id="form-container"></div> --}}
         </div>
         
         <div class="row_button"><button onclick="getContainer()">Add row</button></div>
