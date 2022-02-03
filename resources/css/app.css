@@ -1,20 +1,18 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
+/* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Nunito&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Lora', serif;
     font-family: 'Nunito', sans-serif;
+    
 }
-
 /* into-text */
 .intro-text {
     position: absolute;
@@ -385,4 +383,46 @@ select{
     margin-left: 300px;
     margin-right: 300px;
     padding: 7px;
+}
+/* time_enrty styles */
+.time_container{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px black;
+    width: auto;
+    height: auto;
+}
+.info_container{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+}
+.row_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.select_field{
+    width: 50%;
+    display: flex;
+    flex-direction: column; 
+    margin: 5px; 
+}
+.select_field button{
+    margin: 30px; 
+    background-color: none;
+    padding: 5px ;
+    border: 1px solid black;  
+    width: 90px;
+}
+.row_button button{
+    background-color: none;
+    padding: 5px;
+    margin: 10px 20px;
+    width: auto;
+    border: 1px solid black;
+}
+.icon{
+    font-size: 20px;
 }

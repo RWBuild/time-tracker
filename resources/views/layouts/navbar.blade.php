@@ -21,7 +21,7 @@
 
                 <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a href="/clients">Clients</a></li>
                 <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a href="/projects">Project</a></li>
-                <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a href="/time-entries"></a>Time Entry</li>
+                <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a href="/time-entries">Time Entry</a></li>
                 @if (Route::has('login'))
                     @auth
                         @if (Auth::User()->isAdmin())

@@ -77,6 +77,7 @@ class ClientController extends Controller
     {
       $this->authorize('update', $client);
       $client->update($request->validated());
+      return redirect('clients')->with('message','Successfully created clients');
     }
     
     /**

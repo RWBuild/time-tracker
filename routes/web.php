@@ -35,7 +35,3 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/time-entries/date','App\Http\Controllers\TimeEntryController@getTimeEntryByDate');
   Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
 });
-
-// layout routes
-
-Route:: get('/welcome',function(){return view('welcome');})-> name('welcome');
