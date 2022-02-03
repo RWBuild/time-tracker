@@ -16,7 +16,10 @@
 
 								<div class=" text-blue-100 text-xl">Time Tracker</div>
 
-								<div> <a href="/clients"
+								<div>
+												<a href="/"
+																class="text-md text-white dark:text-gray-500  m-2  no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white ">Home</a>
+												<a href="/clients"
 																class="text-md text-white dark:text-gray-500  m-2  no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white ">Clients</a>
 												<a href="/projects"
 																class="text-md text-white dark:text-gray-500  m-2 no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white">Projects</a>

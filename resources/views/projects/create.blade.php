@@ -11,8 +11,7 @@
             <div class="input-field">
                 <x-label>Client</x-label>
                 <select name="client_id"
-                    class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 w-64
-focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    class="rounded-md shadow-sm border-gray-300 m-2 focus:border-indigo-300 w-64 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
 
 
                     <option>Select Client..</option>
