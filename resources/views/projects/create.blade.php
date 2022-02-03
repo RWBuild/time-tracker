@@ -15,8 +15,8 @@
 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
 
 
+                    <option>Select Client..</option>
                     @foreach ($clients as $client)
-                        <option>Select Client..</option>
                         <option value="{{ $client->id }} ">{{ $client->name }} </option>
 
                     @endforeach
