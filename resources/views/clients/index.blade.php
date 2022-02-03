@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     
     @extends('layouts.navbar')
 
@@ -33,15 +34,51 @@
             <tbody>
                 @forelse ($clients as $client)
                
+=======
+    @extends('layouts.navbar')
+
+    @section('content')
+    @if (session('message'))
+            <div class="alert alert-success client-alert">{{ session('message') }}</div>
+        @endif
+        @if (Route::has('login'))
+            @auth
+                @if (Auth::User()->isAdmin())
+                    <div class="client-add">
+                        <a href="{{ route('clients.create') }}">Add
+                            a client</a>
+                    </div>
+
+                @endif
+            @endauth
+        @endif
+        <table class="client-table">
+            <thead>
+                <tr>
+                    <th>Clients names</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($clients as $client)
+>>>>>>> green/main
                     <tr class="active-row">
                         <td>{{ $client->name }}</td>
                         <td>
                             <div class="clients-buttons">
+<<<<<<< HEAD
                                 
                                 @if(Auth::User()->isAdmin() || Auth::User()-> isOwner() )
                                 <a href="/clients/{{$client->id}}/edit">Edit</a>
                                 @endif
                                 <a href="/clients/{{$client->id}}">View</a>
+=======
+
+                                @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+                                    <a href="/clients/{{ $client->id }}/edit">Edit</a>
+                                @endif
+                                <a href="/clients/{{ $client->id }}">View</a>
+>>>>>>> green/main
                             </div>
                         </td>
                     </tr>

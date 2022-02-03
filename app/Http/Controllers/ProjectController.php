@@ -6,7 +6,7 @@ use App\Models\Project;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
-
+use App\Models\TimeEntry;
 class ProjectController extends Controller
 {
     /**
@@ -18,7 +18,10 @@ class ProjectController extends Controller
     {
       $clientWithProject = Client::all();
       return view('projects.index',compact('clientWithProject'));
+<<<<<<< HEAD
       
+=======
+>>>>>>> green/main
     }
 
     /**
@@ -28,8 +31,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+      $clients = Client::all();
       $this->authorize('create', Project::class);
-      return view('projects.create');
+      return view('projects.create',compact('clients'));
     }
 
     /**
@@ -42,7 +46,11 @@ class ProjectController extends Controller
     {
       $this->authorize('create', Project::class);
       $project = Project::create($request->validated());
+<<<<<<< HEAD
       return redirect()->route('projects.index')->with('message', 'Project Updated successfully!');
+=======
+      return redirect('projects')->with('message','Project Created Successfully!!');
+>>>>>>> green/main
     }
 
     /**
@@ -69,6 +77,13 @@ class ProjectController extends Controller
       $this->authorize('update', $project);
       return view('projects.edit', compact('project','clients'));
     }
+
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Client  $client
+     * @return \Illuminate\Http\Response
+     */
 
     /**
      * Update the specified resource in storage.

@@ -12,6 +12,8 @@
   @section('content')
     <div class="center">
         <h1>Edit a Client</h1>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form action="{{ route('clients.update',$client->id)}}" method="post">
           @csrf
           @method('put')
@@ -29,7 +31,7 @@
             </div>
             <div class="txt_field">
               <label for="Address">Address:</label>
-                <textarea name="address" id="" cols="55" rows="3">{{ $client->address }}</textarea>
+                <textarea name="address" id="" cols="55" rows="3" value="{{ $client->address }}"></textarea>
             </div>
             <div class="txt_field">
                 <input type="submit" value="Add">
@@ -37,6 +39,15 @@
         </form>
     </div>
     @endsection
+{{-- <div>
+  <h2>Edit {{ $client->name }}</h2>
+<p>Name: {{ $client->name }}</p>
+<p>Code: {{ $client->code }}</p>
+
+<p>{{ $client->phone }}</p>
+<p>{{ $client->address }}</p>
+
+</div> --}}
 
 </body>
 </html>

@@ -41,9 +41,13 @@ class ClientController extends Controller
     {
       $this->authorize('create', Client::class);
       $client = Client::create($request->validated());
+<<<<<<< HEAD
       //return redirect()->route('clients.index')->with('success','Client saved successfully!');
       return redirect()->route('clients.index')->with('message', 'Client saved successfully!');
       
+=======
+      return redirect('clients')->with('message','Successfully created clients');
+>>>>>>> green/main
     }
 
     /**

@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
           ClientSeeder::class,
           ProjectSeeder::class,
           UserSeeder::class,
+<<<<<<< HEAD
+=======
+          TimeEntrySeeder::class
+>>>>>>> green/main
         ]);
     }
 }

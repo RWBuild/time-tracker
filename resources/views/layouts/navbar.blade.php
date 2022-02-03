@@ -28,8 +28,11 @@
                         
                             <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a
                                 href="{{ url('/dashboard') }}">Dashboard</a></li>
+<<<<<<< HEAD
                             <li class=" hover:bg-sky-200 px-5 py-2 rounded transition-all"><a
                                     href="{{ route('clients.create') }}">Add a client</a></li>
+=======
+>>>>>>> green/main
                             
                         @endif
                     @else

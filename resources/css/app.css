@@ -19,7 +19,11 @@ body {
 .intro-text {
     position: absolute;
     top: 44%;
+<<<<<<< HEAD
     left: 55%;
+=======
+    left: 60%;
+>>>>>>> green/main
     text-align: center;
 }
 
@@ -32,6 +36,34 @@ body {
     font-size: 20px;
 }
 
+<<<<<<< HEAD
+=======
+
+.section-2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+}
+
+.section-2 .paragraph {
+    font-size: 20px;
+    text-align: center;
+    margin-left: 40px;
+}
+.paragraph h1{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 9px;
+
+}
+
+.section-2 .image-2 {
+    width: 64%
+
+}
+
+>>>>>>> green/main
 /* end of intro-text */
 /* Clients-table-styling */
 .client-table {
@@ -42,7 +74,11 @@ body {
     font-size: 20px;
     position: absolute;
     left: 20%;
+<<<<<<< HEAD
     top: 20%;
+=======
+    top: 34%;
+>>>>>>> green/main
 }
 
 .client-table thead tr {
@@ -64,9 +100,15 @@ body {
     background-color: #f3f3f3;
 }
 
+<<<<<<< HEAD
 .client-table tbody tr:last-of-type {
     border-bottom: 2px solid rgb(125 211 252);
 }
+=======
+/* .client-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(125 211 252);
+} */
+>>>>>>> green/main
 
 .client-table tbody tr.active-row {
     font-weight: bold;
@@ -77,24 +119,43 @@ body {
     width: 1200px;
     height: 40px;
     border: 1px solid;
+<<<<<<< HEAD
     background: rgb(125 211 252);
     border-radius: 5px;
     font-size: 20px;
     color: #e9f4fb;
+=======
+    background: white;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+>>>>>>> green/main
     font-weight: 700px;
     cursor: pointer;
     outline: none;
     padding: 10px;
     margin: 10px;
     text-align: center;
+<<<<<<< HEAD
+=======
+    padding-left: 20px;
+    padding-right: 20px;
+>>>>>>> green/main
 
 }
 
 .client-table a:hover {
+<<<<<<< HEAD
     border-color: #9facb4;
     transition: .5s;
     background-color: rgb(186 230 253);
     color: black;
+=======
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+>>>>>>> green/main
 }
 
 /* End of clients table styles */
@@ -180,10 +241,23 @@ textarea {
 /* End of forms styles */
 /* show client styles*/
 .user-info {
+<<<<<<< HEAD
     padding-top: 50px;
     display: inline-block;
     box-sizing: content-box;
     padding-left:150px;
+=======
+    display: inline-block;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 7px;
+    position: absolute;
+    top: 22%;
+    left: 24%;
+    width: auto;
+    height: auto;
+    padding: 50px 80px;
+    
+>>>>>>> green/main
 }
 
 .user-info h3 {
@@ -201,6 +275,14 @@ textarea {
     font-size: 40px;
     font-weight: bold;
 }
+<<<<<<< HEAD
+=======
+.user-info p{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+>>>>>>> green/main
 .project-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -215,6 +297,10 @@ textarea {
     color: black;
     text-align: left;
     border-bottom: 1px solid #dddddd;
+<<<<<<< HEAD
+=======
+    width: fit-content;
+>>>>>>> green/main
 }
 
 .project-table th,
@@ -226,6 +312,7 @@ textarea {
     border-bottom: 1px solid #dddddd;
 }
 
+<<<<<<< HEAD
 .project-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
@@ -233,6 +320,8 @@ textarea {
 .project-table tbody tr:last-of-type {
     border-bottom: 2px solid rgb(125 211 252);
 }
+=======
+>>>>>>> green/main
 
 .project-table tbody tr.active-row {
     font-weight: bold;
@@ -243,10 +332,17 @@ textarea {
     width: 100px;
     height: 40px;
     border: 1px solid;
+<<<<<<< HEAD
     background: rgb(125 211 252);
     border-radius: 5px;
     font-size: 20px;
     color: #e9f4fb;
+=======
+    background: white;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+>>>>>>> green/main
     font-weight: 700px;
     cursor: pointer;
     outline: none;
@@ -258,6 +354,7 @@ textarea {
 }
 
 .project-table a:hover {
+<<<<<<< HEAD
     border-color: #9facb4;
     transition: .5s;
     background-color: rgb(186 230 253);
@@ -265,3 +362,101 @@ textarea {
 }
 
 /* end-of clients show-info */
+=======
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+.project-table p{
+    padding: 30px;
+}
+/* end-of clients show-info */
+/* project cards */
+.clientproject-table{
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100%;
+    font-size: 20px;
+}
+
+
+.card {
+    width: 80%;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 7px;
+    margin: 15px 10%;
+    background-color: white;
+    height: auto;
+    padding: 60px;
+   
+}
+.title {
+    font-size: 45px;
+    padding: 5px;
+    font-weight: bolder;
+}
+.project-add:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+.project-add{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    width: 208px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 48px 160px;
+    
+}
+/* end of projects styles */
+/* client-add-button */
+.client-add {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    width: 208px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 70px 321px
+}
+.client-add:hover {
+    background-color: rgb(125 211 252);
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+/* select button for all forms */
+select{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 7px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+/* Alert message styles */
+.client-alert{
+    font-size: 26px;
+    text-align: center;
+    box-sizing: 2px;
+    background-color: rgb(197, 238, 197);
+    margin-top: 5px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 7px;
+}
+>>>>>>> green/main
