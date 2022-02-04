@@ -18,8 +18,8 @@
             </div>
             <form action="/time-entries/?date" method="GET">
                 <div>
-                    <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>">
-                    <button type="submit">submit</button>
+                    <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>"
+                        onchange="this.form.submit()" class="rounded border border-sky-500">
                 </div>
             </form>
         </div>
@@ -62,7 +62,7 @@
                 const newrow = document.getElementById('form');
                 const form = document.createElement('div')
                 form.innerHTML = `
-            <form action="{{ route('time-entries.store') }}" method="POST">
+            <form action="{{ route('time-entries.store') }}" method="POST" class="bg-white p-5 mt-7">
               @csrf
               <input type='hidden' name='date' value='{{ date_format(now(), 'Y-m-d') }}' />
               <input type='hidden' name='user_id' value='{{ Auth::user()->id }}' />
@@ -83,13 +83,13 @@
                       <option value="{{ $task->id }}">{{ $task->name }}</option>
                   @endforeach
               </select class="w-48">
-              <input class="w-48 rounded border border-sky-500" type="text" placeholder="Duration" name="duration" />
+              <input class="w-60 rounded border border-sky-500" type="text" placeholder="Duration" name="duration" />
               <button type="submit" class="text-blue-500">Submit</button>
             </form>
           `;
                 newrow.appendChild(form)
             }
         </script>
-        <button class="add_client" onclick="appendForm();">Add row</button>
+        <button class="add_client mt-5" onclick="appendForm();">Add row</button>
     </div>
 @endsection
