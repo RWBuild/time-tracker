@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//TODO: Duplicate route rules for dashboard
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
