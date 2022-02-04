@@ -9,26 +9,15 @@
 </head>
 
 <body>
-
     @extends('layouts.navbar')
-
     @section('content')
+        <h1 class="form-title">Edit a Project</h1>
         <div class="center">
-            <h1>Edit a Project</h1>
             <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
             <form action="{{ route('projects.update', $project->id) }}" method="post">
                 @csrf
                 @method('put')
-                {{-- <div class="txt_field">
-                    <select name="client_id" id="person_id" required>
-                        <option value="">Select a client</option>
-                        @foreach ($clients as $client)
-                            <option value="{{ $client->id }}">{{ $client->name}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div> --}}
                 <div class="txt_field">
                     <input type="hidden" name="client_id" value="{{ $project->client_id }}" required>
                 </div>
@@ -50,14 +39,6 @@
             </form>
         </div>
     @endsection
-    {{-- <div>
-  <h2>Edit {{ $project->name }}</h2>
-  <p>Name: {{ $project->name }}</p>
-  <p>Client: {{ $project->client_id }}</p>
-  <p>{{ $project->budget }}</p>
-  <p>{{ $project->description }}</p>
-</div> --}}
-
 </body>
 
 </html>
