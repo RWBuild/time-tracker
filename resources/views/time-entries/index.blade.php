@@ -24,10 +24,10 @@
 					<h1 class="uppercase m-3 ">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</h1>
 					</div>
 					<div class="flex">
-					<form class=" flex ml-64" action="time-entries/?date" method="Get">
+					<form class=" flex ml-64" action="" method="Get">
 					<x-input type="text" name="date" onchange="this.form.submit()" class="disableFuturedate" placeholder="Pick Date"></x-input>
 				
-					{{-- <button type="submit">byDate</button> --}}
+				
 					</form>
 					</div>
 
@@ -188,7 +188,7 @@
 					        const addrow = document.getElementById('appendform')
 					        const newform = document.createElement('div');
 
-					        newform.innerHTML = `	<h1 class="text-md border-b-4 my-8 p-4">New Row</h1>	<form class="flex" id="form">
+					        newform.innerHTML = `	<h1 class="text-md border-b-4 my-8 p-4 text-md">  New Entry</h1>	<form class="flex" id="form">
 
 
 	<div class="input-field">
