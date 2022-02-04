@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 use App\Http\Requests\TimeEntryRequest;
+use App\Models\Client;
+use App\Models\Project;
+use App\Models\Task;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TimeEntryController extends Controller
 {
@@ -15,8 +20,29 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-      $timeEntries = TimeEntry::all();
-      return view('time-entries.index',compact('timeEntries'));
+        $user_id = Auth::user()->id;
+        $date = Carbon::now()->format('Y-m-d');;
+        $timeEntries = TimeEntry::where('user_id', $user_id)->where('date', $date)->get();
+        $clients = Client::all();
+        $projects = Project::all();
+        $tasks = Task::all();
+        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
+    }
+
+    public function searchByDate(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $date = $request->date;
+        $timeEntries = TimeEntry::where('user_id', $user_id)->where('date', $date)->get();
+        $clients = Client::all();
+        $projects = Project::all();
+        $tasks = Task::all();
+        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
+    }
+    public function getClientsProjects($id)
+    {
+        $projects = Project::where('client_id', $id)->get();
+        return $projects;
     }
 
     /**
@@ -26,7 +52,7 @@ class TimeEntryController extends Controller
      */
     public function create()
     {
-      return view('time-entries.create');
+        return view('time-entries.create');
     }
 
     /**
@@ -37,7 +63,8 @@ class TimeEntryController extends Controller
      */
     public function store(TimeEntryRequest $request)
     {
-      $timeEntry = TimeEntry::create($request->validated());
+        $timeEntry = TimeEntry::create($request->validated());
+        return redirect()->route('time-entries.index')->with('success', 'Time Entry saved successsfully');
     }
 
     /**
@@ -48,7 +75,7 @@ class TimeEntryController extends Controller
      */
     public function show(TimeEntry $timeEntry)
     {
-      return view('time-entries.show', compact('timeEntry'));
+        return view('time-entries.show', compact('timeEntry'));
     }
 
     /**
@@ -59,7 +86,7 @@ class TimeEntryController extends Controller
      */
     public function edit(TimeEntry $timeEntry)
     {
-      return view('time-entries.edit', compact('timeEntry'));
+        return view('time-entries.edit', compact('timeEntry'));
     }
 
     /**
@@ -71,7 +98,8 @@ class TimeEntryController extends Controller
      */
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
-      $timeEntry->update($request->validated());
+        $timeEntry->update($request->validated());
+        return redirect()->route('time-entries.index')->with('success', 'Time Entry Update successsfully');
     }
 
     /**
@@ -82,6 +110,6 @@ class TimeEntryController extends Controller
      */
     public function destroy(TimeEntry $timeEntry)
     {
-      $timeEntry->delete();
+        $timeEntry->delete();
     }
 }

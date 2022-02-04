@@ -7,9 +7,11 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+        <script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script>
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body class="bg-secondary">
         @yield('content')
+        @yield('scripts')
     </body>
 </html>
