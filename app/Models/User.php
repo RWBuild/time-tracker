@@ -53,6 +53,10 @@ class User extends Authenticatable
     {
       return $this->hasMany(TimeEntry::class);
     }
+
+    public function timeEntriesForDate(String $date) {
+      return $this->timeEntries()->where('date',$date)->get();
+    }
     
     // Role Method Checks
     public function isAdmin(): Bool

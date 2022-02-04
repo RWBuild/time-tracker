@@ -20,29 +20,12 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $date = Carbon::now()->format('Y-m-d');;
-        $timeEntries = TimeEntry::where('user_id', $user_id)->where('date', $date)->get();
+        $user = Auth::user();
+        $timeEntries = $user->timeEntriesForDate(Date('Y-m-d'));
         $clients = Client::all();
         $projects = Project::all();
         $tasks = Task::all();
         return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
-    }
-
-    public function searchByDate(Request $request)
-    {
-        $user_id = Auth::user()->id;
-        $date = $request->date;
-        $timeEntries = TimeEntry::where('user_id', $user_id)->where('date', $date)->get();
-        $clients = Client::all();
-        $projects = Project::all();
-        $tasks = Task::all();
-        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
-    }
-    public function getClientsProjects($id)
-    {
-        $projects = Project::where('client_id', $id)->get();
-        return $projects;
     }
 
     /**
@@ -111,5 +94,22 @@ class TimeEntryController extends Controller
     public function destroy(TimeEntry $timeEntry)
     {
         $timeEntry->delete();
+    }
+
+    public function searchByDate(Request $request)
+    {
+        $user = Auth::User();  
+        $date = $request->date;
+        $timeEntries = $user->timeEntriesForDate($date);
+        $clients = Client::all();
+        $projects = Project::all();
+        $tasks = Task::all();
+        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
+    }
+    
+    public function getClientsProjects($id)
+    {
+        $projects = Project::where('client_id', $id)->get();
+        return $projects;
     }
 }
