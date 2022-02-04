@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +33,13 @@ Route::group(['middleware' => 'is_owner'], function () {
     })->name('owner');
 });
 
+
+
 // LOGGED IN USER GROUP
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/clients', 'App\Http\Controllers\ClientController');
     Route::resource('/projects', 'App\Http\Controllers\ProjectController');
-    Route::get('/time-entries/searchByDate/{date}', 'App\Http\Controllers\TimeEntryController@searchByDate');
+    Route::get('/time-entries/searchByDate', 'App\Http\Controllers\TimeEntryController@searchByDate')->name('searchByDate');
+    Route::get('/time-entries/getClientsProjects/{id}', 'App\Http\Controllers\TimeEntryController@getClientsProjects')->name('getClientsProjects');
     Route::resource('/time-entries', 'App\Http\Controllers\TimeEntryController');
 });
