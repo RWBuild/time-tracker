@@ -92,8 +92,6 @@
 
                          {{-- HIDDEN USER ID --}}
                          <input type="hidden" name="user_id" id="user_id" value="{{ Auth::User()->id }}">
-
-                         <button type="submit">update</button>
                      </form>
                 @empty
                     <p>No entries Found</p>
