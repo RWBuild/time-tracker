@@ -20,7 +20,7 @@
 
 								<div class=" text-blue-100 text-xl">Time Tracker</div>
 
-								<div>
+								<div class="mt-4" >
 												<a href="/"
 																class="text-md text-white dark:text-gray-500  m-2  no-underline hover:bg-gray-400 p-2 rounded-lg active:bg-white ">Home</a>
 												<a href="/clients"
@@ -32,19 +32,19 @@
 																Entry</a>
 								</div>
 
-								<div class="navlink">
+								<div class="navlink ">
 
 												@if (Route::has('login'))
 
 																@if (Auth::check())
 																				<form class="button" method="POST" action="{{ route('logout') }}">
 																								@csrf
-																								<button class=" hover:bg-gray-400 hover:text-gray-900 p-2 rounded-lg -ml-20 -mt-16"
+																								<button class=" hover:bg-gray-400 hover:text-gray-900  rounded-lg -ml-32  border-4 border-slate-50"
 																												type="submit">Logout</button>
 																				</form>
 																@endif
 
-																<div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+																<div class="hidden  right-0 px-6 -mt-6 sm:block">
 																				@auth
 																								@if (Auth::User()->isAdmin())
 																												<a href="{{ url('/dashboard') }}" class="text-sm text-white  no-underline -mt-4 ">Dashboard</a>

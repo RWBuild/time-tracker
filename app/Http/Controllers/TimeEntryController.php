@@ -108,7 +108,6 @@ class TimeEntryController extends Controller
      */
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
-        return $timeEntry;
       $timeEntry->update($request->validated());
       return redirect()->back()->with("success", "time-entry ({$timeEntry->name}) updated successfully");
     }

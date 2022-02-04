@@ -914,6 +914,18 @@ select {
 .-mb-64 {
   margin-bottom: -16rem;
 }
+.-ml-32 {
+  margin-left: -8rem;
+}
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+.-mt-5 {
+  margin-top: -1.25rem;
+}
+.-mt-6 {
+  margin-top: -1.5rem;
+}
 .block {
   display: block;
 }
@@ -1197,6 +1209,10 @@ select {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+.border-slate-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 250 252 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;

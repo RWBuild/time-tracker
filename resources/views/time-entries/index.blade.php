@@ -115,7 +115,7 @@
          function addNewRow() {
             const addrow = document.getElementById('appendform')
             const newform = document.createElement('div');
-        
+
             document.getElementById('msg').innerHTML = "Preparing Add Row Form...."
             fetch(`http://127.0.0.1:8000/time-entries?clientAll=1`).then(response => {
                 response.json().then((res) => {
@@ -123,7 +123,7 @@
                     res.forEach((value) => {
                         selectOption += `<option value='${value.id}'>${value.name}</option>`;
                     })
-                    newform.innerHTML = `<h1 class="text-md border-b-4 my-8 p-4">New Row</h1>	
+                    newform.innerHTML = `<h1 class="text-md border-b-4 my-8 p-4">New Row</h1>
                              <form action='{{ route('time-entries.store') }}' class="flex" id="form" method='POST'>
                                 <div class="input-field">
                                     <x-label>Client</x-label>
