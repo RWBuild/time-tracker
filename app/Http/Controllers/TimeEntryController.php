@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class TimeEntryController extends Controller
 {
@@ -19,8 +20,13 @@ class TimeEntryController extends Controller
      */
     public function index()
     {
-      $timeEntries = TimeEntry::all();
-      return view('time-entries.index',compact('timeEntries'));
+      $user=Auth::user()->id;
+      $date= Carbon::now()->format('Y-m-d');
+      $timeEntries=TimeEntry::where('user_id',$user)->where('date',$date)->get();
+      $clients=Client::all();
+      $projects=Project::all();
+      $tasks=Task::all();
+      return view('time-entries.index',compact('timeEntries','clients','projects','tasks'));
     }
 
     /**

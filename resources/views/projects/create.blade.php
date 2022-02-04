@@ -13,8 +13,8 @@
     @extends('layouts.navbar')
 
     @section('content')
+        <h1 class="form-title">Add a Project</h1>
         <div class="center">
-            <h1>Add a Project</h1>
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
             <form action="{{ route('projects.store') }}" method="post">

@@ -32,6 +32,6 @@ Route::group(['middleware' => 'is_owner'], function() {
 Route::group(['middleware' => 'auth'], function() {  
   Route::resource('/clients','App\Http\Controllers\ClientController');
   Route::resource('/projects','App\Http\Controllers\ProjectController');
-  Route::get('/time-entries/date','App\Http\Controllers\TimeEntryController@getTimeEntryByDate');
+  Route::get('/time-entries/date','App\Http\Controllers\TimeEntryController@getTimeEntryByDate')->name('getDate');
   Route::resource('/time-entries','App\Http\Controllers\TimeEntryController');
 });

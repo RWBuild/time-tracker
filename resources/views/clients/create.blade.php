@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,13 @@
     <link rel="stylesheet" href={{ mix('css/app.css') }}>
     <title>Create Client</title>
 </head>
+
 <body>
     @extends('layouts.navbar')
 
     @section('content')
+        <h1 class="form-title">Add a Client</h1>
         <div class="center">
-            <h1>Add a Client</h1>
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
             {{-- Create form --}}

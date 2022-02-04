@@ -18,14 +18,13 @@
         <div class="user-info">
             <h3>Name: <span>{{ $client->name }}</span></h3>
             <h3>Code: <span>{{ $client->code }}</span></h3>
-            <h3>Phone Number: <span>+250 {{ $client->phone }}</span></h3>
+            <h3>Phone Number: <span>{{ $client->phone }}</span></h3>
             <h3>Address: <span>{{ $client->address }}</span></h3>
             <h3>Projects:</h3>
             <table class="project-table">
                 <thead>
                     <tr>
                         <th>Projects names</th>
-                        <th>Description</th>
                         <th>Budget</th>
                     </tr>
                 </thead>
@@ -33,11 +32,12 @@
                     @forelse ($client->projects as $project)
                         <tr class="active-row">
                             <td>{{ $project->name }}</td>
-                            <td>{{ $project->description }}</td>
-                            <td>${{ $project->budget }}</td>
+                            <td>{{ $project->budget }}</td>
                             <td>
                                 <div class="project-buttons">
-                                    <a href="/projects/{{ $project->id }}/edit">Edit</a>
+                                    @if (Auth::User()->isAdmin() || Auth::User()->isOwner())
+                                        <a href="/projects/{{ $project->id }}/edit">Edit</a>
+                                    @endif
                                     <a href="/projects/{{ $project->id }}">View</a>
                                 </div>
                             </td>
@@ -48,17 +48,12 @@
                 </tbody>
             </table>
         </div>
-        {{-- <p>Name: {{ $client->name }}</p>
-  <p>Code: {{ $client->code }}</p>
-  
-  <p>{{ $client->phone }}</p>
-  <p>{{ $client->address }}</p> --}}
     @endsection
     <div>
 
 
     </div>
-
+    <script src="{{url('/js/currency.js')}}"></script>
 </body>
 
 </html>
