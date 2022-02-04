@@ -6,7 +6,7 @@
         @include('common.alert')
         <header class="font-bold text-4xl text-center text-gray-700 m-2"> Edit Clients </header>
 
-        <form   class="form_container" action="{{ route('clients.update', $client->id) }}" method="POST">
+        <form class="form_container" action="{{ route('clients.update', $client->id) }}" method="POST">
 
             @csrf
             @method('put')

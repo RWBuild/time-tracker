@@ -5,7 +5,7 @@
     <div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
         <div class=" bg-white p-4 flex shadow-lg ">
 
-            
+
 
             <div class=" flex flex-col justify-center items-center">
 
@@ -57,8 +57,8 @@
 
                             @empty
                                 <div class="bg-white p-10 text-center">
-                            <p class="bg-red-100">No time Entries</p>
-                        </div>
+                                    <p class="bg-red-100">No time Entries</p>
+                                </div>
                             @endforelse
                         </table>
 
@@ -66,9 +66,9 @@
                             <strong>Total Duration: </strong>
                             @php
                                 $total_hour = floor($total_duration / 60) . ':' . ($total_duration - floor($total_duration / 60) * 60);
-
+                                
                                 echo $total_hour;
-
+                                
                             @endphp
 
                         </div>

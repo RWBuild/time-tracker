@@ -25,7 +25,6 @@
                  {{-- EACH FORM INPUTS --}}
                 <div class="">
                      @forelse ($time_entries as $timeEntry)
-                     <span>{{$timeEntry->id}}</span>
                      <form action="{{ route('time-entries.update', $timeEntry->id) }}" method="POST" class="flex m-5" id="form">
                         @csrf
                         @method('put')
