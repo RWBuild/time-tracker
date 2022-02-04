@@ -38,20 +38,14 @@
             @foreach ($nowEntry as $timeEntry)
                 <div>
                     <select class="w-60">
-                        {{-- @foreach ($clients as $client) --}}
                         <option value="">{{ $timeEntry->project->client->name }}
                         </option>
-                        {{-- @endforeach --}}
                     </select>
                     <select class="w-60">
-                        {{-- @foreach ($nowEntry as $timeEntry) --}}
                         <option value="{{ $timeEntry->project_id }}">{{ $timeEntry->project->name }}</option>
-                        {{-- @endforeach --}}
                     </select>
                     <select class="w-60">
-                        {{-- @foreach ($nowEntry as $timeEntry) --}}
                         <option value="{{ $timeEntry->task_id }}">{{ $timeEntry->task->name }}</option>
-                        {{-- @endforeach --}}
                     </select class="w-60">
                     <input class="w-60 rounded border border-sky-500" type="text"
                         value="{{ intdiv($timeEntry->duration, 60) . ':' . $timeEntry->duration % 60 }}"
@@ -96,14 +90,6 @@
                 newrow.appendChild(form)
             }
         </script>
-
-
         <button class="add_client" onclick="appendForm();">Add row</button>
-
-        {{-- @forelse ($timeEntries as $timeEntry)
-        <p>{{ $timeEntry->project->name }} {{ $timeEntry->duration }} {{ $timeEntry->date }} {{ $clients }}</p>
-    @empty
-        <p>No time entries for this date.</p>
-    @endforelse --}}
     </div>
 @endsection
