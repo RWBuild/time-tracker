@@ -21,24 +21,27 @@ class TimeEntryController extends Controller
     public function index(Request $request)
     {
       $today =Carbon::now()->format('Y-m-d');
-      $filteredTimeEntries =TimeEntry::where('date',$request->query('date'))->get();
-
-      $currentTimeEntries = TimeEntry::where('date', Carbon::today())->get();
       $tasks =Task::all();
       $clients = Client::all();
       $time_entries = TimeEntry::all();
+      $projects = Project::all();
+
+      $filteredTimeEntries =TimeEntry::where('date',$request->query('date'))->get();
+      $currentTimeEntries = TimeEntry::where('date', Carbon::today())->get();
 
       if($request->query('client')){
         $client_id = $request->query('client');
         return Project::where('client_id', '=', $client_id)->get()->toJson();
       }elseif($request->query('project')){
           return Task::all()->toJson();
+      }elseif($request->query('clientAll')){
+        return Client::all()->toJson();
       }else if($request->date){
           $date = $request->date;
           $time_entries = TimeEntry::where('date', '=', $date)->where('user_id', '=',  Auth::user()->id)->get();
-          return view('time-entries.index', compact('time_entries', 'currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+          return view('time-entries.index', compact('time_entries', 'projects', 'currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
       }else{
-        return view('time-entries.index', compact('time_entries','currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+        return view('time-entries.index', compact('time_entries', 'projects', 'currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
       }
 
     }
@@ -105,6 +108,7 @@ class TimeEntryController extends Controller
      */
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
+        return $timeEntry;
       $timeEntry->update($request->validated());
       return redirect()->back()->with("success", "time-entry ({$timeEntry->name}) updated successfully");
     }
