@@ -10,7 +10,6 @@ use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Console\Input\Input;
 
 class TimeEntryController extends Controller
 {
@@ -27,21 +26,22 @@ class TimeEntryController extends Controller
         $clients = Client::all();
         $projects = Project::all();
         $tasks = Task::all();
-        return view('time-entries.index', compact('timeEntries', 'clients','projects','tasks'));
+        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
     }
 
     public function searchByDate(Request $request)
     {
         $user_id = Auth::user()->id;
-        $date =$request->date;
+        $date = $request->date;
         $timeEntries = TimeEntry::where('user_id', $user_id)->where('date', $date)->get();
         $clients = Client::all();
         $projects = Project::all();
         $tasks = Task::all();
-        return view('time-entries.index', compact('timeEntries', 'clients', 'projects','tasks'));
+        return view('time-entries.index', compact('timeEntries', 'clients', 'projects', 'tasks'));
     }
-    public function getClientsProjects($id){
-        $projects = Project::where('client_id',$id)->get();
+    public function getClientsProjects($id)
+    {
+        $projects = Project::where('client_id', $id)->get();
         return $projects;
     }
 
@@ -112,6 +112,4 @@ class TimeEntryController extends Controller
     {
         $timeEntry->delete();
     }
-
-    
 }
