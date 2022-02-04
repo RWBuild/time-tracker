@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TimeEntryApiController;
+//use App\Http\Controllers\TimeEntryApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('index',[TimeEntryApiController::class,'index']);
+//Route::get('index',[TimeEntryApiController::class,'index']);

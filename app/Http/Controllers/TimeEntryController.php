@@ -51,6 +51,7 @@ class TimeEntryController extends Controller
     public function store(TimeEntryRequest $request)
     {
       $timeEntry = TimeEntry::create($request->validated());
+      return redirect()->route('time-entries.index')->with('success','Time entry successfully added');
     }
 
     /**
