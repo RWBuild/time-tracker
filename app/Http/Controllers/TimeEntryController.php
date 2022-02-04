@@ -26,8 +26,6 @@ class TimeEntryController extends Controller
       $clients = Client::all();
 
       return view('time-entries.index', compact('currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
-
-
     }
 
     /**
