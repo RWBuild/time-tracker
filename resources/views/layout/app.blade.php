@@ -31,34 +31,33 @@
 																class="text-md text-white dark:text-gray-500 no-underline m-2 hover:bg-gray-400 p-2 rounded-lg active:bg-white">Time
 																Entry</a>
 								</div>
-
-								<div class="navlink ">
+								<div class="navlink flex justfy-center items-center ">
 
 												@if (Route::has('login'))
 
 																@if (Auth::check())
-																				<form class="button" method="POST" action="{{ route('logout') }}">
+																				<form  method="POST" action="{{ route('logout') }}">
 																								@csrf
-																								<button class=" hover:bg-gray-400 hover:text-gray-900  rounded-lg -ml-32  border-4 border-slate-50"
+																								<button class=" text-sm  text-white rounded-lg hover:bg-red-300 p-2"
 																												type="submit">Logout</button>
 																				</form>
 																@endif
 
-																<div class="hidden  right-0 px-6 -mt-6 sm:block">
+																
 																				@auth
 																								@if (Auth::User()->isAdmin())
-																												<a href="{{ url('/dashboard') }}" class="text-sm text-white  no-underline -mt-4 ">Dashboard</a>
+																												<a href="{{ url('/dashboard') }}" class="text-sm text-white  no-underline hover:bg-gray-400 p-2 rounded-lg ">Dashboard</a>
 																								@endif
 																				@else
-																								<a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 no-underline">Log
+																								<a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 no-underline hover:bg-gray-400 p-2 rounded-lg">Log
 																												in</a>
 
 																								@if (Route::has('register'))
 																												<a href="{{ route('register') }}"
-																																class="ml-4 text-sm text-white dark:text-gray-500 no-underline">Register</a>
+																																class="ml-4 text-sm text-white dark:text-gray-500 no-underline hover:bg-gray-400 p-2 rounded-lg">Register</a>
 																								@endif
 																				@endauth
-																</div>
+																
 												@endif
 
 								</div>

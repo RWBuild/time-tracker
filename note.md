@@ -11,15 +11,15 @@
 
 ## Frontend Activities
 ```
-   Project Screen
-   Project Show Screen
-   Edit Project Screen
-   Create Project Screen
+   Time-entry Screen
+   Filter time-entry by date
+   Add a new Raw on time-entry Screen
 ```
 
 ## backend Activities
 ```
-   Created redirection on controller after event 
-   Project seed and entry seed
-   Message Flash on every change user make
+   Getting current time-entries
+   Tasks related to entry
+   Clients related to entry
+   Project related to entry
 ```

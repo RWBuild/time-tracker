@@ -14,8 +14,11 @@
                      </div>
                      <div class="flex">
                          <form class=" flex ml-64" action="time-entries/?date" method="Get">
-                             <x-input type="text" name="date" onchange="this.form.submit()" class="disableFuturedate"
-                                 placeholder="Pick Date"></x-input>
+                             <!-- <x-input type="text" name="date" onchange="this.form.submit()" class="disableFuturedate"
+                                 placeholder="Pick Date"></x-input> -->
+                                 <x-input type="date" name="date" class="datepicker" onchange="this.form.submit()"
+                                max="{{ date_format(now(), 'Y-m-d') }}" value="@if (app('request')->input('date')){{ app('request')->input('date') }}@else{{ date_format(now(), 'Y-m-d') }}@endif"></x-input>
+                                 
 
                              {{-- <button type="submit">byDate</button> --}}
                          </form>
@@ -180,26 +183,12 @@
          }
 
 
-         $(document).ready(function() {
-             var currentDate = new Date();
-             $('.disableFuturedate').datepicker({
-                 format: 'yyy-mm-dd',
-                 autoclose: true,
-                 endDate: "currentDate",
-                 maxDate: currentDate
-             }).on('changeDate', function(ev) {
-                 $(this).datepicker('hide');
-             });
-             $('.disableFuturedate').keyup(function() {
-                 if (this.value.match(/[^0-9]/g)) {
-                     this.value = this.value.replace(/[^0-9^-]/g, '');
-                 }
-             });
-         });
+        
      </script>
 
      <script>
          function getProjects(obj) {
+             
              let clientId = obj.value;
              let project_option = obj.parentNode.nextElementSibling.childNodes[3];
              fetch(`http://127.0.0.1:8000/time-entries?client=${clientId}`).then(response => {
