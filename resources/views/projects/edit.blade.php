@@ -5,7 +5,7 @@
 				<div class=" bg-gray-200 flex flex-col justify-center items-center min-h-screen">
 
 								<header class="font-bold text-xl text-center text-gray-700 m-4"> Edit :{{ $project->name }} </header>
-<form action="{{ route('projects.update', $project->id) }}" method="POST">
+<form  class="form_container" action="{{ route('projects.update', $project->id) }}" method="POST">
 	@csrf
 	@method('put')
 

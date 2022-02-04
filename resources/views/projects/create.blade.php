@@ -5,7 +5,7 @@
 				<div class=" bg-gray-100 flex flex-col justify-center items-center min-h-screen">
 								@include('common.alert')
 								<header class="font-bold text-xl text-center text-gray-700 m-4"> Add Project</header>
-								<form action="{{ route('projects.store') }}" method="POST">
+								<form class="form_container"  action="{{ route('projects.store') }}" method="POST">
 												@csrf
 												@method('post')
 												<div class="input-field">

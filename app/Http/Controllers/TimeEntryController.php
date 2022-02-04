@@ -8,6 +8,8 @@ use App\Http\Requests\TimeEntryRequest;
 use App\Models\Client;
 use App\Models\Task;
 use Carbon\Carbon;
+use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class TimeEntryController extends Controller
 {
@@ -24,10 +26,30 @@ class TimeEntryController extends Controller
       $currentTimeEntries = TimeEntry::where('date', Carbon::today())->get();
       $tasks =Task::all();
       $clients = Client::all();
+      $time_entries = TimeEntry::all();
 
-      return view('time-entries.index', compact('currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+      if($request->query('client')){
+        $client_id = $request->query('client');
+        return Project::where('client_id', '=', $client_id)->get()->toJson();
+      }elseif($request->query('project')){
+          return Task::all()->toJson();
+      }else if($request->date){
+          $date = $request->date;
+          $time_entries = TimeEntry::where('date', '=', $date)->where('user_id', '=',  Auth::user()->id)->get();
+          return view('time-entries.index', compact('time_entries', 'currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+      }else{
+        return view('time-entries.index', compact('time_entries','currentTimeEntries','clients', 'tasks', 'filteredTimeEntries'));
+      }
 
+    }
 
+    public function search(Request $request)
+    {
+        $clients = Client::all();
+        $date = $request->date;
+        $time_entries = TimeEntry::where('date', '=', $date)->where('user_id', '=', Auth::user()->id)->get();
+        $tasks = Task::all();
+        return view('time-entries.index', compact('time_entries', 'clients','tasks'));
     }
 
     /**
