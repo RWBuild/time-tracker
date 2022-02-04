@@ -5,7 +5,7 @@
     <div class=" bg-gray-100 flex  justify-center items-center min-h-screen">
         <div class=" bg-white p-4 flex shadow-lg ">
 
-            {{-- clients details --}}
+            
 
             <div class=" flex flex-col justify-center items-center">
 
@@ -56,7 +56,9 @@
                                 </tr>
 
                             @empty
-                                no timeEntries
+                                <div class="bg-white p-10 text-center">
+                            <p class="bg-red-100">No time Entries</p>
+                        </div>
                             @endforelse
                         </table>
 

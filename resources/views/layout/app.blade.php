@@ -4,15 +4,19 @@
 <head>
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=
-				, initial-scale=1.0">
+, initial-scale=1.0">
 				<meta http-equiv="X-UA-Compatible" content="ie=edge">
 				<title>time trucker</title>
 				<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
 				{{-- header --}}
-				<div class="bg-gray-700 text-white font-bold flex sm: justify-around md:justify-between p-4 sticky top-0 z-50 ">
+				<div class="bg-gray-700 flex justify-between p-3  sticky top-0 z-50 ">
 
 								<div class=" text-blue-100 text-xl">Time Tracker</div>
 
@@ -35,7 +39,7 @@
 																@if (Auth::check())
 																				<form class="button" method="POST" action="{{ route('logout') }}">
 																								@csrf
-																								<button class=" hover:bg-gray-400 hover:text-gray-900 p-2 rounded-lg mr-64 -mt-6"
+																								<button class=" hover:bg-gray-400 hover:text-gray-900 p-2 rounded-lg -ml-20 -mt-16"
 																												type="submit">Logout</button>
 																				</form>
 																@endif
@@ -43,7 +47,7 @@
 																<div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
 																				@auth
 																								@if (Auth::User()->isAdmin())
-																												<a href="{{ url('/dashboard') }}" class="text-sm   no-underline ">Dashboard</a>
+																												<a href="{{ url('/dashboard') }}" class="text-sm text-white  no-underline -mt-4 ">Dashboard</a>
 																								@endif
 																				@else
 																								<a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 no-underline">Log

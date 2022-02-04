@@ -6,7 +6,7 @@
         @include('common.alert')
         <header class="font-bold text-4xl text-center text-gray-700 m-2"> Edit Clients </header>
 
-        <form action="{{ route('clients.update', $client->id) }}" method="POST">
+        <form   class="form_container" action="{{ route('clients.update', $client->id) }}" method="POST">
 
             @csrf
             @method('put')
@@ -67,7 +67,7 @@
 
 
             <div class="flex justify-center">
-                <button type="submit" onclick="return confirm('confirm edit')"
+                <button type="submit"
                     class="inline-flex items-center m-2 px-4 py-2 bg-gray-700 border
     border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-400 active:bg-gray-900
     focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Edit
