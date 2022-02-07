@@ -32,7 +32,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
   }
 
@@ -60,7 +60,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
     $this->assertDatabaseHas('time_entries',['duration' => 90]);
   }
@@ -74,7 +74,7 @@ class TimeEntryTest extends TestCase
       'date' => Date('Y-m-d'),
     ]);
 
-    $response->assertStatus(200);
+    $response->assertStatus(302);
     $this->assertTrue(TimeEntry::all()->count() == 1);
     $this->assertDatabaseHas('time_entries',['duration' => 90]);
   }

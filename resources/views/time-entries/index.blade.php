@@ -35,10 +35,14 @@
                     </form>
                 </div>
             </div>
-            <form>
+           
+                
                 @forelse ($timeEntries as $timeEntry)
+                <form method="post">
                     <div class="row_container">
                         <div class="select_field">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="date" style="display: none" name="date" value="<?php echo date('Y-m-d'); ?>"id="date-hide">
                             <label for="client">company Name:</label>
                             <select>
                                 @forelse ($clients as $client)
@@ -53,7 +57,7 @@
         </div>
         <div class="select_field">
             <label for="projects">Project Name:</label>
-            <select id="client">
+            <select name="project_id" id="client">
                 @forelse($timeEntry->project->client->projects as $project)
                     <option @if ($timeEntry->project_id == $project->id)
                         selected
@@ -69,8 +73,7 @@
         </div>
         <div class="select_field">
             <label for="task">Task:</label>
-            <select id="task">
-                <option>-- Select Task --</option>
+            <select name="task_id" id="task">
                 @foreach ($tasks as $task)
                     <option @if ($task->id == $timeEntry->task_id)
                         selected
@@ -82,7 +85,7 @@
 
         <div class="select_field">
             <label for="time">Duration:</label>
-            <input id="duration" type="text" value="{{ gmdate('H:i', $timeEntry->duration * 60) }} ">
+            <input name="duration"id="duration" type="text" value="{{ gmdate('H:i', $timeEntry->duration * 60) }} ">
         </div>
         {{-- <div class="select_field">
             <label for="time"></label>
@@ -92,9 +95,68 @@
     @empty
         <p>Empty</p>
         @endforelse
-        <div id="form-container"></div>
+        
         </form>
+        <div id="form-container"></div>
+        <script>
+function getContainer() {
+    const row = document.getElementById("form-container");
+    const node = document.createElement("div");
+    
+    node.innerHTML = `
+    <form action="{{ route('time-entries.store') }}" method="POST">
+        @csrf
+   <div class="row_container">
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" >
+        <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>"id="date-hide">
+            <div class="select_field">
+           <label for="company_name">company Name:</label>
+           <select name="client_id">
+            @forelse ($clients as $client)
+                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                @empty
+                    <option>No client</option>
+                @endforelse
+           </select>
+       </div>
+       <div class="select_field">
+           <label for="project_name">project Name:</label>
+           <select name="project_id">
+            @forelse ($projects as $project)
+                     <option value="{{ $project->id }}">{{ $project->name }}</option>
+                 @empty
+                     <option>no project</option>
+                 @endforelse
+           </select>
+       </div>
 
+       <div class="select_field">
+           <label for="task">Task:</label>
+           <select name="task_id">
+            @forelse ($tasks as $task)
+                    <option value="{{ $task->id }}">{{ $task->name }}</option>
+                @empty
+                    <option>No task</option>
+                @endforelse
+           </select>
+       </div>
+
+       <div class="select_field">
+           <label for="time">time:</label>
+           <input type="text" name="duration">
+       </div>
+       <div class="select_field">
+           <label for="time"></label>
+           <button type="submit">Save</button>
+       </div>
+   </div>
+   </form>`;
+    row.appendChild(node);
+    document.getElementById('date-hide').style.display='none';
+}
+
+
+        </script>
         </div>
 
         <div class="row_button"><button onclick="getContainer()">Add row</button></div>
