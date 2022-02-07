@@ -48,6 +48,7 @@ class TimeEntryController extends Controller
     public function store(TimeEntryRequest $request)
     {
       $timeEntry = TimeEntry::create($request->validated());
+      return redirect()->back();
     }
 
     /**
@@ -82,6 +83,7 @@ class TimeEntryController extends Controller
     public function update(TimeEntryRequest $request, TimeEntry $timeEntry)
     {
       $timeEntry->update($request->validated());
+      return redirect()->back();
     }
 
     /**
