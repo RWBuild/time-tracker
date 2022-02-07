@@ -24,7 +24,7 @@
             @forelse ($clientWithProject as $client)
                 <div class="project-card">
                     <div class="card-title">
-                        <h1>Client's name: {{ $client->name }}</h1>
+                        <h1>Client:{{ $client->name }}</h1>
                     </div>
                     <div class="project-table">
                         <table class="clientproject-table">

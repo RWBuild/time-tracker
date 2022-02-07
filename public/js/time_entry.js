@@ -44,7 +44,6 @@ function getContainer() {
        </div>
        <div class="select_field">
            <label for="time"></label>
-           <button type="submit" id="submit" onclick="getDate()">Save</button>
        </div>
    </div>
    </form>`;
